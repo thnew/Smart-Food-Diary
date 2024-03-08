@@ -22,7 +22,6 @@ class MealInput:
 
         try:
             parsed_meals_serialized = get_from_local_storage(f'{self.id}_parsed_meals')
-            print("PARSED", parsed_meals_serialized)
             self.parsed_meals = pd.read_json(StringIO(parsed_meals_serialized)) if parsed_meals_serialized else pd.DataFrame(columns=['meal_name', 'amount', 'unit'])
         except:
             pass
