@@ -11,6 +11,7 @@ def closest_matches(meal_name: str):
     def similar(a, b):
         return SequenceMatcher(None, a, b).ratio()
 
+    print("Search for:", meal_name)
     matches = difflib.get_close_matches(meal_name, food_names)
 
     if len(matches) == 0:
