@@ -1,5 +1,4 @@
 import streamlit as st
-import pandas as pd
 from classes.get_nutrition_values import get_nutrition_values
 from classes.extract_meals_from_text import extract_meals_from_input
 from classes.meal_input import MealInput
@@ -18,6 +17,7 @@ for input in inputs:
         input.title,
         value=input.input_text,
         placeholder="1 egg and a glass of milk")
+
     input.parsed_meals = extract_meals_from_input(input.input_text)
 
     nutrition_values = get_nutrition_values(input.parsed_meals)

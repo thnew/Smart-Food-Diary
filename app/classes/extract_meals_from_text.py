@@ -1,3 +1,4 @@
+import streamlit as st
 import pandas as pd
 import json
 import os
@@ -24,6 +25,7 @@ def extract_meals_from_text(food_diary_entry: str) -> pd.DataFrame:
 
     return get_result_from_chat_gpt3(food_diary_entry)
 
+@st.cache_data
 def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
     client = OpenAI(api_key=apikey)
 

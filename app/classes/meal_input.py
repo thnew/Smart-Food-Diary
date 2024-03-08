@@ -28,7 +28,7 @@ class MealInput:
 
         return self
 
-
+# TODO: Replace with cache
 def get_from_local_storage(k):
     v = st_javascript(f"localStorage.getItem('{k}');")
 
