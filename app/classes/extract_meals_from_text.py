@@ -32,7 +32,7 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo-0613",
         messages=[
-            {"role": "system", "content": "You are a dietitian. Categorize the information you receive, using a table format. The table should contain: food, portion size, units. Use one word or one number only"},
+            {"role": "system", "content": "You are a dietitian. Categorize the information you receive, using a table format. The table should contain: food, portion size, units. Use one word or one number only. Ensure unique food names."},
             {"role": "user", "content": food_diary_entry}
         ],
         functions=[
@@ -47,63 +47,63 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
                             "items": {
                                 "type": "string"
                             },
-                            "description": "a list of foods the prompt has"
+                            "description": "a list of foods the prompt has."
                         },
                         "Meal_start_idx": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
-                            "description": "start index for the corresponding food. Put null if nnothing found."
+                            "description": "start index for the corresponding food. Put null if nothing found."
                         },
                         "Meal_end_idx": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
-                            "description": "end index for the corresponding food. Put null if nnothing found."
+                            "description": "end index for the corresponding food. Put null if nothing found."
                         },
                         "Amount": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
-                            "description": "list of numbers, corresponding to the above foods. Put null if nnothing found."
+                            "description": "list of numbers, corresponding to the above foods. Put null if nothing found."
                         },
                         "Amount_start_idx": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
-                            "description": "start index for the corresponding quantity. Put null if nnothing found."
+                            "description": "start index for the corresponding quantity. Put null if nothing found."
                         },
                         "Amount_end_idx": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
-                            "description": "end index for the corresponding quantity. Put null if nnothing found."
+                            "description": "end index for the corresponding quantity. Put null if nothing found."
                         },
                         "Unit": {
                             "type": "array",
                             "items": {
                                 "type": "string"
                             },
-                            "description": "letters or words following and corresponding to the numbers from above. Put null if nnothing found."
+                            "description": "letters or words following and corresponding to the numbers from above. Put null if nothing found."
                         },
                         "Unit_start_idx": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
-                            "description": "start index for the corresponding units. Put null if nnothing found."
+                            "description": "start index for the corresponding units. Put null if nothing found."
                         },
                         "Unit_end_idx": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
-                            "description": "end index for the corresponding units. Put null if nnothing found."
+                            "description": "end index for the corresponding units. Put null if nothing found."
                         }
                     },
                     "required": ["Meal","Meal_start_idx", 'Meal_end_idx', "Amount", "Amount_start_idx", "Amount_end_idx", "Unit", "Unit_start_idx", "Unit_end_idx"]
@@ -113,6 +113,9 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
         function_call="auto",
         max_tokens=300
     )
+
+    if completion.choices[0].message.function_call is None:
+        return pd.DataFrame(columns=["Meal", "Meal_start_idx", 'Meal_end_idx', "Amount", "Amount_start_idx", "Amount_end_idx", "Unit", "Unit_start_idx", "Unit_end_idx"])
 
     print("ChatGPT found this:", completion.choices[0].message.function_call.arguments)
 
