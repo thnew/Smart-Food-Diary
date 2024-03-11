@@ -9,3 +9,4 @@ openai
 
 # For DBerta version
 transformers
+tensorflow
