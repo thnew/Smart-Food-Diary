@@ -19,8 +19,6 @@ def extract_meals_from_input(text: str, use_chat_gpt: bool) -> pd.DataFrame:
     for row in lines:
         meals_df = pd.concat([meals_df, extract_meals_from_text(row, use_chat_gpt)])
 
-    print("meals_df", meals_df)
-
     return meals_df.reset_index(drop=True)
 
 def extract_meals_from_text(food_diary_entry: str, use_chat_gpt: bool) -> pd.DataFrame:
@@ -33,7 +31,7 @@ def extract_meals_from_text(food_diary_entry: str, use_chat_gpt: bool) -> pd.Dat
     columns_to_convert = ['food_start', 'food_end', 'quantity_start', 'quantity_end', 'unit_start', 'unit_end']
     df[columns_to_convert] = df[columns_to_convert].fillna(-1)
     df[columns_to_convert] = df[columns_to_convert].astype(int)
-    print(df)
+
     return df
 
 @st.cache_data
@@ -127,10 +125,8 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
 
     if completion.choices[0].message.function_call is None:
         df = pd.DataFrame(columns=["food", "food_start", 'food_end', "quantity", "quantity_start", "quantity_end", "unit", "unit_start", "unit_end"])
-        print(df)
-        return df
 
-    print("ChatGPT found this:", completion.choices[0].message.function_call.arguments)
+        return df
 
     args = json.loads(completion.choices[0].message.function_call.arguments)
 
@@ -223,7 +219,5 @@ def get_result_from_deberta(food_name: str) -> pd.DataFrame:
 
 
     pd.set_option("mode.chained_assignment", None)
-
-    print(f"\n\n\033[1m{food_name}\033[0m\n")
 
     return df_edited
