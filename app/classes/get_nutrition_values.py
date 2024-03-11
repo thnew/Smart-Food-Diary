@@ -2,8 +2,7 @@ import pandas as pd
 import difflib
 from difflib import SequenceMatcher
 
-# TODO: Replace with real dataset
-nutrition_dataset = pd.read_csv('data/test_nutrition_dataset.csv', delimiter=';')
+nutrition_dataset = pd.read_csv('data/nutrition_dataset.csv', delimiter=',')
 
 food_names = nutrition_dataset['Meal'].dropna().tolist()
 
