@@ -11,26 +11,32 @@ apikey = os.environ.get('OPENAPI_APIKEY')
 
 # Split up input in rows and extract
 def extract_meals_from_input(text: str, use_chat_gpt: bool) -> pd.DataFrame:
-    # We process inputs row by row
-    rows = text.split("\n")
+    # We process inputs line by line
+    lines = text.split("\n")
 
     # Go through every row and parse the meal names, units and amounts of of them
-    meals = pd.DataFrame(columns=['Meal', 'Amount', 'Unit'])
-    for row in rows:
-        meals = pd.concat([meals, extract_meals_from_text(row, use_chat_gpt)])
+    meals_df = pd.DataFrame(columns=['food', 'food_start', 'food_end', 'unit', 'unit_start', 'unit_end', 'quantity', 'quantity_start', 'quantity_end'])
+    for row in lines:
+        meals_df = pd.concat([meals_df, extract_meals_from_text(row, use_chat_gpt)])
 
-    return meals.reset_index(drop=True)
+    print("meals_df", meals_df)
+
+    return meals_df.reset_index(drop=True)
 
 def extract_meals_from_text(food_diary_entry: str, use_chat_gpt: bool) -> pd.DataFrame:
     if len(food_diary_entry) == 0:
-        return pd.DataFrame(columns=['Meal', 'Amount', 'Unit'])
+        return pd.DataFrame(columns=['food', 'quantity', 'unit'])
 
-    if use_chat_gpt:
-        return get_result_from_chat_gpt3(food_diary_entry)
+    df =(get_result_from_chat_gpt3(food_diary_entry)
+         if use_chat_gpt else get_result_from_deberta(food_diary_entry))
 
-    return get_result_from_deberta(food_diary_entry)
+    columns_to_convert = ['food_start', 'food_end', 'quantity_start', 'quantity_end', 'unit_start', 'unit_end']
+    df[columns_to_convert] = df[columns_to_convert].fillna(-1)
+    df[columns_to_convert] = df[columns_to_convert].astype(int)
+    print(df)
+    return df
 
-#@st.cache_data
+@st.cache_data
 def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
     client = OpenAI(api_key=apikey)
 
@@ -47,63 +53,63 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "Meal": {
+                        "food": {
                             "type": "array",
                             "items": {
                                 "type": "string"
                             },
                             "description": "a list of foods the prompt has."
                         },
-                        "Meal_start_idx": {
+                        "food_start": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
                             "description": "start index for the corresponding food."
                         },
-                        "Meal_end_idx": {
+                        "food_end": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
                             "description": "end index for the corresponding food."
                         },
-                        "Amount": {
+                        "quantity": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
                             "description": "list of numbers, corresponding to the above foods. Put null if nothing found."
                         },
-                        "Amount_start_idx": {
+                        "quantity_start": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
                             "description": "start index for the corresponding quantity."
                         },
-                        "Amount_end_idx": {
+                        "quantity_end": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
                             "description": "end index for the corresponding quantity."
                         },
-                        "Unit": {
+                        "unit": {
                             "type": "array",
                             "items": {
                                 "type": "string"
                             },
                             "description": "letters or words following and corresponding to the numbers from above. Put null if nothing found."
                         },
-                        "Unit_start_idx": {
+                        "unit_start": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
                             "description": "start index for the corresponding units."
                         },
-                        "Unit_end_idx": {
+                        "unit_end": {
                             "type": "array",
                             "items": {
                                 "type": "number"
@@ -111,7 +117,7 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
                             "description": "end index for the corresponding units."
                         }
                     },
-                    "required": ["Meal","Meal_start_idx", 'Meal_end_idx', "Amount", "Amount_start_idx", "Amount_end_idx", "Unit", "Unit_start_idx", "Unit_end_idx"]
+                    "required": ["food", "food_start", 'food_end', "quantity", "quantity_start", "quantity_end", "unit", "unit_start", "unit_end"]
                 }
             }
         ],
@@ -120,7 +126,7 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
     )
 
     if completion.choices[0].message.function_call is None:
-        df = pd.DataFrame(columns=["Meal", "Meal_start_idx", 'Meal_end_idx', "Amount", "Amount_start_idx", "Amount_end_idx", "Unit", "Unit_start_idx", "Unit_end_idx"])
+        df = pd.DataFrame(columns=["food", "food_start", 'food_end', "quantity", "quantity_start", "quantity_end", "unit", "unit_start", "unit_end"])
         print(df)
         return df
 
@@ -130,6 +136,7 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
 
     return pd.DataFrame.from_dict(args, orient='columns')
 
+@st.cache_data
 def get_result_from_deberta(food_name: str) -> pd.DataFrame:
     pipe = pipeline("ner", model="davanstrien/deberta-v3-base_fine_tuned_food_ner")
 
@@ -188,8 +195,8 @@ def get_result_from_deberta(food_name: str) -> pd.DataFrame:
     # Combine the DataFrames
     df_edited = pd.concat([df_food, df_quantity, df_unit], axis=1)
 
-    # Fill NaN values with 0
-    df_edited = df_edited.fillna(0)
+    # Fill NaN values with -1
+    df_edited = df_edited.fillna(-1)
 
     for i, rows in df_edited.iterrows():
         df_edited['food'][i] = str(df_edited['food'][i]).replace("▁"," ").strip().lower().capitalize()
@@ -198,21 +205,21 @@ def get_result_from_deberta(food_name: str) -> pd.DataFrame:
 
 
     # Replace NaN, nan, and NaN with a specific non-null value (e.g., 0) across the entire DataFrame
-    df_edited.replace({pd.NaT: 0, 'Nan': 0, 'nan': 0, 'NaN': 0}, inplace=True)
-    df_edited = df_edited.fillna(0)
+    df_edited.replace({pd.NaT: -1, 'Nan': -1, 'nan': -1, 'NaN': -1}, inplace=True)
+    df_edited = df_edited.fillna(-1)
 
-    # ["Meal", "Meal_start_idx", 'Meal_end_idx', "Amount", "Amount_start_idx", "Amount_end_idx", "Unit", "Unit_start_idx", "Unit_end_idx"]
-    df_edited['Meal'] = df_edited['food'].astype(str)
-    df_edited['Meal_start_idx'] = df_edited['food_start'].astype(int)
-    df_edited['Meal_end_idx'] = df_edited['food_end'].astype(int)
+    # ["food", "food_start", 'food_end', "quantity", "quantity_start", "quantity_end", "unit", "unit_start", "unit_end"]
+    df_edited['food'] = df_edited['food'].astype(str)
+    df_edited['food_start'] = df_edited['food_start'].astype(int)
+    df_edited['food_end'] = df_edited['food_end'].astype(int)
 
-    #df_edited['Amount'] = df_edited['quantity'].astype(float)
-    df_edited['Amount_start_idx'] = df_edited['quantity_start'].astype(int)
-    df_edited['Amount_end_idx'] = df_edited['quantity_end'].astype(int)
+    #df_edited['quantity'] = df_edited['quantity'].astype(float)
+    df_edited['quantity_start'] = df_edited['quantity_start'].astype(int)
+    df_edited['quantity_end'] = df_edited['quantity_end'].astype(int)
 
-    df_edited['Unit'] = df_edited['unit'].astype(str)
-    df_edited['unUnit_start_idxit_start'] = df_edited['unit_start'].astype(int)
-    df_edited['Unit_end_idx'] = df_edited['unit_end'].astype(int)
+    df_edited['unit'] = df_edited['unit'].astype(str)
+    df_edited['unit_start'] = df_edited['unit_start'].astype(int)
+    df_edited['unit_end'] = df_edited['unit_end'].astype(int)
 
 
     pd.set_option("mode.chained_assignment", None)

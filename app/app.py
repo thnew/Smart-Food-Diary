@@ -2,12 +2,34 @@ import streamlit as st
 from classes.get_nutrition_values import get_nutrition_values
 from classes.extract_meals_from_text import extract_meals_from_input
 from classes.meal_input import MealInput
+from annotated_text import annotated_text
+import pandas as pd
 
 st.title("Food Diary")
 st.markdown("Start filling out your diary to see your calories")
 
+def get_annotated_input_text(input_text: str, parsed_meals: pd.DataFrame) -> list:
+    annotated_parts = []
+
+    for _, row in parsed_meals.iterrows():
+        start_index = min_pos(row['food_start'], row['quantity_start'], row['unit_start'])
+        end_index = max_pos(row['food_end'], row['quantity_end'], row['unit_end'])
+
+        annotated_parts.append((input_text[start_index:end_index], ''))
+
+    print(annotated_parts)
+
+    return annotated_parts
+
+def min_pos(*args):
+    return min([x for x in args if x is not -1])
+
+def max_pos(*args):
+    return max([x for x in args if x is not -1])
+
 with st.expander("Config"):
     use_chat_gpt = st.toggle('Use ChatGPT for meal extraction')
+    #show_details = st.toggle('Show detailed output')
 
     inputs = [
         MealInput('breakfast', 'Breakfast').load_from_local_storage(),
@@ -23,9 +45,17 @@ for input in inputs:
 
     input.parsed_meals = extract_meals_from_input(input.input_text, use_chat_gpt)
 
+    st.dataframe(input.parsed_meals)
+
     nutrition_values = get_nutrition_values(input.parsed_meals)
 
-    st.dataframe(nutrition_values)
+    if input.parsed_meals.shape[0] > 0:
+        annotated = get_annotated_input_text(input.input_text, input.parsed_meals)
+        print("Annotated", annotated)
+        annotated_text(*annotated)
 
+        st.dataframe(nutrition_values)
+
+# We cache texts and results for next reload
 for input in inputs:
     input.store_in_local_storage()

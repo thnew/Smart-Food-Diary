@@ -5,7 +5,7 @@ from difflib import SequenceMatcher
 # TODO: Replace with real dataset
 nutrition_dataset = pd.read_csv('data/test_nutrition_dataset.csv', delimiter=';')
 
-food_names = nutrition_dataset['Meal'].dropna().tolist()
+food_names = nutrition_dataset['food'].dropna().tolist()
 
 def closest_matches(meal_name: str):
     def similar(a, b):
@@ -24,14 +24,14 @@ def get_nutrition_values(extracted_meals: pd.DataFrame) -> list:
     for i in range(len(extracted_meals)):
         row = extracted_meals.iloc[i]
 
-        matches = closest_matches(row['Meal'])
+        matches = closest_matches(row['food'])
 
         if matches is None:
             continue
 
         # Find match in nutrition dataset
         match = matches[0]
-        matched_nutrition_dataset = nutrition_dataset[nutrition_dataset['Meal'] == match['title']]
+        matched_nutrition_dataset = nutrition_dataset[nutrition_dataset['food'] == match['title']]
 
         found_food.append(matched_nutrition_dataset.iloc[0])
 
@@ -39,7 +39,7 @@ def get_nutrition_values(extracted_meals: pd.DataFrame) -> list:
 
 if __name__ == "__main__":
     print(get_nutrition_values(pd.DataFrame({
-        'Meal': ['bla', 'milk'],
-        'Amount': ['1', '1'],
-        'Unit': ['piece', 'glass'],
+        'food': ['bla', 'milk'],
+        'quantity': ['1', '1'],
+        'unit': ['piece', 'glass'],
     })))
