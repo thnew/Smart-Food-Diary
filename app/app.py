@@ -27,10 +27,10 @@ def get_annotated_input_text(input_text: str, parsed_meals: pd.DataFrame) -> lis
     return annotated_parts
 
 def min_pos(*args):
-    return min([x for x in args if x is not -1])
+    return min([x for x in args if x != -1])
 
 def max_pos(*args):
-    return max([x for x in args if x is not -1])
+    return max([x for x in args if x != -1])
 
 with st.expander("Config"):
     use_chat_gpt = st.toggle('Use ChatGPT for meal extraction')
