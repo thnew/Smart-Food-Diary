@@ -14,7 +14,7 @@ class MealInput:
     def store_in_local_storage(self):
         st.query_params[self.id] = self.input_text
 
-    def load_from_local_storage(self):
+    def load_from_cache(self):
         self.input_text = st.query_params.get(self.id)
         self.input_text = self.input_text if self.input_text else ''
 

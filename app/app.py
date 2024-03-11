@@ -4,22 +4,27 @@ from classes.extract_meals_from_text import extract_meals_from_input
 from classes.meal_input import MealInput
 from annotated_text import annotated_text
 
-st.title("Food Diary")
+col1, col2 = st.columns([3, 1])
+col1.title("Food Diary")
 st.markdown("Start filling out your diary to see your calories")
 
-with st.expander("Config"):
-    use_chat_gpt = st.toggle('Use ChatGPT for meal extraction')
-    show_details = st.toggle('Show detailed output', True)
+col2.text('')
+config_popover = col2.popover("Config")
+use_chat_gpt = config_popover.toggle('Use ChatGPT for meal extraction')
+show_details = config_popover.toggle('Show detailed output')
 
-    inputs = [
-        MealInput('breakfast', 'Breakfast').load_from_local_storage(),
-        MealInput('lunch', 'Lunch').load_from_local_storage(),
-        MealInput('dinner', 'Dinner').load_from_local_storage(),
-    ]
+inputs = [
+    MealInput('breakfast', 'Breakfast').load_from_cache(),
+    MealInput('lunch', 'Lunch').load_from_cache(),
+    MealInput('dinner', 'Dinner').load_from_cache()
+]
 
 for input in inputs:
+    st.subheader(input.title)
     input.input_text = st.text_area(
-        input.title,
+        '',
+        height=2,
+        label_visibility='collapsed',
         value=input.input_text,
         placeholder="1 egg and a glass of milk")
 

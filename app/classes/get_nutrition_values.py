@@ -38,11 +38,18 @@ def get_nutrition_values(meals: pd.DataFrame) -> list:
 
     return meals
 
+# Colors from here: https://coolors.co/visualizer/2e382e-50c9ce-72a1e5-9883e5-fcd3de
+colors = [
+    '#50C9CE',
+    '#72A1E5',
+    '#9883E5',
+    '#FCD3DE'
+]
 def get_annotated_input_text(input_text: str, parsed_meals: pd.DataFrame) -> list:
     annotated_parts = []
 
     last_end = 0
-    for _, row in parsed_meals.iterrows():
+    for index, row in parsed_meals.iterrows():
         start_index = min_pos(row['food_start'], row['quantity_start'], row['unit_start'])
         end_index = max_pos(row['food_end'], row['quantity_end'], row['unit_end'])
 
@@ -51,7 +58,7 @@ def get_annotated_input_text(input_text: str, parsed_meals: pd.DataFrame) -> lis
             annotated_parts.append(f" {input_text[last_end:start_index]} ")
 
         calories = row['matched_calories']
-        annotated_parts.append((input_text[start_index:end_index].strip(), f"{calories}ccal"))
+        annotated_parts.append((input_text[start_index:end_index].strip(), f"{calories}ccal", colors[index % len(colors)]))
 
         last_end = end_index
 
