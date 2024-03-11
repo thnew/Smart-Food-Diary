@@ -1,4 +1,5 @@
 import pandas as pd
+import streamlit as st
 from streamlit_javascript import st_javascript
 from io import StringIO
 
@@ -28,11 +29,15 @@ class MealInput:
 
         return self
 
-# TODO: Replace with cache
+st.markdown('<style>.hide-next-elem, .hide-next-elem + * { display: none }</style>', unsafe_allow_html=True)
+
+# TODO: Replace with cache or hide
 def get_from_local_storage(k):
+    st.write("<div class='hide-next-elem'></div>", unsafe_allow_html=True, )
     v = st_javascript(f"localStorage.getItem('{k}');")
 
     return v if v else None
 
 def set_to_local_storage(k, v):
+    st.write("<div class='hide-next-elem'></div>", unsafe_allow_html=True)
     st_javascript(f"localStorage.setItem('{k}', '{v}');")

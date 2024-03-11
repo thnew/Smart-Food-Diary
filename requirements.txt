@@ -1,5 +1,10 @@
 pandas
 streamlit
 streamlit_javascript
-openai
 python-dotenv
+
+# For OpenAI version
+openai
+
+# For DBerta version
+transformers

@@ -6,11 +6,14 @@ from classes.meal_input import MealInput
 st.title("Food Diary")
 st.markdown("Start filling out your diary to see your calories")
 
-inputs = [
-    MealInput('breakfast', 'Breakfast').load_from_local_storage(),
-    MealInput('lunch', 'Lunch').load_from_local_storage(),
-    MealInput('dinner', 'Dinner').load_from_local_storage(),
-]
+with st.expander("Config"):
+    use_chat_gpt = st.toggle('Use ChatGPT for meal extraction')
+
+    inputs = [
+        MealInput('breakfast', 'Breakfast').load_from_local_storage(),
+        MealInput('lunch', 'Lunch').load_from_local_storage(),
+        MealInput('dinner', 'Dinner').load_from_local_storage(),
+    ]
 
 for input in inputs:
     input.input_text = st.text_area(
@@ -18,7 +21,7 @@ for input in inputs:
         value=input.input_text,
         placeholder="1 egg and a glass of milk")
 
-    input.parsed_meals = extract_meals_from_input(input.input_text)
+    input.parsed_meals = extract_meals_from_input(input.input_text, use_chat_gpt)
 
     nutrition_values = get_nutrition_values(input.parsed_meals)
 
