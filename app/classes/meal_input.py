@@ -11,7 +11,7 @@ class MealInput:
         self.input_text = input_text
         self.parsed_meals = pd.DataFrame(columns=['meal_name', 'amount', 'unit']) if parsed_meals is None else parsed_meals
 
-    def store_in_local_storage(self):
+    def store_in_cache(self):
         st.query_params[self.id] = self.input_text
 
     def load_from_cache(self):
