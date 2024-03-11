@@ -4,3 +4,6 @@ https://miro.com/app/board/uXjVNlDuSEw=/?share_link_id=62044369956
 
 ## pyenv environment is called “smart_food_diary”
 ``pyenv local smart_food_diary``
+
+## Run Streamlit app:
+``streamlit run app/app.py``

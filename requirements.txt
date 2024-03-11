@@ -1,0 +1,11 @@
+pandas
+streamlit
+streamlit_javascript
+python-dotenv
+st-annotated-text
+
+# For OpenAI version
+openai
+
+# For DBerta version
+transformers
