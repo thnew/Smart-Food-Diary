@@ -59,6 +59,18 @@ colors = [
     '#9883E5',
     '#FCD3DE'
 ]
+
+def get_text_highlight_colors(input_text: str, parsed_meals: pd.DataFrame) -> list:
+    annotated_parts = []
+
+    for index, row in parsed_meals.iterrows():
+        start_index = min_pos(row['food_start'], row['quantity_start'], row['unit_start'])
+        end_index = max_pos(row['food_end'], row['quantity_end'], row['unit_end'])
+
+        annotated_parts.append((start_index, end_index, colors[index % len(colors)]))
+
+    return annotated_parts
+
 def get_annotated_input_text(input_text: str, parsed_meals: pd.DataFrame) -> list:
     annotated_parts = []
 

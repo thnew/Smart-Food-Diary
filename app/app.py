@@ -1,5 +1,6 @@
 import streamlit as st
-from classes.get_nutrition_values import get_annotated_input_text, get_nutrition_values
+from components.highlighted_textarea import highlighted_textarea
+from classes.get_nutrition_values import get_annotated_input_text, get_nutrition_values, get_text_highlight_colors
 from classes.extract_meals_from_text import extract_meals_from_input
 from classes.meal_input import MealInput
 from annotated_text import annotated_text
@@ -36,24 +37,34 @@ for input in inputs:
     with st.container(border=True):
         st.subheader(input.title)
 
-        input.input_text = st.text_area(
-            input.id,
-            label_visibility='collapsed',
+        input.input_text = highlighted_textarea(
             value=input.input_text,
-            placeholder="1 egg and a glass of milk")
+            key=input.id)
+        # We cache texts and results for next reload
+        input.store_in_cache()
+
+        input.input_text = str(input.input_text)
+
+        # input.input_text = st.text_area(
+        #     input.id,
+        #     label_visibility='collapsed',
+        #     value=input.input_text,
+        #     placeholder="1 egg and a glass of milk")
 
         input.extracted_meals = extract_meals_from_input(input.input_text, extraction_model)
+
+        text_highights = get_text_highlight_colors(input.input_text, input.extracted_meals)
+        print(text_highights)
+        highlighted_textarea(value=input.input_text, labels=text_highights,
+            key=f"{input.id}_tmp")
+        # We cache texts )
+
 
         nutrition_values = get_nutrition_values(input.extracted_meals)
 
         if input.extracted_meals.shape[0] > 0:
-            annotated = get_annotated_input_text(input.input_text, input.extracted_meals)
-            annotated_text(*annotated)
+            # annotated = get_annotated_input_text(input.input_text, input.extracted_meals)
 
             if show_details:
                 st.subheader("Found datasets")
                 st.dataframe(nutrition_values)
-
-# We cache texts and results for next reload
-for input in inputs:
-    input.store_in_cache()

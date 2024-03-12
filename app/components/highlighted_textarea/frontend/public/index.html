@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Streamlit Component</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="description" content="Streamlit Component" />
+    <link rel="stylesheet" href="bootstrap.min.css" />
+
+    <style>
+      .textarea-container {
+        display: grid;
+        border-radius: 0.5rem;
+        background-color: #f0f2f6;
+        border: 1px solid transparent;
+        border-color: #f000;
+        transition: border-color 0.2s ease;
+      }
+
+      .textarea-container.focused {
+        border-color: #f00;
+      }
+
+      .edit-content {
+        grid-row: 1;
+        grid-column: 1;
+        padding: 1rem;
+        z-index: 100;
+      }
+
+      .edit-content:focus {
+        outline: none !important;
+      }
+
+      .edit-content-back {
+        color: transparent;
+        z-index: 0;
+      }
+
+      .hightlight-prepend-text {
+        white-space: pre;
+      }
+
+      .highlight-text {
+        white-space: pre;
+        background: #50c9ce;
+        border-radius: 0.5rem;
+        padding: 0.25rem 0;
+        transition: opacity 1s ease, background-color 0.5s ease;
+        transform: translateX(0);
+      }
+
+      .textarea-container.focused .highlight-text {
+        background: #aaa !important;
+        opacity: 0.5;
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+  </body>
+</html>
