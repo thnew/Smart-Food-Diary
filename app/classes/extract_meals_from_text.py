@@ -142,7 +142,7 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
 
 #@st.cache_data
 def get_result_from_deberta(text: str) -> pd.DataFrame:
-    return ner_food_output(text.lower())
+    #return ner_food_output(text.lower())
 
     response = None
     for attempts in range(1, 4):
@@ -168,9 +168,6 @@ pipe = pipeline("ner", model="davanstrien/deberta-v3-base_fine_tuned_food_ner")
 
 def ner_food_output(food_name):
     time = current_milli_time()
-
-    print("TIME A", current_milli_time() - time)
-    x = current_milli_time()
 
     # Get the NER results for the given food_name
     result = pipe(food_name)
@@ -201,6 +198,9 @@ def ner_food_output(food_name):
     sentences=[]
     end_sentence = len(food_name)
 
+    print("TIME A", current_milli_time() - time)
+    time = current_milli_time()
+
     for i in range(len(result) - 1, 0, -1):
         current_entity = result[i]["entity"]
         previous_entity = result[i - 1]["entity"].split('-')[1]
@@ -230,13 +230,13 @@ def ner_food_output(food_name):
         a = a.loc[i+1:].reset_index(drop=True)
 
     print("TIME B", current_milli_time() - time)
-    x = current_milli_time()
+    time = current_milli_time()
 
     # Concatenate cleaned text output (function used) for each sentence
     result = pd.concat([clean_text(o) for o in output])
 
     print("TIME C", current_milli_time() - time)
-    x = current_milli_time()
+    time = current_milli_time()
     result.reset_index(drop=True, inplace=True)
 
     return result
