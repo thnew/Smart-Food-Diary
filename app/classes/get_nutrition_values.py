@@ -1,11 +1,15 @@
+import streamlit as st
 import pandas as pd
 import difflib
 from difflib import SequenceMatcher
+import time
 
 nutrition_dataset = pd.read_csv('data/nutrition_dataset.csv', delimiter=',')
+nutrition_dataset = nutrition_dataset.sample(10000)
 
 food_names = nutrition_dataset['Meal'].dropna().tolist()
 
+#@st.cache_data
 def closest_matches(meal_name: str):
     def similar(a, b):
         return SequenceMatcher(None, a, b).ratio()
@@ -20,6 +24,7 @@ def closest_matches(meal_name: str):
 def get_nutrition_values(meals: pd.DataFrame) -> list:
     match_columns = ['matched_food', 'matched_quantity', 'matched_unit', 'matched_calories', 'matched_carbs', 'matched_protein', 'matched_fat']
     meals[match_columns] = None
+    time = current_milli_time()
 
     for index, row in meals.iterrows():
         matches = closest_matches(row['food'])
@@ -29,14 +34,23 @@ def get_nutrition_values(meals: pd.DataFrame) -> list:
 
         # Find match in nutrition dataset
         best_match = matches[0]
-        matched_nutrition_dataset = nutrition_dataset[nutrition_dataset['Meal'] == best_match['title']]
-        df_best_match = matched_nutrition_dataset.iloc[0]
-        df_best_match = df_best_match[['Meal', 'Amount', 'Units', 'Calories', 'Carbs', 'Protein', 'Fat']]
-        df_best_match.index = match_columns
+        df_best_match = get_dataset_for_meal(best_match['title'], match_columns)
 
         meals.loc[index, match_columns] = df_best_match
 
+    print("TIME TO FIND ALL IN DATASET", current_milli_time() - time)
+
     return meals
+
+#@st.cache_data
+def get_dataset_for_meal(meal_name: str, match_columns: pd.DataFrame) -> pd.DataFrame:
+    matched_nutrition_dataset = nutrition_dataset[nutrition_dataset['Meal'] == meal_name]
+
+    df_best_match = matched_nutrition_dataset.iloc[0]
+    df_best_match = df_best_match[['Meal', 'Amount', 'Units', 'Calories', 'Carbs', 'Protein', 'Fat']]
+    df_best_match.index = match_columns
+
+    return df_best_match
 
 # Colors from here: https://coolors.co/visualizer/2e382e-50c9ce-72a1e5-9883e5-fcd3de
 colors = [
@@ -76,3 +90,7 @@ if __name__ == "__main__":
         'quantity': ['1', '1'],
         'unit': ['piece', 'glass'],
     })))
+
+
+def current_milli_time():
+    return round(time.time() * 1000)
