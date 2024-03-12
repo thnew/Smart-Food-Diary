@@ -3,9 +3,14 @@ import pandas as pd
 import json
 import os
 import string
+import requests
 from transformers import pipeline
 from openai import OpenAI
 from dotenv import load_dotenv
+import time
+
+import warnings
+warnings.filterwarnings("ignore")
 
 load_dotenv()
 apikey = os.environ.get('OPENAPI_APIKEY')
@@ -26,8 +31,10 @@ def extract_meals_from_text(food_diary_entry: str, use_chat_gpt: bool) -> pd.Dat
     if len(food_diary_entry) == 0:
         return pd.DataFrame(columns=['food', 'quantity', 'unit'])
 
+    time = current_milli_time()
     df =(get_result_from_chat_gpt3(food_diary_entry)
          if use_chat_gpt else get_result_from_deberta(food_diary_entry))
+    print("TIME TOTAL TO EXTRACT", current_milli_time() - time)
 
     columns_to_convert = ['food_start', 'food_end', 'quantity_start', 'quantity_end', 'unit_start', 'unit_end']
     df[columns_to_convert] = df[columns_to_convert].fillna(-1)
@@ -133,25 +140,115 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
 
     return pd.DataFrame.from_dict(args, orient='columns')
 
-@st.cache_data
+#@st.cache_data
 def get_result_from_deberta(text: str) -> pd.DataFrame:
+    return ner_food_output(text.lower())
+
+    response = None
+    for attempts in range(1, 4):
+        try:
+            url = "https://ner-food-ctgsi4wqxa-ew.a.run.app/"
+            params = {
+                "text": text.lower()
+            }
+
+            response = requests.get(url, params).json()
+
+            break
+        except:
+            print(f"Failed {attempts} times")
+
+    if response is None:
+        return pd.DataFrame(columns=["food", "food_start", 'food_end', "quantity", "quantity_start", "quantity_end", "unit", "unit_start", "unit_end"])
+
+    return pd.DataFrame(response)
+
+# Load the NER pipeline using a fine-tuned model for food entities
+pipe = pipeline("ner", model="davanstrien/deberta-v3-base_fine_tuned_food_ner")
+
+def ner_food_output(food_name):
+    time = current_milli_time()
+
+    print("TIME A", current_milli_time() - time)
+    x = current_milli_time()
+
+    # Get the NER results for the given food_name
+    result = pipe(food_name)
+
+    # Filter entities with confidence score >= 0.3
+    result = [entity for entity in result if entity['score'] >= 0.3]
+
+    # Iterate over the results to merge consecutive rows with the same entity
+    for i in range(len(result) - 1, 0, -1):
+        current_entity = result[i]["entity"]
+        previous_entity = result[i - 1]["entity"].split('-')[1]
+
+        # Merge consecutive rows with the same entity
+        if current_entity.split('-')[1] == previous_entity:
+            if current_entity.split('-')[0] == "U":
+                None
+            if current_entity.split('-')[0] == "I" or current_entity.split('-')[0] == "L":
+                # Append the word from the row below to the "word" column
+                result[i - 1]["word"] += result[i]["word"]
+
+                # Update the "end" value of the first row with the "end" value of the row below
+                result[i - 1]["end"] = result[i]["end"]
+
+                # Delete the current row
+                del result[i]
+
+    # Identify sentence boundaries based on start and end indices
+    sentences=[]
+    end_sentence = len(food_name)
+
+    for i in range(len(result) - 1, 0, -1):
+        current_entity = result[i]["entity"]
+        previous_entity = result[i - 1]["entity"].split('-')[1]
+
+        if result[i]["start"] != result[i-1]["end"]:
+            start_index = result[i-1]["end"]
+            end_index = result[i]["start"]
+
+            # Check for conjunctions or punctuation to determine sentence boundaries
+            if ' and' in food_name[start_index:end_index] or any([punc in food_name[start_index:end_index] for punc in string.punctuation]):
+                sentences.append(end_sentence)
+                end_sentence = start_index
+
+    sentences.append(end_sentence)
+    sentences = sentences[::-1]
+
+    # Create a DataFrame from the NER results
+    a=pd.DataFrame(result)
     output = []
 
-    for food, i in split_text(text):
-        df = ner_food(food)
-        df.iloc[:,1:]
-        final = pd.concat(output)
+    # Extract rows corresponding to each identified sentence
+    for end in sentences:
+        i = a[a["end"]==end].index[0]
+        output.append([])
+        for row in range(i+1):
+            output[-1].append(a.loc[row].to_dict())
+        a = a.loc[i+1:].reset_index(drop=True)
 
-    return final
+    print("TIME B", current_milli_time() - time)
+    x = current_milli_time()
 
-def ner_food(result):
+    # Concatenate cleaned text output (function used) for each sentence
+    result = pd.concat([clean_text(o) for o in output])
+
+    print("TIME C", current_milli_time() - time)
+    x = current_milli_time()
+    result.reset_index(drop=True, inplace=True)
+
+    return result
+
+def clean_text(result):
+
     # Lists to store information
     foods = []
     quantities = []
     units = []
-    print("RESULTR", result)
 
-    # Iterate over the resulting entities
+    # Iterate over the resulting entities and append the information
     for entity in result:
         if "FOOD" in entity["entity"]:
             current_food = {"food": entity["word"], "food_start": entity["start"], "food_end": entity["end"]}
@@ -168,7 +265,7 @@ def ner_food(result):
     df_quantity = pd.DataFrame(quantities)
     df_unit = pd.DataFrame(units)
 
-    # Check if df_quantity and df_unit are empty, and create them if needed
+    # Check if DataFrames are empty, and create them if needed
     if df_food.empty:
         df_food = pd.DataFrame(columns=["quantity", "quantity_start", "quantity_end"])
 
@@ -182,24 +279,25 @@ def ner_food(result):
     # Combine the DataFrames
     df_edited = pd.concat([df_food, df_quantity, df_unit], axis=1)
 
-    # Fill NaN values with 0
+    # Fill NaN values with -1
     df_edited = df_edited.fillna(-1)
 
+    # Clean the text
     for i, rows in df_edited.iterrows():
         df_edited['food'][i] = str(df_edited['food'][i]).replace("▁"," ").strip().lower().capitalize()
         df_edited['quantity'][i] = str(df_edited['quantity'][i]).replace("▁"," ").strip().lower().capitalize()
         df_edited['unit'][i] = str(df_edited['unit'][i]).replace("▁"," ").strip()
 
 
-    # Replace NaN, nan, and NaN with a specific non-null value (e.g., 0) across the entire DataFrame
+    # Replace NaN, nan, and NaN with a specific non-null value (e.g., -1) across the entire DataFrame
     df_edited.replace({pd.NaT: -1, 'Nan': -1, 'nan': -1, 'NaN': -1}, inplace=True)
     df_edited = df_edited.fillna(-1)
 
+    # Change type for each columns
     df_edited['food'] = df_edited['food'].astype(str)
     df_edited['food_start'] = df_edited['food_start'].astype(int)
     df_edited['food_end'] = df_edited['food_end'].astype(int)
 
-    #df_edited['quantity'] = df_edited['quantity'].astype(float)
     df_edited['quantity_start'] = df_edited['quantity_start'].astype(int)
     df_edited['quantity_end'] = df_edited['quantity_end'].astype(int)
 
@@ -207,37 +305,11 @@ def ner_food(result):
     df_edited['unit_start'] = df_edited['unit_start'].astype(int)
     df_edited['unit_end'] = df_edited['unit_end'].astype(int)
 
-
+    # Ignore warnings
     pd.set_option("mode.chained_assignment", None)
-
-    #print(f"\n\n\033[1m{food_name}\033[0m\n")
 
     return df_edited
 
-def split_text(food_name):
-    pipe = pipeline("ner", model="davanstrien/deberta-v3-base_fine_tuned_food_ner")
 
-    result = pipe(food_name)
-
-    result = [entity for entity in result if entity['score'] >= 0.3]
-
-    # Iterate over the results to merge consecutive rows with the same entity
-    sentences=[]
-    end_sentence = len(food_name)
-
-    for i in range(len(result) - 1, 0, -1):
-        current_entity = result[i]["entity"]
-        previous_entity = result[i - 1]["entity"].split('-')[1]
-
-        if result[i]["start"] != result[i-1]["end"]:
-            start_index = result[i-1]["end"]
-            end_index = result[i]["start"]
-
-            if ' and' in food_name[start_index:end_index] or any([punc in food_name[start_index:end_index] for punc in string.punctuation]):
-                sentences.append((food_name[end_index:end_sentence],end_index))
-                end_sentence = start_index
-                #split da dataframe para uma variável? depois corro a função na variável e junto os outputs das variáveis existentes?
-                #pré-definição de 10 variáveis? Mesmo com NaN posso depois faço drop dos NaN...
-    sentences.append((food_name[0:end_sentence],0))
-
-    return sentences[::-1]
+def current_milli_time():
+    return round(time.time() * 1000)
