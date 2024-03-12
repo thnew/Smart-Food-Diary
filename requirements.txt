@@ -9,7 +9,7 @@ openai
 # For DBerta version
 transformers
 tensorflow
-keras==2.15.0
+tf-keras
 
 # Word2Vec
 # gensim
