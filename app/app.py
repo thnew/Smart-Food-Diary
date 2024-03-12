@@ -22,9 +22,9 @@ st.markdown("Start filling out your diary to see your calories")
 # title_cell_2.text('')
 title_cell_2.text('')
 title_cell_2.text('')
-config_popover = title_cell_2.popover("Config")
-use_chat_gpt = config_popover.toggle('Use ChatGPT for meal extraction')
-show_details = config_popover.toggle('Show detailed output')
+# config_popover = title_cell_2.popover("Config")
+use_chat_gpt = st.toggle('Use ChatGPT for meal extraction')
+show_details = st.toggle('Show detailed output')
 
 inputs = [
     MealInput('breakfast', 'Breakfast').load_from_cache(),
