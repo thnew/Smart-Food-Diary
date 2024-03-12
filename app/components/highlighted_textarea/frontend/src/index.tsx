@@ -7,7 +7,7 @@ textarea.addEventListener("focus", () => container.classList.add("focused"))
 textarea.addEventListener("blur", () => container.classList.remove("focused"))
 
 let value: string = ""
-textarea.addEventListener("blur", () => {
+textarea.addEventListener("blur", async () => {
   value = value
     .split("\n")
     .map((x: string) => x.trim())
@@ -21,17 +21,18 @@ textarea.addEventListener("blur", () => {
   if (!valueChanged) return
 
   container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
+  const result = await analyzeMeals(textarea.innerText)
 
   console.log(value)
   console.log(inputValue)
 
-  Streamlit.setComponentValue(textarea.innerText)
+  Streamlit.setComponentValue(result)
   Streamlit.setFrameHeight()
 })
 
-textarea.oninput = () => {
+textarea.addEventListener("input", () => {
   container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
-}
+})
 
 /**
  * The component's render function. This will be called immediately after
@@ -57,8 +58,7 @@ Streamlit.events.addEventListener(
     // there's no harm in doing it redundantly.)
     Streamlit.setFrameHeight()
 
-    let labels = await determineLabels(data)
-    refreshLabels(labels)
+    await analyzeMeals(value)
   }
 )
 
@@ -72,12 +72,54 @@ Streamlit.setFrameHeight()
 
 type LabelDefinition = [start: number, end: number, color: string]
 
-async function determineLabels(data: RenderData) {
-  showSpinner()
-  await new Promise((resolve) => setTimeout(resolve, 3000))
-  hideSpinner()
+const colors = ["#50C9CE", "#72A1E5", "#9883E5", "#FCD3DE"]
 
-  return data.args["labels"] as [start: number, end: number, color: string][]
+interface ExtractResults {
+  food: string[]
+  food_start: number[]
+  food_end: number[]
+  unit: string[]
+  unit_start: number[]
+  unit_end: number[]
+  quantity: string[]
+  quantity_start: number[]
+  quantity_end: number[]
+}
+
+async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
+  let resultParsed: ExtractResults
+  try {
+    showSpinner()
+    await new Promise((resolve) => setTimeout(resolve, 1000))
+    resultParsed = {
+      food: ["Fanta"],
+      food_start: [10],
+      food_end: [15],
+      unit: ["glasses"],
+      unit_start: [2],
+      unit_end: [9],
+      quantity: ["2"],
+      quantity_start: [0],
+      quantity_end: [1],
+    }
+
+    // const result = await fetch(
+    //   "https://ner-food-ctgsi4wqxa-ew.a.run.app?text=" + text
+    // )
+
+    // // TODO: Map to labels
+
+    // console.log(result)
+
+    refreshLabels(resultParsed)
+
+    return resultParsed
+  } catch (e) {
+    console.error(e)
+  } finally {
+    console.log("OK")
+    hideSpinner()
+  }
 }
 
 function showSpinner() {
@@ -91,7 +133,9 @@ function hideSpinner() {
 }
 
 // Some functions
-function refreshLabels(labels: LabelDefinition[]) {
+function refreshLabels(results: ExtractResults) {
+  const labels = readLabelsFromResult(results)
+
   container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
   getLabeledText(textarea.innerText, labels).forEach((el) =>
     container.prepend(el)
@@ -126,4 +170,29 @@ function getLabeledText(text: string, labels: LabelDefinition[]): Node[] {
   })
 
   return elements
+}
+
+function readLabelsFromResult(resultParsed: any): LabelDefinition[] {
+  const labels: LabelDefinition[] = []
+  for (let i = 0; i < resultParsed.food.length; i++) {
+    const start = Math.min(
+      ...[
+        resultParsed.food_start[i],
+        resultParsed.quantity_start[i],
+        resultParsed.unit_start[i],
+      ].filter((x) => x >= 0)
+    )
+    const end = Math.max(
+      ...[
+        resultParsed.food_end[i],
+        resultParsed.quantity_end[i],
+        resultParsed.unit_end[i],
+      ].filter((x) => x >= 0)
+    )
+
+    const color = colors[i % colors.length]
+    labels.push([start, end, color])
+  }
+
+  return labels
 }
