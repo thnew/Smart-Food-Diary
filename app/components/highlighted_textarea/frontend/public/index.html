@@ -38,6 +38,13 @@
         z-index: 0;
       }
 
+      .edit-content-spinner {
+        z-index: 0;
+        position: absolute;
+        right: 0.5rem;
+        bottom: 0.25rem;
+      }
+
       .hightlight-prepend-text {
         white-space: pre;
       }
@@ -55,9 +62,33 @@
         background: #aaa !important;
         opacity: 0.5;
       }
+
+      .edit-content-spinner {
+        border: 2px solid #f3f3f3; /* Light grey */
+        border-top: 2px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 15px;
+        height: 15px;
+        animation: spin 2s linear infinite;
+        display: none;
+      }
+
+      @keyframes spin {
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
+      }
     </style>
   </head>
   <body>
+    <div class="textarea-container">
+      <div class="edit-content-spinner"></div>
+      <div class="edit-content" contenteditable="true"></div>
+    </div>
+
     <noscript>You need to enable JavaScript to run this app.</noscript>
   </body>
 </html>
