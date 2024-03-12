@@ -42,12 +42,12 @@ for input in inputs:
             value=input.input_text,
             placeholder="1 egg and a glass of milk")
 
-        input.parsed_meals = extract_meals_from_input(input.input_text, use_chat_gpt)
+        input.extracted_meals = extract_meals_from_input(input.input_text, use_chat_gpt)
 
-        nutrition_values = get_nutrition_values(input.parsed_meals)
+        nutrition_values = get_nutrition_values(input.extracted_meals)
 
-        if input.parsed_meals.shape[0] > 0:
-            annotated = get_annotated_input_text(input.input_text, input.parsed_meals)
+        if input.extracted_meals.shape[0] > 0:
+            annotated = get_annotated_input_text(input.input_text, input.extracted_meals)
             annotated_text(*annotated)
 
             if show_details:
