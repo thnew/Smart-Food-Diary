@@ -9,8 +9,9 @@ openai
 # For DBerta version
 transformers
 tensorflow
+keras==2.15.0
 
 # Word2Vec
-gensim
-nltk
-pyspellchecker
+# gensim
+# nltk
+# pyspellchecker
