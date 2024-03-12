@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import json
 import os
+import string
 from transformers import pipeline
 from openai import OpenAI
 from dotenv import load_dotenv
@@ -133,32 +134,22 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
     return pd.DataFrame.from_dict(args, orient='columns')
 
 @st.cache_data
-def get_result_from_deberta(food_name: str) -> pd.DataFrame:
-    pipe = pipeline("ner", model="davanstrien/deberta-v3-base_fine_tuned_food_ner")
+def get_result_from_deberta(text: str) -> pd.DataFrame:
+    output = []
 
-    result = pipe(food_name)
+    for food, i in split_text(text):
+        df = ner_food(food)
+        df.iloc[:,1:]
+        final = pd.concat(output)
 
-    result = [entity for entity in result if entity['score'] >= 0.3]
+    return final
 
-    # Iterate over the results to merge consecutive rows with the same entity
-    for i in range(len(result) - 1, 0, -1):
-        current_entity = result[i]["entity"]
-        previous_entity = result[i - 1]["entity"].split('-')[1]
-
-        if current_entity.split('-')[1] == previous_entity:
-            # Append the word from the row below to the "word" column
-            result[i - 1]["word"] += result[i]["word"]
-
-            # Update the "end" value of the first row with the "end" value of the row below
-            result[i - 1]["end"] = result[i]["end"]
-
-            # Delete the current row
-            del result[i]
-
+def ner_food(result):
     # Lists to store information
     foods = []
     quantities = []
     units = []
+    print("RESULTR", result)
 
     # Iterate over the resulting entities
     for entity in result:
@@ -191,7 +182,7 @@ def get_result_from_deberta(food_name: str) -> pd.DataFrame:
     # Combine the DataFrames
     df_edited = pd.concat([df_food, df_quantity, df_unit], axis=1)
 
-    # Fill NaN values with -1
+    # Fill NaN values with 0
     df_edited = df_edited.fillna(-1)
 
     for i, rows in df_edited.iterrows():
@@ -204,7 +195,6 @@ def get_result_from_deberta(food_name: str) -> pd.DataFrame:
     df_edited.replace({pd.NaT: -1, 'Nan': -1, 'nan': -1, 'NaN': -1}, inplace=True)
     df_edited = df_edited.fillna(-1)
 
-    # ["food", "food_start", 'food_end', "quantity", "quantity_start", "quantity_end", "unit", "unit_start", "unit_end"]
     df_edited['food'] = df_edited['food'].astype(str)
     df_edited['food_start'] = df_edited['food_start'].astype(int)
     df_edited['food_end'] = df_edited['food_end'].astype(int)
@@ -220,4 +210,34 @@ def get_result_from_deberta(food_name: str) -> pd.DataFrame:
 
     pd.set_option("mode.chained_assignment", None)
 
+    #print(f"\n\n\033[1m{food_name}\033[0m\n")
+
     return df_edited
+
+def split_text(food_name):
+    pipe = pipeline("ner", model="davanstrien/deberta-v3-base_fine_tuned_food_ner")
+
+    result = pipe(food_name)
+
+    result = [entity for entity in result if entity['score'] >= 0.3]
+
+    # Iterate over the results to merge consecutive rows with the same entity
+    sentences=[]
+    end_sentence = len(food_name)
+
+    for i in range(len(result) - 1, 0, -1):
+        current_entity = result[i]["entity"]
+        previous_entity = result[i - 1]["entity"].split('-')[1]
+
+        if result[i]["start"] != result[i-1]["end"]:
+            start_index = result[i-1]["end"]
+            end_index = result[i]["start"]
+
+            if ' and' in food_name[start_index:end_index] or any([punc in food_name[start_index:end_index] for punc in string.punctuation]):
+                sentences.append((food_name[end_index:end_sentence],end_index))
+                end_sentence = start_index
+                #split da dataframe para uma variável? depois corro a função na variável e junto os outputs das variáveis existentes?
+                #pré-definição de 10 variáveis? Mesmo com NaN posso depois faço drop dos NaN...
+    sentences.append((food_name[0:end_sentence],0))
+
+    return sentences[::-1]
