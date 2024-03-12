@@ -16,24 +16,39 @@ load_dotenv()
 apikey = os.environ.get('OPENAPI_APIKEY')
 
 # Split up input in rows and extract
-def extract_meals_from_input(text: str, use_chat_gpt: bool) -> pd.DataFrame:
+def extract_meals_from_input(text: str, extraction_model: str) -> pd.DataFrame:
+    """
+    extraction_model: ["deberta-local", "deberta-api", "chatgpt"]
+    """
     # We process inputs line by line
     lines = text.split("\n")
 
     # Go through every row and parse the meal names, units and amounts of of them
     meals_df = pd.DataFrame(columns=['food', 'food_start', 'food_end', 'unit', 'unit_start', 'unit_end', 'quantity', 'quantity_start', 'quantity_end'])
     for row in lines:
-        meals_df = pd.concat([meals_df, extract_meals_from_text(row, use_chat_gpt)])
+        meals_df = pd.concat([meals_df, extract_meals_from_text(row, extraction_model)])
 
     return meals_df.reset_index(drop=True)
 
-def extract_meals_from_text(food_diary_entry: str, use_chat_gpt: bool) -> pd.DataFrame:
+def extract_meals_from_text(food_diary_entry: str, extraction_model: str) -> pd.DataFrame:
     if len(food_diary_entry) == 0:
         return pd.DataFrame(columns=['food', 'quantity', 'unit'])
 
     time = current_milli_time()
-    df =(get_result_from_chat_gpt3(food_diary_entry)
-         if use_chat_gpt else get_result_from_deberta(food_diary_entry))
+
+    match extraction_model:
+        case "deberta-local":
+            df = ner_food_output(food_diary_entry.lower())
+
+        case "deberta-api":
+            df = get_result_from_deberta_api(food_diary_entry)
+
+        case "chatgpt":
+            df = get_result_from_chat_gpt3(food_diary_entry)
+
+        case _:
+            return pd.DataFrame(columns=['food', 'quantity', 'unit'])
+
     print("TIME TOTAL TO EXTRACT", current_milli_time() - time)
 
     columns_to_convert = ['food_start', 'food_end', 'quantity_start', 'quantity_end', 'unit_start', 'unit_end']
@@ -42,7 +57,7 @@ def extract_meals_from_text(food_diary_entry: str, use_chat_gpt: bool) -> pd.Dat
 
     return df
 
-@st.cache_data
+#@st.cache_data
 def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
     client = OpenAI(api_key=apikey)
 
@@ -71,14 +86,14 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
                             "items": {
                                 "type": "number"
                             },
-                            "description": "start index for the corresponding food."
+                            "description": "Absolute start index for the corresponding food."
                         },
                         "food_end": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
-                            "description": "end index for the corresponding food."
+                            "description": "end index for the corresponding food, excluding the last chracter."
                         },
                         "quantity": {
                             "type": "array",
@@ -92,14 +107,14 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
                             "items": {
                                 "type": "number"
                             },
-                            "description": "start index for the corresponding quantity."
+                            "description": "Absolute start index within the whole text for the corresponding quantity."
                         },
                         "quantity_end": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
-                            "description": "end index for the corresponding quantity."
+                            "description": "end index for the corresponding quantity, excluding the last chracter."
                         },
                         "unit": {
                             "type": "array",
@@ -113,14 +128,14 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
                             "items": {
                                 "type": "number"
                             },
-                            "description": "start index for the corresponding units."
+                            "description": "Absolute start index within the whole text for the corresponding units."
                         },
                         "unit_end": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
-                            "description": "end index for the corresponding units."
+                            "description": "end index for the corresponding units, excluding the last chracter."
                         }
                     },
                     "required": ["food", "food_start", 'food_end', "quantity", "quantity_start", "quantity_end", "unit", "unit_start", "unit_end"]
@@ -138,12 +153,12 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
 
     args = json.loads(completion.choices[0].message.function_call.arguments)
 
+    print("CHAT GPT Result: ", args)
+
     return pd.DataFrame.from_dict(args, orient='columns')
 
 #@st.cache_data
-def get_result_from_deberta(text: str) -> pd.DataFrame:
-    #return ner_food_output(text.lower())
-
+def get_result_from_deberta_api(text: str) -> pd.DataFrame:
     response = None
     for attempts in range(1, 4):
         try:
