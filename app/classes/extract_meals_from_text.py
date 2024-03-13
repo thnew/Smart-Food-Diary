@@ -1,4 +1,3 @@
-import streamlit as st
 import pandas as pd
 import json
 import os
@@ -21,7 +20,7 @@ print(api_url)
 # Split up input in rows and extract
 def extract_meals_from_input(text: str, extraction_model: str) -> pd.DataFrame:
     """
-    extraction_model: ["deberta-local", "deberta-api", "chatgpt"]
+    extraction_model: ["deberta-local", "chatgpt"]
     """
     # We process inputs line by line
     lines = text.split("\n")
@@ -60,7 +59,6 @@ def extract_meals_from_text(food_diary_entry: str, extraction_model: str) -> pd.
 
     return df
 
-#@st.cache_data
 def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
     client = OpenAI(api_key=openapi_apikey)
 
@@ -160,7 +158,6 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
 
     return pd.DataFrame.from_dict(args, orient='columns')
 
-#@st.cache_data
 def get_result_from_deberta_api(text: str) -> pd.DataFrame:
     response = None
     for attempts in range(1, 4):

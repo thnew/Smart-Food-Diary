@@ -34,6 +34,5 @@ def root():
         'greeting': 'Hello'
     }
 
-
 # Run from root folder with this:
 # uvicorn taxifare.api.fast:app --reload

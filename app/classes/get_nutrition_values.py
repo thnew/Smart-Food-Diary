@@ -11,7 +11,6 @@ print("LOAD")
 
 food_names = nutrition_dataset['Meal'].dropna().tolist()
 
-#@st.cache_data
 def closest_matches(meal_name: str):
     def similar(a, b):
         return SequenceMatcher(None, a, b).ratio()
@@ -58,7 +57,6 @@ def get_nutrition_values(meals: pd.DataFrame) -> pd.DataFrame:
 
     return meals
 
-#@st.cache_data
 def get_dataset_for_meal(meal_name: str, match_columns: pd.DataFrame) -> pd.DataFrame:
     matched_nutrition_dataset = nutrition_dataset[nutrition_dataset['Meal'] == meal_name]
 
