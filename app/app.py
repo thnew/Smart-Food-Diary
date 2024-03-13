@@ -25,7 +25,7 @@ title_cell_2.text('')
 title_cell_2.text('')
 #config_popover = title_cell_2.popover("Config")
 extraction_model = st.selectbox("Which model to use for meal extraction", ["deberta-local", "deberta-api", "chatgpt"])
-show_details = st.toggle('Show detailed output')
+show_details = st.toggle('Show detailed output', True)
 
 inputs = [
     MealInput('breakfast', 'Breakfast').load_from_cache(),
@@ -47,8 +47,6 @@ for input in inputs:
 
         input.extracted_meals = result['dataframe']
 
-
-
         # input.input_text = st.text_area(
         #     input.id,
         #     label_visibility='collapsed',
@@ -61,6 +59,9 @@ for input in inputs:
         #print(text_highights)
 
         nutrition_values = get_nutrition_values(input.extracted_meals)
+
+
+        st.write(", ".join([f"{cal}ccal" for cal in nutrition_values['matched_calories']]))
 
         if input.extracted_meals.shape[0] > 0:
             #annotated = get_annotated_input_text(input.input_text, input.extracted_meals)

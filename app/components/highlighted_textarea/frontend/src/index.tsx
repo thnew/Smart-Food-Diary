@@ -24,11 +24,8 @@ textarea.addEventListener("blur", async () => {
   container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
   const result = await analyzeMeals(textarea.innerText)
 
-  console.log(value)
-  console.log(inputValue)
-
   Streamlit.setComponentValue({
-    value: inputValue,
+    value: textarea.innerText,
     dataframe: result,
   })
   Streamlit.setFrameHeight()
@@ -63,7 +60,10 @@ Streamlit.events.addEventListener(
     // there's no harm in doing it redundantly.)
     Streamlit.setFrameHeight()
 
-    await analyzeMeals(value)
+    Streamlit.setComponentValue({
+      value: value,
+      dataframe: await analyzeMeals(value),
+    })
   }
 )
 
@@ -97,23 +97,20 @@ async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
     showSpinner()
     await new Promise((resolve) => setTimeout(resolve, 1000))
     resultParsed = {
-      food: ["Fanta"],
-      food_start: [10],
-      food_end: [15],
-      unit: ["glasses"],
-      unit_start: [2],
-      unit_end: [9],
-      quantity: ["2"],
-      quantity_start: [0],
-      quantity_end: [1],
+      food: ["Fanta", "Steak"],
+      food_start: [10, 22],
+      food_end: [15, 27],
+      unit: ["glasses", ""],
+      unit_start: [2, -1],
+      unit_end: [9, -1],
+      quantity: ["2", "a"],
+      quantity_start: [0, 20],
+      quantity_end: [1, 21],
     }
 
     // const result = await fetch(
     //   "https://ner-food-ctgsi4wqxa-ew.a.run.app?text=" + text
     // )
-
-    // // TODO: Map to labels
-
     // console.log(result)
 
     refreshLabels(resultParsed)
@@ -122,7 +119,6 @@ async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
   } catch (e) {
     console.error(e)
   } finally {
-    console.log("OK")
     hideSpinner()
   }
 }
