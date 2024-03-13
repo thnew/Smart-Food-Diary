@@ -5,7 +5,8 @@ from difflib import SequenceMatcher
 import time
 
 # TODO: This will load the dataframe on every request, we should cache it or move it to the API
-nutrition_dataset = pd.read_csv('data/nutrition_dataset.csv', delimiter=',')
+nutrition_dataset = pd.read_csv('../data/nutrition_dataset.csv', delimiter=',')
+print("LOAD")
 # nutrition_dataset = nutrition_dataset.sample(10000)
 
 food_names = nutrition_dataset['Meal'].dropna().tolist()
@@ -22,7 +23,7 @@ def closest_matches(meal_name: str):
 
     return [{ 'title': x, 'similarity': similar(x, meal_name) } for x in matches]
 
-def get_nutrition_values(meals: pd.DataFrame) -> list:
+def get_nutrition_values(meals: pd.DataFrame) -> pd.DataFrame:
     match_columns = ['matched_food', 'matched_quantity', 'matched_unit', 'matched_calories', 'matched_carbs', 'matched_protein', 'matched_fat']
     meals[match_columns] = None
     time = current_milli_time()
@@ -40,6 +41,20 @@ def get_nutrition_values(meals: pd.DataFrame) -> list:
         meals.loc[index, match_columns] = df_best_match
 
     print("TIME TO FIND ALL IN DATASET", current_milli_time() - time)
+
+    float_columns = [
+        'food_start',
+        'food_end',
+        'unit_start',
+        'unit_end',
+        'quantity_start',
+        'quantity_end',
+        'matched_quantity',
+        'matched_calories',
+        'matched_carbs',
+        'matched_protein',
+        'matched_fat']
+    meals[float_columns] = meals[float_columns].astype(float)
 
     return meals
 

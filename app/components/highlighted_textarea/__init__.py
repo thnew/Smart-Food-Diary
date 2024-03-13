@@ -44,7 +44,7 @@ else:
 # `declare_component` and call it done. The wrapper allows us to customize
 # our component's API: we can pre-process its input args, post-process its
 # output value, and add a docstring for users.
-def highlighted_textarea(key=None, initial_value=None):
+def highlighted_textarea(key=None, initial_value=None, api_url=None):
     """Create a new instance of "highlighted_textarea".
 
     Parameters
@@ -71,7 +71,7 @@ def highlighted_textarea(key=None, initial_value=None):
     #
     # "default" is a special argument that specifies the initial return
     # value of the component before the user has interacted with it.
-    component_value = _component_func(key=key, initial_value=initial_value, default={"value": initial_value, "dataframe": {}})
+    component_value = _component_func(key=key, initial_value=initial_value, api_url=api_url, default={"value": initial_value, "dataframe": {}})
 
     component_value['dataframe'] = pd.DataFrame(component_value['dataframe'])
 

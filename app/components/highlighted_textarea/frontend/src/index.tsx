@@ -8,21 +8,16 @@ textarea.addEventListener("blur", () => container.classList.remove("focused"))
 
 let key = ""
 let value = ""
+let apiUrl = ""
+let initialized = false
+
 textarea.addEventListener("blur", async () => {
+  if (!valueAndTextareaDiffer()) return
+
   value = textarea.innerText
   Streamlit.setFrameHeight()
 
-  const current_value = value
-    .split("\n")
-    .map((x: string) => x.trim())
-    .join("\n")
-  const input_value = textarea.innerText
-    .split("\n")
-    .map((x: string) => x.trim())
-    .join("\n")
-
-  const valueChanged = current_value !== input_value
-  if (!valueChanged) return
+  console.log("Value changed")
 
   Streamlit.setComponentValue({
     value: textarea.innerText,
@@ -61,6 +56,7 @@ Streamlit.events.addEventListener(
 
     // RenderData.args is the JSON dictionary of arguments sent from the
     // Python script.
+    apiUrl = data.args["api_url"]
     key = data.args["key"]
     value = value || data.args["initial_value"] || ""
     textarea.innerText = value
@@ -71,10 +67,14 @@ Streamlit.events.addEventListener(
     // there's no harm in doing it redundantly.)
     Streamlit.setFrameHeight()
 
-    Streamlit.setComponentValue({
-      value: value,
-      dataframe: await analyzeMeals(value),
-    })
+    if (!initialized) {
+      Streamlit.setComponentValue({
+        value: value,
+        dataframe: await analyzeMeals(value),
+      })
+
+      initialized = true
+    }
   }
 )
 
@@ -90,50 +90,88 @@ type LabelDefinition = [start: number, end: number, color: string]
 
 const colors = ["#50C9CE", "#72A1E5", "#9883E5", "#FCD3DE"]
 
-interface ExtractResults {
-  food: string[]
-  food_start: number[]
-  food_end: number[]
-  unit: string[]
-  unit_start: number[]
-  unit_end: number[]
-  quantity: string[]
-  quantity_start: number[]
-  quantity_end: number[]
+class ExtractResults {
+  food: string[] = []
+  food_start: number[] = []
+  food_end: number[] = []
+  unit: string[] = []
+  unit_start: number[] = []
+  unit_end: number[] = []
+  quantity: string[] = []
+  quantity_start: number[] = []
+  quantity_end: number[] = []
+  matched_food: string[] = []
+  matched_quantity: string[] = []
+  matched_unit: string[] = []
+  matched_calories: number[] = []
+  matched_carbs: number[] = []
+  matched_protein: number[] = []
+  matched_fat: number[] = []
 }
 
+function valueAndTextareaDiffer() {
+  const current_value = value
+    .split("\n")
+    .map((x: string) => x.trim())
+    .join("\n")
+  const input_value = textarea.innerText
+    .split("\n")
+    .map((x: string) => x.trim())
+    .join("\n")
+
+  const valueChanged = current_value !== input_value
+  return valueChanged
+}
+
+let requestController: AbortController | undefined = undefined
 async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
   container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
-  console.log("HUHU")
+
+  if (text.trim() === "") return new ExtractResults()
 
   let resultParsed: ExtractResults
   try {
     showSpinner()
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    resultParsed = {
-      food: ["Fanta", "Steak"],
-      food_start: [10, 22],
-      food_end: [15, 27],
-      unit: ["glasses", ""],
-      unit_start: [2, -1],
-      unit_end: [9, -1],
-      quantity: ["2", "a"],
-      quantity_start: [0, 20],
-      quantity_end: [1, 21],
+    // await new Promise((resolve) => setTimeout(resolve, 1000))
+    // resultParsed = {
+    //   food: ["Fanta", "Steak"],
+    //   food_start: [10, 22],
+    //   food_end: [15, 27],
+    //   unit: ["glasses", ""],
+    //   unit_start: [2, -1],
+    //   unit_end: [9, -1],
+    //   quantity: ["2", "a"],
+    //   quantity_start: [0, 20],
+    //   quantity_end: [1, 21],
+    //   matched_food: ["Subway Fanta", "Blockhouse Steak"],
+    //   matched_quantity: ["2", "a"],
+    //   matched_unit: ["glasses", ""],
+    //   matched_calories: [200, 300],
+    //   matched_carbs: [20, 30],
+    //   matched_protein: [10, 15],
+    //   matched_fat: [5, 10],
+    // }
+
+    if (requestController) {
+      requestController.abort()
     }
 
-    // const result = await fetch(
-    //   "https://ner-food-ctgsi4wqxa-ew.a.run.app?text=" + text
-    // )
-    // console.log(result)
-
+    requestController = new AbortController()
+    const result = await fetch(apiUrl + "?text=" + text, {
+      signal: requestController.signal,
+    })
+    resultParsed = (await result.json()) as ExtractResults
+    console.log(resultParsed)
     refreshLabels(resultParsed)
+
+    hideSpinner()
 
     return resultParsed
   } catch (e) {
-    console.error(e)
-  } finally {
-    hideSpinner()
+    const abort = (e as DOMException).name === "AbortError"
+
+    if (!abort) hideSpinner()
+    return new ExtractResults()
   }
 }
 

@@ -1,10 +1,14 @@
+import os
 import streamlit as st
 import pandas as pd
+from dotenv import load_dotenv
 from components.highlighted_textarea import highlighted_textarea
-from classes.get_nutrition_values import get_annotated_input_text, get_nutrition_values, get_text_highlight_colors
 from classes.extract_meals_from_text import extract_meals_from_input
 from classes.meal_input import MealInput
 from annotated_text import annotated_text
+
+load_dotenv()
+api_url = os.environ.get('API_URL')
 
 title_cell_1, title_cell_2 = st.columns([3, 1])
 # title_cell_1.markdown("""
@@ -39,6 +43,7 @@ for input in inputs:
 
         result = highlighted_textarea(
             initial_value=input.value,
+            api_url=api_url,
             key=input.id)
 
         # We cache texts and results for next reload
@@ -46,19 +51,6 @@ for input in inputs:
         input.store_in_cache()
 
         input.extracted_meals = result['dataframe']
-
-        # input.input_text = st.text_area(
-        #     input.id,
-        #     label_visibility='collapsed',
-        #     value=input.input_text,
-        #     placeholder="1 egg and a glass of milk")
-
-        #input.extracted_meals = extract_meals_from_input(input.input_text, extraction_model)
-
-        #text_highights = get_text_highlight_colors(input.input_text, input.extracted_meals)
-        #print(text_highights)
-
-        input.extracted_meals = get_nutrition_values(input.extracted_meals)
 
         st.write(", ".join([f"{cal}ccal" for cal in input.extracted_meals['matched_calories']]))
 

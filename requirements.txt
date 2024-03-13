@@ -15,3 +15,7 @@ tf-keras
 # gensim
 # nltk
 # pyspellchecker
+
+# API
+fastapi
+uvicorn
