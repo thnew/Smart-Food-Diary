@@ -1,12 +1,15 @@
 import os
 import pandas as pd
 import streamlit.components.v1 as components
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Create a _RELEASE constant. We'll set this to False while we're developing
 # the component, and True when we're ready to package and distribute it.
 # (This is, of course, optional - there are innumerable ways to manage your
 # release process.)
-_RELEASE = False
+_RELEASE = os.environ.get('RELEASE')
 
 # Declare a Streamlit component. `declare_component` returns a function
 # that is used to create instances of the component. We're naming this
