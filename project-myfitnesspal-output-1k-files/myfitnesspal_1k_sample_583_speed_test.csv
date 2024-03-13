@@ -1,0 +1,597 @@
+Name,Meal,Brand,Calories,Fat,Carbs,Protein,Sodium,Amount,Units,Sugar
+iceland - sweet and sour battered chicken, sweet and sour battered chicken,iceland ,395,9,49,30,0,263.0,g,23
+rice - with rice, with rice,rice ,14,0,3,0,1,12.5,g,0
+kellogg s - rice krispies cereales, rice krispies cereales,kellogg s ,144,0,33,2,2,37.5,g,3
+flik - chai tea, chai tea,flik ,174,5,27,5,78,11.0,floz,24
+flik - chai tea, chai tea,flik ,126,4,19,4,56,8.0,floz,18
+bakery - cupcake with vanilla frosting, cupcake with vanilla frosting,bakery ,125,3,24,1,15,1.0,cupcake,20
+tea - tea  with semi skimmed milk , tea  with semi skimmed milk ,tea ,45,2,3,2,0,3.0,mug,3
+tea - tea  with semi skimmed milk , tea  with semi skimmed milk ,tea ,15,1,1,1,0,1.0,mug,1
+tesco - chocolate tray  bake, chocolate tray  bake,tesco ,250,20,50,4,0,2.0,slices,38
+alpine light double chocolate - cereal bar, cereal bar,alpine light double chocolate ,70,0,0,0,0,1.0,bar,0
+kelloggs joy - cocopops with milk, cocopops with milk,kelloggs joy ,175,3,32,6,0,1.0,bowl,17
+cadbury s - mini curly wurly, mini curly wurly,cadbury s ,60,2,10,1,0,1.0,bar,7
+fair trade - small banana, small banana,fair trade ,95,0,27,1,0,1.0,banana,17
+nestle - original shreddies, original shreddies,nestle ,110,1,25,3,180,30.0,g,5
+carrefour - chocolate cr pe, chocolate cr pe,carrefour ,146,7,18,2,140,1.0,cr pe,11
+generic - egg whites  beaten , egg whites  beaten ,generic ,34,0,0,7,110,2.0,whites,0
+apple - apple with skin, apple with skin,apple ,75,0,32,0,2,1.5,small,23
+belvita breakfast - milk   cereals, milk   cereals,belvita breakfast ,220,7,34,4,520,1.0,container,10
+kelloggs - bran flakes with semi-skimmed milk, bran flakes with semi-skimmed milk,kelloggs ,166,3,26,8,180,30.0,g,12
+just roll - pan au chocolate, pan au chocolate,just roll ,340,0,0,0,0,2.0,cooked,0
+homemade - chocolate cake with icing, chocolate cake with icing,homemade ,350,0,0,0,0,1.0,slice,0
+fair trade - small banana, small banana,fair trade ,24,0,7,0,0,0.25,banana,4
+cadbury - highlights bourneville hot choc drink, highlights bourneville hot choc drink,cadbury ,80,3,8,4,0,22.0,g,5
+kallo - blueberry and vanilla rice and corn cake, blueberry and vanilla rice and corn cake,kallo ,70,0,15,1,0,2.0,cake,3
+cadbury - highlights - caramel flavour sachet, highlights - caramel flavour sachet,cadbury ,78,3,11,4,160,2.0,sachet,7
+weight watchers - instant hot chocolate drink, instant hot chocolate drink,weight watchers ,35,2,6,1,0,2.63,heaped,3
+weight watchers - hot chocolate, hot chocolate,weight watchers ,21,0,4,2,16,2.0,teaspoons,3
+betty crocker - cinnamon swirl cake, cinnamon swirl cake,betty crocker ,207,8,30,3,290,0.08333333333333333,prepared,26
+homemade - traditional pancakes, traditional pancakes,homemade ,198,3,27,9,0,3.0,pancake,0
+graze box - bakewell tart , bakewell tart ,graze box ,154,8,18,3,11,37.0,g,16
+weetabix - alpen light chocolate   fudge, alpen light chocolate   fudge,weetabix ,65,1,10,1,12,1.0,bar,4
+maryland - chocolate chip cookie, chocolate chip cookie,maryland ,53,2,7,1,14,1.0,cookie,4
+mcvitie s - chocolate digestives, chocolate digestives,mcvitie s ,86,4,10,1,0,1.0,biscuit,5
+alpro - tea coffee light soya milk, tea coffee light soya milk,alpro ,11,1,0,1,0,1.0,mug,0
+muller - vanilla custard rice pot, vanilla custard rice pot,muller ,200,5,34,6,0,180.0,g,24
+muller rice - banana and toffee, banana and toffee,muller rice ,189,4,33,5,136,175.0,g,23
+homemade - lemon drizzle cake, lemon drizzle cake,homemade ,255,10,37,3,0,1.0,slice,0
+weetabix - ready brek with skimmed milk, ready brek with skimmed milk,weetabix ,178,3,26,11,0,30.0,g,9
+nestle uk - original shreddies, original shreddies,nestle uk ,208,3,35,8,45,40.0,g,12
+alpro uk - soya light milk, soya light milk,alpro uk ,41,2,2,3,0,150.0,ml,2
+alpro uk - soya light milk, soya light milk,alpro uk ,71,3,4,6,0,262.5,ml,4
+asda - strawberries, strawberries,asda ,33,0,12,1,1,100.0,grams,5
+"panera - bacon, egg and cheese ciabatta"," bacon, egg and cheese ciabatta",panera ,520,25,43,29,1170,1.0,sandwhich,2
+coffee - coffee with half half and honey- corrected, coffee with half half and honey- corrected,coffee ,100,4,18,1,15,10.0,oz,17
+kirkland signature - raisin bread, raisin bread,kirkland signature ,150,3,29,4,130,1.0,slice,14
+"egg - egg, large "," egg, large ",egg ,72,5,0,6,71,1.0,large,0
+bacon bits - crumbled bacon, crumbled bacon,bacon bits ,25,2,0,3,240,1.0,tbsp,0
+ihop - chorizo fiesta omelette, chorizo fiesta omelette,ihop ,1250,102,34,50,3160,1.0,omelette,11
+orange juice drink,,orange juice drink,132,0,33,0,5,1.0,cup,31
+kroger - instant country grits- natural butter flavor, instant country grits- natural butter flavor,kroger ,200,2,42,4,680,2.0,packet,2
+"kroger - yogurt smoothie, strawberry"," yogurt smoothie, strawberry",kroger ,190,3,35,6,95,7.0,fl,33
+twinings of london - english breakfast tea, english breakfast tea,twinings of london ,0,0,0,0,0,1.0,teabag,0
+eggs - hard boiled, hard boiled,eggs ,60,5,1,7,62,1.0,large,1
+eggs - hard boiled, hard boiled,eggs ,120,10,1,14,124,2.0,large,1
+biscuits - bisquick, bisquick,biscuits ,300,6,56,6,760,80.0,g 1 3cup ,4
+hail paul s - milk 2  kroger, milk 2  kroger,hail paul s ,120,5,12,8,120,8.0,oz,11
+kroger - grade a large egg  hard boiled , grade a large egg  hard boiled ,kroger ,140,10,0,12,140,2.0,egg,0
+kroger - instant country grits- natural butter flavor, instant country grits- natural butter flavor,kroger ,100,1,21,2,340,1.0,packet,1
+usda vegetable - roma tomatoes, roma tomatoes,usda vegetable ,53,1,11,2,8,1.5,tomato,6
+quaker - oatmeal to go apple   cinnamon, oatmeal to go apple   cinnamon,quaker ,210,4,44,4,200,1.0,bar,20
+v8 healthy greens - healthy greens, healthy greens,v8 healthy greens ,60,0,14,1,70,8.0,fl oz ,11
+quaker- oatmeal to - oatmeal to go oatmeal raisin, oatmeal to - oatmeal to go oatmeal raisin,quaker,210,4,43,4,230,1.0,bar,19
+vitafusion - men s multivitamin, men s multivitamin,vitafusion ,15,0,3,0,0,2.0,gummies,3
+vitafusion fiber well - vitamin gummies sugar free, vitamin gummies sugar free,vitafusion fiber well ,10,0,5,0,0,2.0,gummies,0
+carnation - breakfast essentials chocolate powder, breakfast essentials chocolate powder,carnation ,130,1,27,5,90,36.0,g,19
+kroger - supreme blend ground coffee, supreme blend ground coffee,kroger ,0,0,0,0,0,1.0,cup,0
+hail paul s - milk 2  kroger, milk 2  kroger,hail paul s ,180,8,18,12,180,12.0,oz,17
+kangaroo - flatbread white , flatbread white ,kangaroo ,106,2,18,4,185,0.66,pita,0
+sabria - classic hummus, classic hummus,sabria ,80,6,4,2,135,2.0,tbsp,0
+quaker - oatmeal to go - brown sugar   cinnamon oatmeal squares, oatmeal to go - brown sugar   cinnamon oatmeal squares,quaker ,210,4,43,4,230,1.0,square,19
+braums - skim milk, skim milk,braums ,130,0,18,13,190,1.0,cup,18
+greek chicken wrap,,greek chicken wrap,263,8,27,23,1005,1.0,serving s ,2
+braums - skim milk, skim milk,braums ,260,0,36,26,380,2.0,cup,36
+carnation - instant breakfast essentials classic french vanilla, instant breakfast essentials classic french vanilla,carnation ,130,0,27,5,120,1.0,packet,18
+wal-mart great value - frozen mixed berry smoothie,mart great value - frozen mixed berry smoothie,wal,120,1,24,0,0,1.5,cup,14
+365 - whey protein powder - natural vanilla flavor, whey protein powder - natural vanilla flavor,365 ,80,1,2,16,40,1.0,scoop,0
+green and yellow smoothie,,green and yellow smoothie,340,1,63,20,115,1.0,serving s ,52
+green and yellow smoothie,,green and yellow smoothie,280,1,49,19,113,1.0,serving s ,39
+something to drink ,,something to drink ,490,12,73,27,318,1.0,serving s ,32
+chiquita - bananas, bananas,chiquita ,110,0,30,1,0,126.0,g,19
+kroger - oj, oj,kroger ,100,0,24,0,5,8.0,fl,20
+juicey juice,,juicey juice,565,3,90,43,318,1.0,serving s ,35
+papa john s - hawaiian bbq chicken pizza  large , hawaiian bbq chicken pizza  large ,papa john s ,700,24,92,30,2060,2.0,slice,24
+nature valley - crunchy granola bars peanut butter, crunchy granola bars peanut butter,nature valley ,190,7,28,5,180,2.0,bars,11
+english muffin - thomas original, thomas original,english muffin ,120,1,25,4,200,57.0,grams,1
+eggs - fried  whole egg , fried  whole egg ,eggs ,92,7,0,6,94,1.0,large,0
+sausage patty - sausage patty, sausage patty,sausage patty ,145,26,0,11,178,1.0,cooked,1
+kraft - cheese - american singles, cheese - american singles,kraft ,60,6,4,6,200,1.0,slice,1
+cheese - cheddar, cheddar,cheese ,114,9,0,7,176,1.0,oz,0
+nature valley - oats   chocolate bar, oats   chocolate bar,nature valley ,196,8,26,3,140,2.0,bars,12
+peaches - raw, raw,peaches ,61,0,15,1,0,1.0,large,13
+wegmans - 41-50 uncooked shrimp frozen, 41-50 uncooked shrimp frozen,wegmans ,132,1,0,32,238,0.33,container,0
+trader joes - israeli couscous, israeli couscous,trader joes ,180,1,37,6,0,0.3333333333333333,cup,0
+wegmans italian classics - parmigiano reggiano, parmigiano reggiano,wegmans italian classics ,20,2,0,2,35,1.0,tbsp ,0
+"skillet pasta with mushrooms, pancetta, and wilted greens",,"skillet pasta with mushrooms, pancetta, and wilted greens",587,30,54,22,3857,1.0,serving s ,5
+trader joes chia seeds - chia seeds, chia seeds,trader joes chia seeds ,70,5,7,3,45,1.0,tbsp,0
+metrx - colossal big 100 peanut butter pretzel bar, colossal big 100 peanut butter pretzel bar,metrx ,410,12,47,30,600,100.0,g,28
+"milk -  reduced fat, 2  milkfat","  reduced fat, 2  milkfat",milk ,122,5,11,8,100,1.0,cup,12
+trader joes - banana nut cluster, banana nut cluster,trader joes ,240,8,40,4,140,1.0,cup,12
+trader joe s - cereal high fiber, cereal high fiber,trader joe s ,80,1,23,3,70,30.0,g,5
+salad - mediterranean chick pea, mediterranean chick pea,salad ,128,4,16,0,0,1.0,cup,0
+small - banana, banana,small ,89,0,23,1,1,4.0,oz,12
+"kellogg s - special k red berries  1 cup, 31g "," special k red berries  1 cup, 31g ",kellogg s ,110,0,27,2,190,31.0,g,9
+milk - whole milk, whole milk,milk ,80,5,7,4,65,0.5,cup,6
+eurest - fresh fruit salad, fresh fruit salad,eurest ,68,0,17,1,8,1.0,each,14
+red velvet mini cupcakes - mini cupcakes, mini cupcakes,red velvet mini cupcakes ,103,5,14,0,60,1.0,mini,11
+kroger - fresh selections - vegetable tray, fresh selections - vegetable tray,kroger ,25,0,5,1,50,3.0,oz ,3
+t marzetti - ranch vegetable dip, ranch vegetable dip,t marzetti ,55,6,1,1,95,1.0,tbls,1
+starbucks - roasted tomato caprese mozarella sandwich  website confirmed , roasted tomato caprese mozarella sandwich  website confirmed ,starbucks ,195,9,22,8,315,0.5,sandwich,2
+tgif - spinach   artichoke dip, spinach   artichoke dip,tgif ,30,2,2,2,100,2.0,tbl,1
+triscuit - cracker, cracker,triscuit ,120,4,20,3,160,6.0,crackers,0
+fuze - strawberry guava - juice drink, strawberry guava - juice drink,fuze ,4,0,1,0,20,4.0,fl ,1
+sheetz - pumpkin whoopie pie, pumpkin whoopie pie,sheetz ,510,28,63,4,400,1.0,whoopie,43
+"apple - apple, large golden delicious"," apple, large golden delicious",apple ,80,0,22,1,0,1.0,large,17
+it works  global - greens, greens,it works  global ,10,1,1,0,0,2.0,level,0
+it works  - profit protein shake - chocolate, profit protein shake - chocolate,it works  ,200,4,10,28,320,2.0,level,2
+jif - reduced fat creamy peanut butter- corrected, reduced fat creamy peanut butter- corrected,jif ,190,12,15,7,200,2.0,tbsp,4
+welchs - concord grape jelly   reduced sugar  , concord grape jelly   reduced sugar  ,welchs ,20,0,5,0,15,1.0,tbsp,5
+great value - whole wheat split top bread, whole wheat split top bread,great value ,140,2,32,6,320,2.0,slice,4
+fruit - banana  large , banana  large ,fruit ,121,0,31,2,1,1.0,banana,17
+frigo - string mozarella cheese, string mozarella cheese,frigo ,80,6,0,6,200,1.0,oz ,0
+silk - almond milk unsweetened, almond milk unsweetened,silk ,45,4,2,2,240,1.5,cup,0
+jif - reduced fat creamy peanut butter- corrected, reduced fat creamy peanut butter- corrected,jif ,95,6,8,4,100,1.0,tbsp,2
+"fast foods - egg, scrambled"," egg, scrambled",fast foods ,199,15,2,13,211,2.0,eggs,1
+chobani - greek yoghurt - peach - nonfat, greek yoghurt - peach - nonfat,chobani ,120,0,19,12,60,5.3,oz ,15
+perkin s restaurant - grilled salmon, grilled salmon,perkin s restaurant ,390,25,0,38,115,190.0,g,0
+outtakes - chopped cobb salad, chopped cobb salad,outtakes ,310,18,10,29,837,1.0,each,3
+mr  greek - french fries, french fries,mr  greek ,791,41,48,17,3178,11.0,oz,1
+silk - almond milk unsweetened, almond milk unsweetened,silk ,60,5,2,2,320,2.0,cup,0
+silk - almond milk unsweetened, almond milk unsweetened,silk ,30,3,1,1,160,1.0,cup,0
+beachbody - shakelogy - strawberry, shakelogy - strawberry,beachbody ,130,1,15,16,120,1.0,scoop,7
+shoprite - fresh frozen berry medley, fresh frozen berry medley,shoprite ,70,1,17,1,0,1.0,cup,10
+rubios - grilled chicken nachos, grilled chicken nachos,rubios ,670,39,57,27,1130,272.0,grams,2
+it works  - fat fighter, fat fighter,it works  ,0,0,0,0,0,2.0,tablets,0
+hardees - buffalo chicken tender, buffalo chicken tender,hardees ,97,5,5,8,780,1.0,tender,0
+bellplantation - pb2, pb2,bellplantation ,45,2,5,5,94,2.0,tablespoon,1
+america s choice - chunk light tuna in water, chunk light tuna in water,america s choice ,60,1,0,13,280,2.0,oz,0
+sunny farms - eggs medium grade a, eggs medium grade a,sunny farms ,180,12,0,18,180,3.0,egg,0
+pompeian - organic extra virgin olive oil, organic extra virgin olive oil,pompeian ,120,14,0,0,0,1.0,tablespoon,0
+egg whites - eggs, eggs,egg whites ,144,0,3,33,498,300.0,g,3
+"bread - whole-wheat, toasted"," whole-wheat, toasted",bread ,78,1,15,3,168,1.0,oz,6
+"homemade - fruit, mixed fresh"," fruit, mixed fresh",homemade ,200,0,60,0,10,2.0,cup,40
+bahama breeze - seafood paella, seafood paella,bahama breeze ,800,23,54,94,2910,1.0,plate,0
+generic - little neck clams - raw, little neck clams - raw,generic ,66,1,2,11,48,6.0,medium,0
+eurest - fried cod fish, fried cod fish,eurest ,130,7,10,8,299,0.99,pieces,0
+lay s - kettle cooked 40  less fat applewood smoked bbq chips, kettle cooked 40  less fat applewood smoked bbq chips,lay s ,180,8,26,3,190,1.0,3 8,3
+subway - footlong spicy italian, footlong spicy italian,subway ,1050,57,88,47,2850,12.0, ,13
+subway - subway honey mustard, subway honey mustard,subway ,30,0,7,0,120,21.0,g,6
+subway - condiment - sweet onion sauce, condiment - sweet onion sauce,subway ,40,0,9,0,90,21.0,g,8
+subway - veggies only, veggies only,subway ,30,0,0,0,0,1.0,cup,0
+frito-lay - doritos - nacho cheese  single ,lay - doritos - nacho cheese  single ,frito,240,14,28,3,360,1.0,package,0
+subway - provolone  cheese only , provolone  cheese only ,subway ,100,8,0,8,250,12.0,"""",0
+power breakfast sandwich - panera bread, panera bread,power breakfast sandwich ,340,0,0,0,0,1.0,item,0
+panera bread - b green power smoothie, b green power smoothie,panera bread ,190,1,49,2,25,12.0,oz,35
+generic - whole wheat toast, whole wheat toast,generic ,180,2,20,8,400,2.0,slice,6
+egg - 1 scrambled egg white, 1 scrambled egg white,egg ,51,0,1,11,165,3.0,egg,1
+christian s bacon - bacon, bacon,christian s bacon ,90,7,0,5,270,2.0,slices,0
+blue moon - belgian white, belgian white,blue moon ,684,0,55,10,68,48.0,oz,0
+tender filet - mandarin teriyaki chicken breast, mandarin teriyaki chicken breast,tender filet ,180,2,5,34,950,40.0,z,5
+generic - homemade clam chowder, homemade clam chowder,generic ,300,8,42,12,1479,2.0,cup,22
+portillos - chopped salad, chopped salad,portillos ,393,7,40,27,738,1.0,container,3
+hoegarden - beer, beer,hoegarden ,383,0,30,0,0,30.0,oz,0
+fruit salad - mixed berry fruit salad, mixed berry fruit salad,fruit salad ,70,1,16,2,2,1.0,cup,8
+visalus - granola, granola,visalus ,60,2,8,1,5,0.25,cup,2
+sodexo - bacon, bacon,sodexo ,35,2,0,3,120,1.0,slice,0
+"fast foods - egg, scrambled"," egg, scrambled",fast foods ,100,8,1,7,105,1.0,eggs,1
+eurest - breakfast potatoes, breakfast potatoes,eurest ,121,4,19,2,54,0.5,cup,1
+highliner - talapia fish in light sauce, talapia fish in light sauce,highliner ,140,4,1,24,260,1.0,fillet,1
+"black turtle beans - black beans, cooked"," black beans, cooked",black turtle beans ,114,1,21,8,1,0.5,cup,0
+hormel - rev  8 spicy italian style wrap, rev  8 spicy italian style wrap,hormel ,260,15,13,17,890,1.0,wrap,2
+mcintosh - apple, apple,mcintosh ,80,0,22,0,0,1.0,medium,17
+spinach - raw, raw,spinach ,14,0,2,2,47,2.0,cup,0
+fresh - hard boiled egg, hard boiled egg,fresh ,160,10,1,13,142,2.0,large,1
+fresh - hard boiled egg, hard boiled egg,fresh ,80,5,0,6,71,1.0,large,1
+jazz - apple, apple,jazz ,80,0,22,0,0,1.0,med,16
+kelloggs - frosted mini wheats, frosted mini wheats,kelloggs ,190,1,46,5,0,21.0,biscuits,11
+silk - almond milk - unsweetened originial, almond milk - unsweetened originial,silk ,15,1,1,1,80,0.5,cup,0
+silk - almond milk - unsweetened originial, almond milk - unsweetened originial,silk ,30,3,1,1,160,1.0,cup,0
+visalus sciences - neuro smart energy  lemon lift , neuro smart energy  lemon lift ,visalus sciences ,12,0,2,1,60,1.0,packet,1
+berkley   jensen - uncooked colossal shrimp, uncooked colossal shrimp,berkley   jensen ,150,2,0,36,2010,12.0,oz,0
+spinach - sauteed spinach, sauteed spinach,spinach ,14,0,2,2,48,1.0,cup,0
+maranatha - almond butter - smooth, almond butter - smooth,maranatha ,190,16,7,6,60,2.0,tbsp,3
+ezekiel - organic sprouted 100  whole grain bread, organic sprouted 100  whole grain bread,ezekiel ,160,1,30,8,150,68.0,g,0
+kashi - honey sunshine cereal puffs, honey sunshine cereal puffs,kashi ,100,1,25,2,135,30.0,g,6
+panera - power almond quinoa oatmeal, power almond quinoa oatmeal,panera ,290,6,51,8,210,1.0,bowl,8
+fruit - banana  large , banana  large ,fruit ,242,1,62,3,2,2.0,banana,33
+shop rite - fat free plain greek yogurt, fat free plain greek yogurt,shop rite ,100,0,8,18,100,1.0,container,8
+diamond whole almonds natural  not roasted  - just plain almonds, just plain almonds,diamond whole almonds natural  not roasted  ,170,15,6,6,0,0.25,cup,1
+the laughing cow - mini babybel light, mini babybel light,the laughing cow ,50,3,0,6,160,1.0,piece,0
+"apples - raw, with skin"," raw, with skin",apples ,72,0,19,0,1,1.0,medium,14
+ruby tuesday s - queso dip   chips, queso dip   chips,ruby tuesday s ,720,45,68,15,1223,2.5,serving,0
+ruby tuesdays - salad bar, salad bar,ruby tuesdays ,200,6,44,24,400,2.0,plate,16
+ruby tuesday - french dressing, french dressing,ruby tuesday ,120,11,6,0,260,2.0,tbls ,0
+ruby tuesday- - light ranch dressing on salad bar, - light ranch dressing on salad bar,ruby tuesday,70,5,4,1,230,1.0,ounce,0
+ruby tuesday s - croutons, croutons,ruby tuesday s ,188,4,24,0,0,1.0,cup,0
+farm classics turkey - turkey, turkey,farm classics turkey ,50,2,2,7,500,50.0,g,0
+ezekiel 4 9 - sprouted whole grain bread, sprouted whole grain bread,ezekiel 4 9 ,160,1,30,8,150,2.0,slice,0
+eggs - fried  whole egg , fried  whole egg ,eggs ,185,14,1,13,188,2.0,large,1
+louana - coconut oil  updated serving size , coconut oil  updated serving size ,louana ,120,14,0,0,0,1.0,tsp,0
+slimquick - protein chocolate dream, protein chocolate dream,slimquick ,200,1,18,30,600,2.0,scoop,4
+key food - frozen whole strawberries, frozen whole strawberries,key food ,50,0,12,0,0,1.0,cup,8
+spinach - raw, raw,spinach ,21,0,3,3,71,3.0,cup,0
+key food - frozen whole strawberries, frozen whole strawberries,key food ,125,0,30,0,0,2.5,cup,20
+friendly farms - 2  reduced fat milk, 2  reduced fat milk,friendly farms ,120,5,11,8,120,1.0,cup,11
+orange - medium, medium,orange ,70,0,21,1,0,1.0,orange,14
+traci s - homemade veggie omelet, homemade veggie omelet,traci s ,300,1,0,15,0,1.0,omelet,1
+babybel - light, light,babybel ,42,2,0,5,36,1.0,unit,0
+america s choice - pure honey, pure honey,america s choice ,60,0,17,0,0,1.0,tbsp,16
+flik - grilled buffalo chicken salad, grilled buffalo chicken salad,flik ,325,7,37,28,847,12.0,ounce,14
+grapes - raw, raw,grapes ,123,1,32,1,4,2.0,cup,30
+campbells chunky - creamy chicken and dumplings soup, creamy chicken and dumplings soup,campbells chunky ,320,16,32,12,1780,2.0,cup,6
+checkers - small fries, small fries,checkers ,75,5,7,1,175,0.25,order,0
+naked - green machine boosted, green machine boosted,naked ,140,0,33,2,15,8.0,oz,28
+detox vegetable soup,,detox vegetable soup,173,6,25,8,1401,0.5,serving s ,11
+hillshire farms lunch meat - oven roasted turkey breast, oven roasted turkey breast,hillshire farms lunch meat ,50,1,2,9,500,2.0,oz,1
+tomato - tomato-raw, tomato-raw,tomato ,25,0,5,2,5,1.0,medium,3
+bell pepper - any color, any color,bell pepper ,20,0,5,1,3,186.0,g,2
+"sabra - hummus, classic"," hummus, classic",sabra ,175,13,10,5,325,5.0,tbsp,0
+generic - sliced deli turkey, sliced deli turkey,generic ,51,1,1,10,240,2.0,ounces,0
+chobani - greek yogurt 2  coconut-blended, greek yogurt 2  coconut-blended,chobani ,150,5,16,12,60,6.0,ounces,13
+bare naked - original cinnamon granola, original cinnamon granola,bare naked ,140,7,15,6,25,0.25,cup,6
+chobani - simply 100 strawberry greek yogurt, simply 100 strawberry greek yogurt,chobani ,100,0,15,12,65,1.0,container,7
+honey,,honey,64,0,17,0,1,1.0,tbsp,17
+chobani - greek yogurt simply 100 vanilla blended, greek yogurt simply 100 vanilla blended,chobani ,100,0,14,12,65,5.3,oz,7
+post - grape nuts  website , grape nuts  website ,post ,210,1,44,8,290,0.5,cup,5
+generic milk - 1  milk 110 cal, 1  milk 110 cal,generic milk ,55,1,7,4,65,0.5,cup,6
+sugar - sugar packet, sugar packet,sugar ,15,0,4,0,0,1.0,packet,4
+egg - plain scrambled, plain scrambled,egg ,182,14,2,12,176,2.0,large,2
+cheese - feta, feta,cheese ,75,6,1,4,316,1.0,oz,1
+nature valley - protein chewey granola bar - peanut butter dark chocolate, protein chewey granola bar - peanut butter dark chocolate,nature valley ,190,12,14,10,180,1.0,bar,6
+dannon oikos - fat free greek vanilla yogurt, fat free greek vanilla yogurt,dannon oikos ,190,0,29,17,70,1.0,cup,27
+homemade - veggie omelette, veggie omelette,homemade ,285,20,11,23,278,2.5,cups,3
+dannon oikos - oikos traditional greek yogurt strawberry, oikos traditional greek yogurt strawberry,dannon oikos ,160,5,18,11,55,150.0,g,17
+chobani - greek yogurt - 0  vanilla, greek yogurt - 0  vanilla,chobani ,120,0,16,13,60,1.0,cup,13
+turbana - banana, banana,turbana ,100,0,23,1,0,1.0,medium,16
+einstein bros bagels - southwest turkey-sausage thintastic eggwhites, southwest turkey-sausage thintastic eggwhites,einstein bros bagels ,350,14,33,23,870,1.0,sandwich,6
+bread - rye, rye,bread ,83,1,15,3,211,1.0,slice,0
+quaker - chewy granola bar - s mores, chewy granola bar - s mores,quaker ,100,2,19,1,75,1.0,bar,8
+quakers - chewy chocolate chip granola bar, chewy chocolate chip granola bar,quakers ,100,4,17,1,70,1.0,bar,7
+dannon - oikos nonfat greek vanilla yogurt, oikos nonfat greek vanilla yogurt,dannon ,120,0,19,12,45,150.0,g,18
+belvita - belvita - cinnamon brown sugar, belvita - cinnamon brown sugar,belvita ,230,8,35,4,220,1.0,packet,10
+chobani - vanilla yogurt - fat free, vanilla yogurt - fat free,chobani ,180,0,18,14,80,8.0,oz ,16
+chobani - greek yogurt- vanilla blended- nonfat, greek yogurt- vanilla blended- nonfat,chobani ,120,0,16,13,60,5.3,oz ,13
+einstein brothers - six cheese bagel, six cheese bagel,einstein brothers ,330,6,56,15,650,1.0,bagel,5
+starbucks - reduced-fat cream cheese, reduced-fat cream cheese,starbucks ,90,7,4,3,210,1.0,unit,2
+publix - milk fat free, milk fat free,publix ,90,0,13,9,130,1.0,cup,0
+einstein bros bagels - plain bagel- no cream cheese, plain bagel- no cream cheese,einstein bros bagels ,263,1,58,9,474,1.0,bagel,5
+dunkin donuts - reduced fat blueberry muffin  corrected , reduced fat blueberry muffin  corrected ,dunkin donuts ,273,7,50,5,413,0.67,mufffin,27
+au bon pain - egg white cheddar sandwhich, egg white cheddar sandwhich,au bon pain ,230,9,22,19,510,1.0,sandwhich,1
+advocare - rehydrate fruit punch, rehydrate fruit punch,advocare ,40,0,9,0,100,1.0,pouch,6
+advocare - spark, spark,advocare ,45,0,11,0,0,1.0,scoop,0
+advocare meal replacement shake - berry, berry,advocare meal replacement shake ,220,3,24,24,80,1.0,pouch,12
+fruit - banana  large , banana  large ,fruit ,120,0,30,2,1,1.0,banana,17
+advocare - post workout recovery - chocolate, post workout recovery - chocolate,advocare ,230,3,38,12,200,2.0,level,16
+green smoothie,,green smoothie,317,3,147,12,264,1.0,serving,118
+advocare - meal replacement shake - pumpkin spice, meal replacement shake - pumpkin spice,advocare ,200,2,23,22,330,1.0,pouch,13
+dole - small banana, small banana,dole ,90,0,23,1,1,1.0,small,12
+generic - 1 large fried egg without oil, 1 large fried egg without oil,generic ,219,15,1,19,0,3.0,large,0
+table grapes - green seedless, green seedless,table grapes ,62,0,16,1,2,1.0,cup,15
+safeway - ready pac foods - fruit burst cup, ready pac foods - fruit burst cup,safeway ,120,0,30,2,20,10.0,oz,26
+whole foods - organic cashews whole raw, organic cashews whole raw,whole foods ,150,12,8,5,0,0.25,cup,2
+cantelope fresh cubed  usda  - cantelope, cantelope,cantelope fresh cubed  usda  ,54,0,16,1,0,1.0,cup,14
+quaker oats - 100  natural whole grains old fashioned, 100  natural whole grains old fashioned,quaker oats ,150,3,27,5,0,0.5,cup,1
+c h - brown sugar, brown sugar,c h ,45,0,12,0,0,3.0,tsp,12
+juice - orange juice  simply orange , orange juice  simply orange ,juice ,110,0,26,2,0,8.0,fl,23
+safeway - butterlicious buttery spray , butterlicious buttery spray ,safeway ,0,0,0,0,20,10.0,sprays,0
+generic - 1 large fried egg without oil, 1 large fried egg without oil,generic ,146,10,1,12,0,2.0,large,0
+safeway - ready pac foods - fruit burst cup, ready pac foods - fruit burst cup,safeway ,24,0,6,0,4,2.0,oz,5
+advocare - gingerbread advobar, gingerbread advobar,advocare ,170,5,23,11,150,1.0,bar,10
+safeway - ready pac foods - fruit burst cup, ready pac foods - fruit burst cup,safeway ,36,0,9,1,6,3.0,oz,8
+advocare - spark, spark,advocare ,90,0,22,0,0,2.0,scoop,0
+eggs - hard boiled, hard boiled,eggs ,77,5,1,6,62,1.0,large,1
+"homemade - fruit, mixed fresh"," fruit, mixed fresh",homemade ,50,0,15,0,3,0.5,cup,10
+safeway - butterlicious buttery spray , butterlicious buttery spray ,safeway ,0,0,0,0,10,5.0,sprays,0
+market basket - granny smith apple , granny smith apple ,market basket ,100,0,22,0,0,1.0,apple,13
+advocare - spark drink, spark drink,advocare ,45,0,11,0,0,1.0,packet,0
+pb2 - peanut butter, peanut butter,pb2 ,45,2,5,5,94,12.0,g,1
+lucerne - light string cheese - low moisture mozarella, light string cheese - low moisture mozarella,lucerne ,50,3,1,7,200,1.0,piece,0
+del monte - red grapefruit no sugar, red grapefruit no sugar,del monte ,40,0,10,0,10,0.5,cup,6
+kellog - frosted strawberry pop tarts, frosted strawberry pop tarts,kellog ,410,10,76,4,340,2.0,per,33
+knudsen - cottage cheese small curd 4  milk fat  118g per 1 2 cup , cottage cheese small curd 4  milk fat  118g per 1 2 cup ,knudsen ,110,5,6,11,410,0.5,cup,4
+"burger king - bacon, egg   cheese croissant  2012 "," bacon, egg   cheese croissant  2012 ",burger king ,370,21,32,13,770,1.0,sandwich,6
+c h - brown sugar, brown sugar,c h ,23,0,6,0,0,1.5,tsp,6
+"burger king - bacon, egg   cheese croissant  2012 "," bacon, egg   cheese croissant  2012 ",burger king ,740,42,64,26,1540,2.0,sandwich,12
+del monte - red grapefruit no sugar, red grapefruit no sugar,del monte ,80,0,20,0,20,1.0,cup,12
+advocare - omegaplex, omegaplex,advocare ,30,3,0,0,0,3.0,softgels,0
+banana pancakes,,banana pancakes,252,10,28,14,140,1.0,serving s ,15
+coffee - brewed from grounds, brewed from grounds,coffee ,5,0,0,1,9,2.0,cup,0
+coffeemate - hazelnut liquid coffee creamer - sugar free, hazelnut liquid coffee creamer - sugar free,coffeemate ,120,8,16,0,40,8.0,tablespoon,0
+homemade - biscuits and gravy, biscuits and gravy,homemade ,415,30,22,12,1140,1.0,biscuit,5
+yoplait - greek yogurt 100 calorie - tropical fruit , greek yogurt 100 calorie - tropical fruit ,yoplait ,100,0,14,10,45,1.0,container,9
+del monte fruit naturals - red grapefruit - no sugar added  in artificially sweetened water , red grapefruit - no sugar added  in artificially sweetened water ,del monte fruit naturals ,60,0,15,1,0,6.5,oz,7
+frigo cheese heads - mozarella cheese stick, mozarella cheese stick,frigo cheese heads ,80,6,0,6,200,1.0,stick,0
+burger king - cinnabon  2 , cinnabon  2 ,burger king ,600,22,90,12,560,2.0,buns,40
+atkins - bacon scramble, bacon scramble,atkins ,380,28,5,26,1040,1.0,tray,1
+atkins - sausage with egg and cheese muffin sandwich  correct , sausage with egg and cheese muffin sandwich  correct ,atkins ,340,25,5,19,810,1.0,sandwich,1
+heb deli - burrito, burrito,heb deli ,350,17,36,8,590,1.0,piece,0
+great value - dried apricot, dried apricot,great value ,120,0,25,1,0,5.0,pieces,21
+cutie s - manadarin orange, manadarin orange,cutie s ,40,0,10,1,2,1.0,mandarin,8
+nature valley - trail mix chewy granola bar - fruit   nut, trail mix chewy granola bar - fruit   nut,nature valley ,140,4,25,3,65,35.0,g,7
+yoplait - greek - 100 calories - caramel macchiato, greek - 100 calories - caramel macchiato,yoplait ,100,0,12,12,105,1.0,container,7
+nature valley - protein crunchy granola, protein crunchy granola,nature valley ,105,2,16,5,68,0.25,cup,6
+yoplait - greek 100 raspberry, greek 100 raspberry,yoplait ,100,0,12,12,85,5.3,oz,8
+kraft - simply cottage cheese 4  large curd, simply cottage cheese 4  large curd,kraft ,120,6,8,10,400,0.5,cup,5
+generic - small whole avacado, small whole avacado,generic ,234,21,12,3,10,146.0,grams,1
+special k protein - cinnamon brown sugar crunch, cinnamon brown sugar crunch,special k protein ,220,2,44,14,380,1.0,1 2,18
+silk  - vanilla almondmilk  half gallon , vanilla almondmilk  half gallon ,silk  ,45,1,8,1,80,0.5,cup,8
+harris teeter - baby spinach, baby spinach,harris teeter ,20,0,3,2,65,3.0,cups,0
+body fortress super advanced whey protein - vanilla - whey protein - vanilla, vanilla - whey protein - vanilla,body fortress super advanced whey protein ,170,3,7,30,70,1.0,scoop,2
+baby carrots - raw, raw,baby carrots ,35,0,8,1,65,85.0,g,5
+trader joes - high fiber fruit   nut cereal, high fiber fruit   nut cereal,trader joes ,180,3,50,4,10,1.334,cup,0
+dairy maid dairy - 2  reduced fat milk, 2  reduced fat milk,dairy maid dairy ,86,4,8,6,86,5.76,fl,8
+halls defense vitamin c - sugar free - blueberry, sugar free - blueberry,halls defense vitamin c ,5,0,3,0,10,1.0,drop,0
+halls defense vitamin c - sugar free - blueberry, sugar free - blueberry,halls defense vitamin c ,10,0,6,0,20,2.0,drop,0
+wishbone - mediterranean italian salad dressing, mediterranean italian salad dressing,wishbone ,130,11,9,0,691,4.32,tbsp,6
+spinach - raw, raw,spinach ,17,0,3,2,57,2.4,cup,0
+generic - bananas - raw, bananas - raw,generic ,105,0,27,1,1,118.0,grams,14
+dairy maid dairy - 2  reduced fat milk, 2  reduced fat milk,dairy maid dairy ,60,3,6,4,60,4.0,fl,6
+weis - baby style carrots, baby style carrots,weis ,35,0,8,1,65,3.0,oz,5
+trader joes - spicy hummus dip, spicy hummus dip,trader joes ,100,7,10,4,240,4.0,tbsp,2
+mcdonald s - sausage mcmuffin  mcdonalds com , sausage mcmuffin  mcdonalds com ,mcdonald s ,740,46,58,28,1560,2.0,sandwich,4
+"dominos pizza medium - white sauce, pepperoni, philly meat"," white sauce, pepperoni, philly meat",dominos pizza medium ,1260,60,116,48,2740,4.0,slice,8
+bumble bee - solid white albacore  in water , solid white albacore  in water ,bumble bee ,120,0,0,26,280,4.0,oz,0
+smart food popcorn - white cheddar cheese, white cheddar cheese,smart food popcorn ,160,10,14,3,290,1.0,oz ,2
+honey roasted almonds - blue diamond almonds , blue diamond almonds ,honey roasted almonds ,160,13,9,5,60,28.0,nuts,5
+hellmans - lite mayonnaise, lite mayonnaise,hellmans ,70,7,2,0,250,2.0,tbs,0
+wishbone - mediterranean italian salad dressing, mediterranean italian salad dressing,wishbone ,120,10,8,0,640,4.0,tbsp,6
+generic - bananas - raw, bananas - raw,generic ,89,0,23,1,1,100.0,grams,12
+kellogs - nutrigrain bar - mixed berry, nutrigrain bar - mixed berry,kellogs ,120,3,24,2,110,1.0,bar,11
+trader joes - high fiber fruit   nut cereal, high fiber fruit   nut cereal,trader joes ,234,4,65,5,13,1.7342000000000002,cup,0
+keebler - sugar wafers vanilla, sugar wafers vanilla,keebler ,375,18,55,3,50,10.0,wafers,35
+trader joes - multigrain o s, multigrain o s,trader joes ,220,2,48,4,270,2.0,cup,12
+ben and jerry s - greek frozen yogurt vanilla honey caramel, greek frozen yogurt vanilla honey caramel,ben and jerry s ,570,15,90,18,255,1.0,1 2,66
+ben and jerry s - greek frozen yogurt vanilla honey caramel, greek frozen yogurt vanilla honey caramel,ben and jerry s ,190,5,30,6,85,0.5,cup,22
+mcdonalds - cheeseburger, cheeseburger,mcdonalds ,290,11,33,15,680,1.0,burger,7
+mcdonald s - sausage mcmuffin 2013, sausage mcmuffin 2013,mcdonald s ,1110,66,93,45,2460,3.0,portion,6
+burger king - big king  2013 , big king  2013 ,burger king ,1020,58,76,36,1560,2.0,sandwich,16
+burger king - large french fries, large french fries,burger king ,500,22,72,5,710,1.0,each,0
+nongshim - bowl noodle soup - hot and spicy, bowl noodle soup - hot and spicy,nongshim ,380,14,56,8,1760,1.0,bowl,2
+trader joes - the sesame seed bagel spinoza, the sesame seed bagel spinoza,trader joes ,460,2,84,20,420,2.0,bagel,4
+trader joe s - speculoos crunchy cookie butter, speculoos crunchy cookie butter,trader joe s ,240,16,24,1,67,40.05,g,13
+trader joe s - speculoos crunchy cookie butter, speculoos crunchy cookie butter,trader joe s ,103,7,10,1,28,17.1,g,6
+trader joes - the sesame seed bagel spinoza, the sesame seed bagel spinoza,trader joes ,246,1,45,11,225,1.07,bagel,2
+mcdonald s - has brown, has brown,mcdonald s ,300,18,30,2,620,2.0,hash,0
+mcdonald s - sausage mcmuffin 2013, sausage mcmuffin 2013,mcdonald s ,740,44,62,30,1640,2.0,portion,4
+mcdonalds - sausage biscuit, sausage biscuit,mcdonalds ,860,54,68,22,2160,2.0,biscuit,4
+trader joe s - pacific salad with chicken - without dressing, pacific salad with chicken - without dressing,trader joe s ,340,15,42,34,410,375.0,g,20
+wishbone - mediterranean italian salad dressing, mediterranean italian salad dressing,wishbone ,60,5,4,0,320,2.0,tbsp,3
+trader joe s - egg brown cage free large, egg brown cage free large,trader joe s ,140,10,2,12,130,2.0,egg,0
+trader joe s - romaine salad  bagged , romaine salad  bagged ,trader joe s ,15,0,4,1,20,2.0,cup,1
+generic - mozzarella cheese slice, mozzarella cheese slice,generic ,60,4,0,6,125,1.0,slice,0
+trader joe s - egg brown cage free large, egg brown cage free large,trader joe s ,210,15,3,18,195,3.0,egg,0
+"planters - peanuts, honey roasted"," peanuts, honey roasted",planters ,480,39,21,21,300,84.0,g,12
+frito lay - cheese fix munchies, cheese fix munchies,frito lay ,280,14,36,4,400,56.0,g,2
+welch s - fruit snacks - mixed fruit  25 5g package , fruit snacks - mixed fruit  25 5g package ,welch s ,80,0,19,1,10,1.0,package,11
+frito lay - cheese fix munchies, cheese fix munchies,frito lay ,140,7,18,2,200,28.0,g,1
+grilled chicken breast - 4 oz, 4 oz,grilled chicken breast ,115,4,0,17,248,4.68,oz,0
+"planters - peanuts, honey roasted"," peanuts, honey roasted",planters ,320,26,14,14,200,56.0,g,8
+mcdonalds - sausage and egg biscuit, sausage and egg biscuit,mcdonalds ,1020,66,72,36,2340,2.0,biscuit,0
+mcdonald s - cheeseburger  from website , cheeseburger  from website ,mcdonald s ,870,33,99,45,2040,3.0,cheeseburger,21
+frito lay - cheese fix munchies, cheese fix munchies,frito lay ,1442,72,185,21,2060,288.4,g,10
+trader joes - the sesame seed bagel spinoza, the sesame seed bagel spinoza,trader joes ,189,1,34,8,172,0.82,bagel,2
+trader joe s - speculoos crunchy cookie butter, speculoos crunchy cookie butter,trader joe s ,96,6,10,1,27,16.05,g,5
+"planters - peanuts, honey roasted"," peanuts, honey roasted",planters ,160,13,7,7,100,28.0,g,4
+grands - pillsbury grand buttermilk biscuit canned , pillsbury grand buttermilk biscuit canned ,grands ,850,30,125,15,2700,5.0,biscuit,20
+harris teeter farmers market - ready-to-eat baby cut carrots, ready-to-eat baby cut carrots,harris teeter farmers market ,35,0,8,1,65,3.0,oz,5
+trader joe s - organic valencia oranges, organic valencia oranges,trader joe s ,44,0,10,1,0,0.63,med ,8
+"dominos pizza medium - white sauce, pepperoni, philly meat"," white sauce, pepperoni, philly meat",dominos pizza medium ,2520,120,232,96,5480,8.0,slice,16
+trader joe s - greek yogurt almond poppy seed bread, greek yogurt almond poppy seed bread,trader joe s ,340,7,60,8,200,4.0,oz ,34
+smart food popcorn - white cheddar cheese popcorn, white cheddar cheese popcorn,smart food popcorn ,480,30,42,9,870,5.25,cups,6
+trader joe s - cinnamon nut rugelach - correct one, cinnamon nut rugelach - correct one,trader joe s ,240,20,14,0,40,2.0,piece,8
+trader joes - tandoori naan flatbread, tandoori naan flatbread,trader joes ,220,3,42,7,240,1.0,bread,1
+sauders - large egg, large egg,sauders ,140,10,0,12,140,2.0,egg,0
+trader joes - just chicken white meat chicken, just chicken white meat chicken,trader joes ,110,1,0,25,20,3.0,oz ,0
+sauders - large egg, large egg,sauders ,210,15,0,18,210,3.0,egg,0
+special k - high protien cereal  net carbs , high protien cereal  net carbs ,special k ,180,2,24,15,285,1.0,1 8,11
+au bon pain - blueberry yogurt with blueberries, blueberry yogurt with blueberries,au bon pain ,410,5,94,15,260,16.0,oz ,80
+mcdonalds -  from mcd s website  fruit and maple oatmeal,  from mcd s website  fruit and maple oatmeal,mcdonalds ,290,4,58,5,160,1.0,cup,32
+7-eleven - buffalo chicken wings,eleven - buffalo chicken wings,7,90,6,3,7,600,3.5,wings,0
+eggs - 1 large cooked with pam, 1 large cooked with pam,eggs ,140,9,0,12,130,2.0,eggs,0
+great value - fully cooked turkey sausage breakfast patties, fully cooked turkey sausage breakfast patties,great value ,90,6,0,9,360,1.0,patty,0
+mcdonalds - oatmeal with apples, oatmeal with apples,mcdonalds ,210,5,39,5,160,1.0,bowl ,32
+"sausage - smoked link, pork"," smoked link, pork",sausage ,265,22,1,15,1020,1.0,link,0
+starbucks - tall chai tea latte with soy milk, tall chai tea latte with soy milk,starbucks ,0,0,0,0,0,0.0,oz,0
+silk - plain coconut milk, plain coconut milk,silk ,40,3,4,0,23,0.5,cup,3
+fruit - coffee, coffee,fruit ,0,0,0,0,0,0.0,g,0
+starbucks - caffe americano grande, caffe americano grande,starbucks ,30,0,6,2,0,32.0,oz,0
+honey - honey-, honey-,honey ,128,0,34,0,2,2.0,tbsp,34
+large - banana, banana,large ,121,0,31,2,1,1.0,banana,17
+kroger -  oatmeal,  oatmeal,kroger ,150,3,27,6,0,0.5,cup,1
+honey - honey-, honey-,honey ,64,0,17,0,1,1.0,tbsp,17
+silk - almond milk light, almond milk light,silk ,40,2,5,1,160,1.0,cup,5
+burrito kitchen - bacon breakfast burrito, bacon breakfast burrito,burrito kitchen ,450,20,42,25,1050,1.0,burrito,3
+ben   jerry s scoop shop - hazed   confused core, hazed   confused core,ben   jerry s scoop shop ,1000,56,108,16,300,2.0,cup,88
+boba tea house - honeydew milk with boba, honeydew milk with boba,boba tea house ,307,12,53,1,551,13.6,oz,0
+vietnamese - pho vo vien, pho vo vien,vietnamese ,740,52,21,43,2746,3.0,cups,9
+quaker - rice cake apple cinamon, rice cake apple cinamon,quaker ,50,0,11,1,0,1.0,cake,3
+kirkland - roasted seasoned seaweed winter harvest, roasted seasoned seaweed winter harvest,kirkland ,100,8,5,5,250,1.0,container,0
+starbucks - caffe americano grande, caffe americano grande,starbucks ,15,0,3,1,0,16.0,oz,0
+silk - almond milk light, almond milk light,silk ,20,1,3,1,80,0.5,cup,3
+tyson - reduced fat sausage patties, reduced fat sausage patties,tyson ,300,26,0,16,640,2.0,piece,0
+earth balance - buttery sticks, buttery sticks,earth balance ,50,6,0,0,60,0.5,tbsp,0
+split pea,,split pea,396,17,24,17,1630,3.0,serving s ,3
+kirkland - bacon, bacon,kirkland ,120,11,0,8,450,3.0,slices,0
+uncle louie g - canoli small, canoli small,uncle louie g ,280,6,56,2,50,8.0,oz,54
+rice stuffing,,rice stuffing,901,52,19,49,734,4.0,serving s ,11
+udis - whole grain bread, whole grain bread,udis ,210,6,33,6,390,3.0,slices,5
+tyson - reduced fat sausage patties, reduced fat sausage patties,tyson ,450,39,0,24,960,3.0,piece,0
+johnsonville - - beef summer sausage, - beef summer sausage,johnsonville ,90,8,1,5,340,1.0,oz ,0
+tillamook - cheddar cheese - medium, cheddar cheese - medium,tillamook ,110,9,0,7,170,1.0,oz,0
+homemade - cabbage soup made with ground turkey, cabbage soup made with ground turkey,homemade ,160,6,12,14,112,2.0,cup,0
+eggs - two scrambled   140 calories, two scrambled   140 calories,eggs ,140,14,2,12,220,2.0,eggs,0
+jiffy - creamy peanut butter, creamy peanut butter,jiffy ,127,15,7,6,127,1.0,oz,3
+eggs - poached eggs, poached eggs,eggs ,70,5,0,7,65,1.0,eggs,0
+eggs - poached eggs, poached eggs,eggs ,140,10,1,13,130,2.0,eggs,1
+tyson - reduced fat sausage patties, reduced fat sausage patties,tyson ,150,13,0,8,320,1.0,piece,0
+rbss - chicken breast, chicken breast,rbss ,110,3,0,23,180,4.0,oz,0
+mcdonald s - apples, apples,mcdonald s ,15,0,4,0,0,1.0,package,3
+siracha - hot chili sauce, hot chili sauce,siracha ,5,0,1,0,100,5.0,g,1
+homemade - coleslaw, coleslaw,homemade ,86,10,26,4,265,0.25,cup,14
+jamaican style - jerk chicken leg, jerk chicken leg,jamaican style ,300,14,6,28,700,2.0,drumstick,0
+coke - diet coke, diet coke,coke ,0,0,0,0,40,12.0,fl,0
+pepsi - wild cherry - can, wild cherry - can,pepsi ,160,0,42,0,30,12.0,oz,42
+bacardi - rum, rum,bacardi ,97,0,0,0,0,1.5,ounce,0
+svedka vodka - vodka, vodka,svedka vodka ,64,0,0,0,0,1.0,oz ,0
+bacardi - rum, rum,bacardi ,129,0,0,0,0,2.0,ounce,0
+edy s - outshine tangerine carrot, outshine tangerine carrot,edy s ,120,0,32,0,20,2.0,bar,30
+homemade - barbeque pulled pork, barbeque pulled pork,homemade ,174,6,10,19,362,3.0,ounce,7
+pepsi - wild cherry - can, wild cherry - can,pepsi ,272,0,71,0,51,20.4,oz,71
+adams - organic peanut butter, organic peanut butter,adams ,210,16,6,7,0,2.0,tbsp,1
+lundberg - organic wild rice cake , organic wild rice cake ,lundberg ,60,1,14,1,35,1.0,cake,0
+sausage - beef hot link, beef hot link,sausage ,420,48,12,24,1740,3.0,link,6
+red potatoes - red potatoes, red potatoes,red potatoes ,110,0,26,3,38,1.0,medium,1
+starbuck s - salted caramel soy mocha  tall , salted caramel soy mocha  tall ,starbuck s ,260,5,49,8,190,12.0,oz,40
+generic - gluten free pepperoni pizza, gluten free pepperoni pizza,generic ,390,21,34,17,785,3.0,slices,2
+starbucks - grande flat white with coconut milk, grande flat white with coconut milk,starbucks ,130,8,14,1,140,16.0,oz,0
+starbucks - hearty blueberry oatmeal with blueberry and agave, hearty blueberry oatmeal with blueberry and agave,starbucks ,160,3,28,5,125,42.0,g,0
+evol - gluten free shredded beef burrito, gluten free shredded beef burrito,evol ,230,7,41,9,390,1.0,burrito,1
+"pears - red anjou, raw"," red anjou, raw",pears ,97,0,23,1,2,157.0,g,15
+generic - jlr - cherry tomato, jlr - cherry tomato,generic ,30,0,7,2,10,10.0,tomatoes,5
+"carrots - baby, raw"," baby, raw",carrots ,28,0,7,1,62,8.0,medium,4
+epic - bison bar, bison bar,epic ,200,12,10,11,220,1.0,bar,8
+"apple - apple, large golden delicious"," apple, large golden delicious",apple ,164,0,45,0,0,2.0,large,35
+the chia co  - mango chia pod, mango chia pod,the chia co  ,160,9,14,3,5,6.0,oz,12
+hazelnut - raw, raw,hazelnut ,356,34,9,8,0,2.0,oz,2
+aladdin - scrambled eggs with ham, scrambled eggs with ham,aladdin ,180,12,2,14,303,4.0,oz,3
+home made - sliced oven broiled potatoes, sliced oven broiled potatoes,home made ,200,2,23,2,83,0.5,cup,0
+kix - cereal, cereal,kix ,60,1,15,1,100,0.75,cup,2
+kirkland - organic soy milk plain, organic soy milk plain,kirkland ,50,2,4,4,55,0.5,cup,3
+"great value - apricots, dried"," apricots, dried",great value ,72,0,15,1,0,3.0,pieces,13
+mc donalds - round egg, round egg,mc donalds ,160,10,2,14,140,3.6,oz,0
+mcdonalds - sausage, sausage,mcdonalds ,170,15,1,7,340,1.4,oz,0
+potatoes - hashbrown potatoes, hashbrown potatoes,potatoes ,60,0,14,1,280,0.3333333333333333,cup,1
+udis - whole grain bread, whole grain bread,udis ,280,8,44,8,520,4.0,slices,6
+smart balance - light butter, light butter,smart balance ,100,10,0,0,0,2.0,tbsp,0
+bigelow - earl grey tea, earl grey tea,bigelow ,0,0,0,0,0,2.0,bag,0
+egg - large hardboiled  egg and yolk , large hardboiled  egg and yolk ,egg ,154,10,1,12,124,2.0,large,1
+blackberries - raw, raw,blackberries ,31,0,7,1,1,0.5,cup,4
+"eggs, homemade - scrambled with olive oil", scrambled with olive oil,"eggs, homemade ",255,27,4,20,512,3.0,eggs,3
+adelle s chicken and apple sausage - chicken sausage, chicken sausage,adelle s chicken and apple sausage ,180,12,3,12,640,1.0,link,2
+"7 super foods salad only - brussels, cabbage, broccoli, kale, chicory, cran, pumpkin seeds, poppy seeds dressing"," brussels, cabbage, broccoli, kale, chicory, cran, pumpkin seeds, poppy seeds dressing",7 super foods salad only ,140,7,15,5,140,1.0,cup,10
+coffee - brewed from grounds, brewed from grounds,coffee ,2,0,0,0,5,1.0,cup,0
+so delicious - cashew milk, cashew milk,so delicious ,9,1,0,0,21,0.25,cup,0
+"snacks - popcorn, air-popped"," popcorn, air-popped",snacks ,244,3,50,8,3,8.0,cup,0
+red vines - red licorice, red licorice,red vines ,280,0,68,2,40,8.0,twists,32
+starbuck s - grande soy caramel machiatto, grande soy caramel machiatto,starbuck s ,240,5,38,9,0,16.0,oz,32
+craisins - reduced sugar, reduced sugar,craisins ,50,0,16,0,0,0.125,cup,7
+homemade - 2 pouched eggs, 2 pouched eggs,homemade ,65,4,0,6,0,140.0,g,0
+kroger -  oatmeal,  oatmeal,kroger ,300,5,54,12,0,1.0,cup,2
+jazz - apple, apple,jazz ,40,0,11,0,0,0.5,med,8
+potatoes - hashbrown potatoes, hashbrown potatoes,potatoes ,180,0,42,3,841,1.0,cup,3
+homemade - 2 pouched eggs, 2 pouched eggs,homemade ,130,9,1,11,0,280.0,g,1
+dole - frozen mango chunks, frozen mango chunks,dole ,180,1,42,2,0,2.0,cup,38
+monster - ultra sunrise, ultra sunrise,monster ,0,0,2,0,40,16.0,oz,0
+great value - thin spagetti  corrected , thin spagetti  corrected ,great value ,200,1,42,7,0,2.0,oz,2
+prego   meat - spaghetti meat sauce, spaghetti meat sauce,prego   meat ,180,6,26,4,960,1.0,cup,20
+campbell s - spaghetti o s with meatballs, spaghetti o s with meatballs,campbell s ,840,24,120,40,2400,4.0,cup,32
+orange - orange - large, orange - large,orange ,180,0,48,6,60,2.0,orange,34
+cuties - clementines, clementines,cuties ,70,0,18,2,2,2.0,clementine,14
+bread - sunbeam thin white, sunbeam thin white,bread ,120,2,24,4,240,2.0,slices,3
+snowflakesmj s - kc masterpiece pulled pork, kc masterpiece pulled pork,snowflakesmj s ,450,0,90,18,1440,1.0,1 2,42
+generic - lucky charms, lucky charms,generic ,110,1,22,2,170,27.0,grams,10
+walmart great value - reduced fat milk 2 , reduced fat milk 2 ,walmart great value ,60,3,6,4,60,0.5,cup,6
+great value - thin spagetti noodles, thin spagetti noodles,great value ,300,2,62,11,0,3.0,oz,3
+prego   meat - spaghetti meat sauce, spaghetti meat sauce,prego   meat ,90,3,13,2,480,0.5,cup,10
+great value jumbo flaky bisquit - bisquit, bisquit,great value jumbo flaky bisquit ,360,14,52,0,1100,2.0,bisquit,10
+tennesse pride - sausage patties, sausage patties,tennesse pride ,170,14,0,7,380,2.0,cooked,0
+"tyson - 4oz skinless boneless chicken breast, boiled"," 4oz skinless boneless chicken breast, boiled",tyson ,110,3,0,23,180,4.0,oz,0
+kroger - deli turkey spinach wrap, deli turkey spinach wrap,kroger ,250,6,15,11,150,0.5,wrap,4
+better oats - oat revolution instant steel cut maple   brown sugar , oat revolution instant steel cut maple   brown sugar ,better oats ,170,3,31,5,210,1.0,pouch,11
+great value - strawberry pop tarts, strawberry pop tarts,great value ,400,10,74,4,280,2.0,pastry,32
+campbell s - spaghetti o s w meatballs, spaghetti o s w meatballs,campbell s ,420,12,60,20,1200,2.0,cup,22
+"velvetta - original cheese, slice"," original cheese, slice",velvetta ,35,2,3,3,290,1.0,slice,2
+hillsire farm - honey ham, honey ham,hillsire farm ,60,1,4,9,650,5.0,slices,2
+tostinos pizza - combination pizza, combination pizza,tostinos pizza ,740,40,70,24,1660,1.0,pizza,8
+tostitos - tostitos scoops, tostitos scoops,tostitos ,140,7,19,2,120,1.0,oz,0
+yoplait greek - 100 calories yogurt - lemon, 100 calories yogurt - lemon,yoplait greek ,100,0,14,10,80,1.0,container,9
+great value - thin spagetti noodles, thin spagetti noodles,great value ,200,1,41,7,0,2.0,oz,2
+kraft  label  - american singles, american singles,kraft  label  ,70,4,2,3,200,1.0,slice,1
+benton s - bacon, bacon,benton s ,50,4,0,3,196,1.0,slice,0
+healthy life - 35 calorie wheat bread  2 slices , 35 calorie wheat bread  2 slices ,healthy life ,70,0,16,5,150,2.0,slice,2
+aldi little salad bar - sweet onion salsa, sweet onion salsa,aldi little salad bar ,30,0,6,0,150,6.0,tbsp,3
+daisy - sour cream, sour cream,daisy ,60,5,1,1,15,2.0,tbsp,1
+yoplait - 100 calorie greek yogurt - key lime, 100 calorie greek yogurt - key lime,yoplait ,100,0,10,13,75,1.0,container,7
+orange - orange - large, orange - large,orange ,90,0,24,3,30,1.0,orange,17
+aldi little salad bar - sweet onion salsa, sweet onion salsa,aldi little salad bar ,20,0,4,0,100,4.0,tbsp,2
+trix - cereal-dry, cereal-dry,trix ,120,2,27,1,180,1.0,cup,10
+bud light beer - bud light beer  7cal g , bud light beer  7cal g ,bud light beer ,770,0,46,6,77,84.0,oz,0
+sara lee - 100  whole wheat bread classic, 100  whole wheat bread classic,sara lee ,120,1,24,6,240,120.0,g,2
+shoppers value - creamy peanut butter, creamy peanut butter,shoppers value ,200,16,6,7,140,2.0,tbsp,3
+yoplait - non fat vanilla greek yogurt, non fat vanilla greek yogurt,yoplait ,100,0,11,13,55,150.0,g,7
+warburtons - sandwich thins  wholemeal, sandwich thins  wholemeal,warburtons ,200,2,40,8,320,2.0,serving,4
+uniliever - i cant believe its not butter, i cant believe its not butter,uniliever ,53,6,0,0,0,10.0,g,0
+sainsburys - damson jam, damson jam,sainsburys ,122,0,30,0,0,2.0,tablespoon,26
+3 bacon rashers - bacon, bacon,3 bacon rashers ,240,0,0,0,0,4.0,cooked,0
+tesco - seedless black grapes, seedless black grapes,tesco ,70,0,15,0,0,100.0,g,15
+tesco - frozen summer fruits  no sugar count , frozen summer fruits  no sugar count ,tesco ,27,0,5,1,0,100.0,g,0
+spectrum essentials - chia seeds, chia seeds,spectrum essentials ,60,4,4,2,2,1.0,tbsp,0
+nestle - toffee crisp cereal, toffee crisp cereal,nestle ,422,10,74,7,114,100.0,g,24
+kenco - coffee with semi skimmed milk   1 sugar, coffee with semi skimmed milk   1 sugar,kenco ,66,2,9,0,0,2.0,mug,0
+morrisons - smoked 16 thin cut streaky rindless bacon rashers, smoked 16 thin cut streaky rindless bacon rashers,morrisons ,272,16,2,24,1944,8.0,rasher,0
+galaxy - cookie crumble, cookie crumble,galaxy ,995,60,98,10,165,178.5,g,90
+happy shopper - bacon rashers, bacon rashers,happy shopper ,327,21,0,0,0,75.0,g,0
+generic - lemsip - blackcurrant  uk carbs , lemsip - blackcurrant  uk carbs ,generic ,40,0,2,0,0,1.0,sachet,0
+homemade - chocolate cupcake with frosting, chocolate cupcake with frosting,homemade ,344,16,48,2,180,2.0,cupcake,40
+egg - scrambled egg on 1 piece of toast, scrambled egg on 1 piece of toast,egg ,406,17,40,25,0,2.0,egg,0
+morrisons - smoked 16 thin cut streaky rindless bacon rashers, smoked 16 thin cut streaky rindless bacon rashers,morrisons ,204,12,1,18,1458,6.0,rasher,0
+generic - fried white bread, fried white bread,generic ,423,27,41,7,0,3.0,slice,0
+warburtons toastie - thick sliced white bread 800g, thick sliced white bread 800g,warburtons toastie ,226,2,42,9,376,2.0,slice,2
+nestle - honey cheerios with 125ml semi-skimmed milk, honey cheerios with 125ml semi-skimmed milk,nestle ,342,6,60,13,40,60.0,g,33
+happy shopper - prawn shells, prawn shells,happy shopper ,394,18,55,4,640,80.0,g,5
+kelloggs - oat granola chocolate, oat granola chocolate,kelloggs ,497,25,57,8,0,100.0,g,0
+terry s - chocolate orange segments, chocolate orange segments,terry s ,411,23,47,4,120,9.0,segments,47
+kelloggs - oat granola chocolate, oat granola chocolate,kelloggs ,249,13,29,4,0,50.0,g,0
+quaker oats - oat so simple porridge golden syrup , oat so simple porridge golden syrup ,quaker oats ,135,2,24,3,100,1.0,sachet,8
+tesco - skimmed milk, skimmed milk,tesco ,35,0,5,3,100,100.0,ml,5
+tesco bakery - ultimate granola square  4 pack , ultimate granola square  4 pack ,tesco bakery ,1320,66,153,0,0,4.0,square,90
+whittard - turkish apple flavoured instant tea, turkish apple flavoured instant tea,whittard ,77,0,19,0,0,20.0,g,19
+homemade - cheese on toast, cheese on toast,homemade ,600,0,0,0,0,3.0,round,0
+skinny lizzie - sausages- new recipe, sausages- new recipe,skinny lizzie ,276,11,18,27,1,4.0,sausage,0
+heinz - spaghetti hoops in tomato sauce, spaghetti hoops in tomato sauce,heinz ,214,1,42,3,1400,400.0,g,16
+warburtons toastie - thick sliced white bread 800g, thick sliced white bread 800g,warburtons toastie ,565,5,104,24,940,5.0,slice,5
+tesco - lemon curd, lemon curd,tesco ,132,2,28,0,45,45.0,g,23
+king tango - orange tango, orange tango,king tango ,100,0,22,1,0,525.0,ml,22
+galaxy chocolate - 1 square, 1 square,galaxy chocolate ,630,36,64,8,0,30.0,square,63
+french fries - sweet potato, sweet potato,french fries ,360,15,72,3,420,60.0,fries,18
+barchelors - cup a soup - cream of mushroom, cup a soup - cream of mushroom,barchelors ,123,6,15,1,600,1.0,cup,3
+bachelors cup a soup - golden vegetable, golden vegetable,bachelors cup a soup ,81,1,6,0,0,1.0,cup,1
+generic - medium white grapefruit, medium white grapefruit,generic ,39,0,10,1,0,0.5,fruit,0
+hovis - wholemeal bread  medium , wholemeal bread  medium ,hovis ,88,1,15,4,144,1.0,slice,2
+generic - wow butter - creamy peanut free, wow butter - creamy peanut free,generic ,200,16,8,8,120,2.0,tblespn,4
+drink - black coffee  no sugar , black coffee  no sugar ,drink ,2,0,0,0,0,1.0,cup,0
+truvia - sweetner, sweetner,truvia ,0,0,12,0,0,4.0,packet,0
+tesco - banana, banana,tesco ,53,0,12,1,0,50.0,g,10
+"eggs - large, fresh, boiled, poached"," large, fresh, boiled, poached",eggs ,70,5,1,6,149,1.0,egg,0
+nabisco - ritz crackers - original, ritz crackers - original,nabisco ,80,5,10,1,105,5.0,crackers,1
+golden delicious - apple small, apple small,golden delicious ,80,0,22,0,0,154.0,g,17
+morrisons - extra mature cheddar slice, extra mature cheddar slice,morrisons ,96,8,0,6,300,1.0,slice,0
+"spices - cinnamon, ground"," cinnamon, ground",spices ,6,0,2,0,1,1.0,tsp s ,0
+banana pancakes,,banana pancakes,232,9,24,12,123,1.0,serving,22
+sainsburys basics - salted butter, salted butter,sainsburys basics ,104,11,1,1,24,14.0,g,1
+tesco - summer fruits  frozen , summer fruits  frozen ,tesco ,63,0,13,2,0,240.0,g,13
+hovis - wholemeal bread  medium , wholemeal bread  medium ,hovis ,176,1,30,8,288,2.0,slice,3
+morrisons - extra mature cheddar slice, extra mature cheddar slice,morrisons ,192,16,0,11,600,2.0,slice,0
+nishaan - indian chapati - chakki roti, indian chapati - chakki roti,nishaan ,168,4,27,6,0,60.0,g,0
+2 medium eggs - scramble eggs, scramble eggs,2 medium eggs ,130,8,0,12,140,2.0,eggs,0
+sainsburys - skimmed milk, skimmed milk,sainsburys ,11,0,1,1,0,30.0,ml,1
+sainsburys - skimmed milk, skimmed milk,sainsburys ,288,2,38,29,1,400.0,ml,38
+choc shot - choc shot, choc shot,choc shot ,56,1,12,1,0,20.0,g,11
+meridian natural - smooth almond butter, smooth almond butter,meridian natural ,195,17,2,8,60,30.0,g,1
+"grapefruit juice - pink, raw"," pink, raw",grapefruit juice ,38,0,9,0,1,0.5,fruit,0
+tesco everyday value - smoked rindless back bacon, smoked rindless back bacon,tesco everyday value ,120,7,1,10,2,2.0,rashers,0
+tesco - typical kiwi fruit  65g , typical kiwi fruit  65g ,tesco ,36,0,7,1,0,65.0,g,7
+"tesco - strawberry, pineapple   banana smoothie mix"," strawberry, pineapple   banana smoothie mix",tesco ,128,0,28,1,0,200.0,g,20
+tesco - greek style natural yogurt, greek style natural yogurt,tesco ,250,19,11,8,0,200.0,g,11
+morrisons - butter flavour salt popcorn, butter flavour salt popcorn,morrisons ,428,19,53,8,450,1.0,container,0
+skinny lizzie - sausages- new recipe, sausages- new recipe,skinny lizzie ,69,3,5,7,0,1.0,sausage,0
+2 medium eggs - scramble eggs, scramble eggs,2 medium eggs ,65,4,0,6,70,1.0,eggs,0
+tesco everyday value - smoked rindless back bacon, smoked rindless back bacon,tesco everyday value ,60,4,0,5,1,1.0,rashers,0
+specialty s cafe - butter croissant, butter croissant,specialty s cafe ,600,30,69,13,970,1.0,croissant,11
+quaker oats - oat so simple - sweet cinnamon with 180ml s s milk, oat so simple - sweet cinnamon with 180ml s s milk,quaker oats ,205,5,30,9,100,33.0,g,14
+tesco everyday value - smoked rindless back bacon, smoked rindless back bacon,tesco everyday value ,180,11,1,15,3,3.0,rashers,0
+2 medium eggs - scramble eggs, scramble eggs,2 medium eggs ,195,12,0,18,210,3.0,eggs,0
+sainsbury s - white burger buns, white burger buns,sainsbury s ,160,2,28,5,230,1.0,bun,2
+generic - lemsip max, lemsip max,generic ,40,0,10,0,258,2.0,sachet,10
+tesco value - clear honey, clear honey,tesco value ,98,0,24,0,0,30.0,g,24
+hovis - wholemeal bread  medium , wholemeal bread  medium ,hovis ,352,3,60,16,576,4.0,slice,6
+tesco everyday value - smoked rindless back bacon, smoked rindless back bacon,tesco everyday value ,300,18,2,26,5,5.0,rashers,0
+flora - buttery, buttery,flora ,260,28,2,2,240,40.0,g,2
+quaker oats heaps of fruit sachets - oats banana blueberry, oats banana blueberry,quaker oats heaps of fruit sachets ,193,3,31,9,94,1.0,sachet,16
+morrisons - banana, banana,morrisons ,103,0,23,1,0,100.0,g,21
+generic - lemsip max, lemsip max,generic ,20,0,5,0,129,1.0,sachet,5
+tesco value - clear honey, clear honey,tesco value ,49,0,12,0,0,15.0,g,12
+morrisons - banana, banana,morrisons ,52,0,12,1,0,50.0,g,10
+morrisons - bicz cheese crackers, bicz cheese crackers,morrisons ,80,3,11,1,250,5.0,crackers,1
+cheesy broccoli quinoa,,cheesy broccoli quinoa,380,14,47,19,497,1.0,serving s ,5

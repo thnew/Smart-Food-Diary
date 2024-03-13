@@ -1,6 +1,5 @@
 pandas
 streamlit
-streamlit_javascript
 python-dotenv
 st-annotated-text
 
@@ -9,3 +8,15 @@ openai
 
 # For DBerta version
 transformers
+tensorflow
+tf-keras
+
+# Word2Vec
+# gensim
+# nltk
+# pyspellchecker
+
+# API
+fastapi
+uvicorn
+nltk
