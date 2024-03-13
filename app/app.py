@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from components.highlighted_textarea import highlighted_textarea
 from classes.get_nutrition_values import get_annotated_input_text, get_nutrition_values, get_text_highlight_colors
 from classes.extract_meals_from_text import extract_meals_from_input
@@ -58,14 +59,29 @@ for input in inputs:
         #text_highights = get_text_highlight_colors(input.input_text, input.extracted_meals)
         #print(text_highights)
 
-        nutrition_values = get_nutrition_values(input.extracted_meals)
+        input.extracted_meals = get_nutrition_values(input.extracted_meals)
 
-
-        st.write(", ".join([f"{cal}ccal" for cal in nutrition_values['matched_calories']]))
+        st.write(", ".join([f"{cal}ccal" for cal in input.extracted_meals['matched_calories']]))
 
         if input.extracted_meals.shape[0] > 0:
             #annotated = get_annotated_input_text(input.input_text, input.extracted_meals)
 
             if show_details:
                 st.subheader("Found datasets")
-                st.dataframe(nutrition_values)
+                st.dataframe(input.extracted_meals)
+
+st.subheader("Total")
+all_nutrition_values = pd.concat([x.extracted_meals for x in inputs])
+all_nutrition_values['food'] = all_nutrition_values['matched_food']# + ", " + all_nutrition_values['matched_quantity'].str + " " + all_nutrition_values['matched_unit']
+all_nutrition_values = all_nutrition_values[['food', 'matched_calories', 'matched_carbs', 'matched_protein', 'matched_fat']]
+all_nutrition_values = pd.concat([
+    all_nutrition_values,
+    pd.DataFrame({
+        'food': ["Total"],
+        'matched_calories': [sum(all_nutrition_values['matched_calories'].astype(int))],
+        'matched_carbs': [sum(all_nutrition_values['matched_carbs'].astype(int))],
+        'matched_protein': [sum(all_nutrition_values['matched_protein'].astype(int))],
+        'matched_fat': [sum(all_nutrition_values['matched_fat'].astype(int))]
+    })
+])
+st.dataframe(all_nutrition_values)
