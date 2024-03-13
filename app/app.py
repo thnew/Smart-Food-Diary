@@ -3,7 +3,6 @@ import streamlit as st
 import pandas as pd
 from dotenv import load_dotenv
 from components.highlighted_textarea import highlighted_textarea
-from classes.extract_meals_from_text import extract_meals_from_input
 from classes.meal_input import MealInput
 from annotated_text import annotated_text
 
@@ -63,7 +62,7 @@ for input in inputs:
 
 st.subheader("Total")
 all_nutrition_values = pd.concat([x.extracted_meals for x in inputs])
-all_nutrition_values['name'] = all_nutrition_values['matched_name']# + ", " + all_nutrition_values['matched_quantity'].str + " " + all_nutrition_values['matched_unit']
+all_nutrition_values['name'] = all_nutrition_values['matched_name']# + ", " + all_nutrition_values['matched_amount'].str + " " + all_nutrition_values['matched_unit']
 all_nutrition_values = all_nutrition_values[['name', 'matched_calories', 'matched_carbs', 'matched_protein', 'matched_fat']]
 all_nutrition_values = pd.concat([
     all_nutrition_values,

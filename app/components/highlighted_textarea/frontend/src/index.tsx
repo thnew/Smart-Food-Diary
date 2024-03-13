@@ -52,8 +52,6 @@ Streamlit.events.addEventListener(
     // Get the RenderData from the event
     const data = (event as CustomEvent<RenderData>).detail
 
-    console.log("Data received in the frontend: ", data)
-
     // RenderData.args is the JSON dictionary of arguments sent from the
     // Python script.
     apiUrl = data.args["api_url"]
@@ -160,8 +158,9 @@ async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
     const result = await fetch(apiUrl + "?text=" + text, {
       signal: requestController.signal,
     })
+
     resultParsed = (await result.json()) as ExtractResults
-    console.log(resultParsed)
+
     refreshLabels(resultParsed)
 
     hideSpinner()
@@ -169,6 +168,8 @@ async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
     return resultParsed
   } catch (e) {
     const abort = (e as DOMException).name === "AbortError"
+
+    console.error(e);
 
     if (!abort) hideSpinner()
     return new ExtractResults()
