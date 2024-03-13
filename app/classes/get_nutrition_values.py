@@ -4,6 +4,7 @@ import difflib
 from difflib import SequenceMatcher
 import time
 
+# TODO: This will load the dataframe on every request, we should cache it or move it to the API
 nutrition_dataset = pd.read_csv('data/nutrition_dataset.csv', delimiter=',')
 # nutrition_dataset = nutrition_dataset.sample(10000)
 

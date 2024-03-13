@@ -13,7 +13,10 @@ import warnings
 warnings.filterwarnings("ignore")
 
 load_dotenv()
-apikey = os.environ.get('OPENAPI_APIKEY')
+api_url = os.environ.get('API_URL')
+openapi_apikey = os.environ.get('OPENAPI_APIKEY')
+
+print(api_url)
 
 # Split up input in rows and extract
 def extract_meals_from_input(text: str, extraction_model: str) -> pd.DataFrame:
@@ -59,7 +62,7 @@ def extract_meals_from_text(food_diary_entry: str, extraction_model: str) -> pd.
 
 #@st.cache_data
 def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
-    client = OpenAI(api_key=apikey)
+    client = OpenAI(api_key=openapi_apikey)
 
     completion = client.chat.completions.create(
         model="gpt-3.5-turbo-0613",
@@ -162,7 +165,7 @@ def get_result_from_deberta_api(text: str) -> pd.DataFrame:
     response = None
     for attempts in range(1, 4):
         try:
-            url = "https://ner-food-ctgsi4wqxa-ew.a.run.app/"
+            url = api_url
             params = {
                 "text": text.lower()
             }

@@ -25,7 +25,6 @@ st.markdown("Start filling out your diary to see your calories")
 title_cell_2.text('')
 title_cell_2.text('')
 #config_popover = title_cell_2.popover("Config")
-extraction_model = st.selectbox("Which model to use for meal extraction", ["deberta-local", "deberta-api", "chatgpt"])
 show_details = st.toggle('Show detailed output', True)
 
 inputs = [
