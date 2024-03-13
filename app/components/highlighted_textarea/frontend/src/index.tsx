@@ -9,26 +9,37 @@ textarea.addEventListener("blur", () => container.classList.remove("focused"))
 let key = ""
 let value = ""
 textarea.addEventListener("blur", async () => {
-  value = value
+  value = textarea.innerText
+  Streamlit.setFrameHeight()
+
+  const current_value = value
     .split("\n")
     .map((x: string) => x.trim())
     .join("\n")
-  const inputValue = textarea.innerText
+  const input_value = textarea.innerText
     .split("\n")
     .map((x: string) => x.trim())
     .join("\n")
 
-  const valueChanged = value !== inputValue
+  const valueChanged = current_value !== input_value
   if (!valueChanged) return
-
-  container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
-  const result = await analyzeMeals(textarea.innerText)
 
   Streamlit.setComponentValue({
     value: textarea.innerText,
-    dataframe: result,
+    dataframe: await analyzeMeals(textarea.innerText),
   })
-  Streamlit.setFrameHeight()
+})
+
+textarea.addEventListener("keydown", async (e) => {
+  if (!(e.metaKey || e.ctrlKey) || e.key !== "Enter") return
+
+  value = textarea.innerText
+  Streamlit.setComponentValue({
+    value: value,
+    dataframe: await analyzeMeals(value),
+  })
+
+  textarea.blur()
 })
 
 textarea.addEventListener("input", () => {
@@ -92,6 +103,9 @@ interface ExtractResults {
 }
 
 async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
+  container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
+  console.log("HUHU")
+
   let resultParsed: ExtractResults
   try {
     showSpinner()
