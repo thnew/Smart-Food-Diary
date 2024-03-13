@@ -19,3 +19,4 @@ tf-keras
 # API
 fastapi
 uvicorn
+nltk

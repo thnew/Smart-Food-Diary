@@ -9,7 +9,7 @@ class MealInput:
         self.id = id
         self.title = title
         self.value = input_text
-        self.extracted_meals = pd.DataFrame(columns=['food', 'quantity', 'unit']) if parsed_meals is None else parsed_meals
+        self.extracted_meals = pd.DataFrame(columns=['name', 'amount', 'unit']) if parsed_meals is None else parsed_meals
 
     def store_in_cache(self):
         st.query_params[self.id] = self.value

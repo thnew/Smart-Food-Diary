@@ -91,17 +91,17 @@ type LabelDefinition = [start: number, end: number, color: string]
 const colors = ["#50C9CE", "#72A1E5", "#9883E5", "#FCD3DE"]
 
 class ExtractResults {
-  food: string[] = []
-  food_start: number[] = []
-  food_end: number[] = []
+  name: string[] = []
+  name_start: number[] = []
+  name_end: number[] = []
   unit: string[] = []
   unit_start: number[] = []
   unit_end: number[] = []
-  quantity: string[] = []
-  quantity_start: number[] = []
-  quantity_end: number[] = []
-  matched_food: string[] = []
-  matched_quantity: string[] = []
+  amount: string[] = []
+  amount_start: number[] = []
+  amount_end: number[] = []
+  matched_name: string[] = []
+  matched_amount: string[] = []
   matched_unit: string[] = []
   matched_calories: number[] = []
   matched_carbs: number[] = []
@@ -134,17 +134,17 @@ async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
     showSpinner()
     // await new Promise((resolve) => setTimeout(resolve, 1000))
     // resultParsed = {
-    //   food: ["Fanta", "Steak"],
-    //   food_start: [10, 22],
-    //   food_end: [15, 27],
+    //   name: ["Fanta", "Steak"],
+    //   name_start: [10, 22],
+    //   name_end: [15, 27],
     //   unit: ["glasses", ""],
     //   unit_start: [2, -1],
     //   unit_end: [9, -1],
-    //   quantity: ["2", "a"],
-    //   quantity_start: [0, 20],
-    //   quantity_end: [1, 21],
-    //   matched_food: ["Subway Fanta", "Blockhouse Steak"],
-    //   matched_quantity: ["2", "a"],
+    //   amount: ["2", "a"],
+    //   amount_start: [0, 20],
+    //   amount_end: [1, 21],
+    //   matched_name: ["Subway Fanta", "Blockhouse Steak"],
+    //   matched_amount: ["2", "a"],
     //   matched_unit: ["glasses", ""],
     //   matched_calories: [200, 300],
     //   matched_carbs: [20, 30],
@@ -225,20 +225,20 @@ function getLabeledText(text: string, labels: LabelDefinition[]): Node[] {
   return elements
 }
 
-function readLabelsFromResult(resultParsed: any): LabelDefinition[] {
+function readLabelsFromResult(resultParsed: ExtractResults): LabelDefinition[] {
   const labels: LabelDefinition[] = []
-  for (let i = 0; i < resultParsed.food.length; i++) {
+  for (let i = 0; i < resultParsed.name.length; i++) {
     const start = Math.min(
       ...[
-        resultParsed.food_start[i],
-        resultParsed.quantity_start[i],
+        resultParsed.name_start[i],
+        resultParsed.amount_start[i],
         resultParsed.unit_start[i],
       ].filter((x) => x >= 0)
     )
     const end = Math.max(
       ...[
-        resultParsed.food_end[i],
-        resultParsed.quantity_end[i],
+        resultParsed.name_end[i],
+        resultParsed.amount_end[i],
         resultParsed.unit_end[i],
       ].filter((x) => x >= 0)
     )

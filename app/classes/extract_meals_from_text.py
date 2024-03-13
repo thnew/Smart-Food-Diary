@@ -26,7 +26,7 @@ def extract_meals_from_input(text: str, extraction_model: str) -> pd.DataFrame:
     lines = text.split("\n")
 
     # Go through every row and parse the meal names, units and amounts of of them
-    meals_df = pd.DataFrame(columns=['food', 'food_start', 'food_end', 'unit', 'unit_start', 'unit_end', 'quantity', 'quantity_start', 'quantity_end'])
+    meals_df = pd.DataFrame(columns=['name', 'name_start', 'name_end', 'unit', 'unit_start', 'unit_end', 'amount', 'amount_start', 'amount_end'])
     for row in lines:
         meals_df = pd.concat([meals_df, extract_meals_from_text(row, extraction_model)])
 
@@ -34,7 +34,7 @@ def extract_meals_from_input(text: str, extraction_model: str) -> pd.DataFrame:
 
 def extract_meals_from_text(food_diary_entry: str, extraction_model: str) -> pd.DataFrame:
     if len(food_diary_entry) == 0:
-        return pd.DataFrame(columns=['food', 'quantity', 'unit'])
+        return pd.DataFrame(columns=['name', 'amount', 'unit'])
 
     time = current_milli_time()
 
@@ -49,11 +49,11 @@ def extract_meals_from_text(food_diary_entry: str, extraction_model: str) -> pd.
             df = get_result_from_chat_gpt3(food_diary_entry)
 
         case _:
-            return pd.DataFrame(columns=['food', 'quantity', 'unit'])
+            return pd.DataFrame(columns=['name', 'amount', 'unit'])
 
     print("TIME TOTAL TO EXTRACT", current_milli_time() - time)
 
-    columns_to_convert = ['food_start', 'food_end', 'quantity_start', 'quantity_end', 'unit_start', 'unit_end']
+    columns_to_convert = ['name_start', 'name_end', 'amount_start', 'amount_end', 'unit_start', 'unit_end']
     df[columns_to_convert] = df[columns_to_convert].fillna(-1)
     df[columns_to_convert] = df[columns_to_convert].astype(int)
 
@@ -75,42 +75,42 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
                 "parameters": {
                     "type": "object",
                     "properties": {
-                        "food": {
+                        "name": {
                             "type": "array",
                             "items": {
                                 "type": "string"
                             },
                             "description": "a list of foods the prompt has."
                         },
-                        "food_start": {
+                        "name_start": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
                             "description": "Absolute start index for the corresponding food."
                         },
-                        "food_end": {
+                        "name_end": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
                             "description": "end index for the corresponding food, excluding the last chracter."
                         },
-                        "quantity": {
+                        "amount": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
                             "description": "list of numbers, corresponding to the above foods. Put null if nothing found."
                         },
-                        "quantity_start": {
+                        "amount_start": {
                             "type": "array",
                             "items": {
                                 "type": "number"
                             },
                             "description": "Absolute start index within the whole text for the corresponding quantity."
                         },
-                        "quantity_end": {
+                        "amount_end": {
                             "type": "array",
                             "items": {
                                 "type": "number"
@@ -139,7 +139,7 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
                             "description": "end index for the corresponding units, excluding the last chracter."
                         }
                     },
-                    "required": ["food", "food_start", 'food_end', "quantity", "quantity_start", "quantity_end", "unit", "unit_start", "unit_end"]
+                    "required": ["name", "name_start", 'name_end', "amount", "amount_start", "amount_end", "unit", "unit_start", "unit_end"]
                 }
             }
         ],
@@ -148,7 +148,7 @@ def get_result_from_chat_gpt3(food_diary_entry: str) -> pd.DataFrame:
     )
 
     if completion.choices[0].message.function_call is None:
-        df = pd.DataFrame(columns=["food", "food_start", 'food_end', "quantity", "quantity_start", "quantity_end", "unit", "unit_start", "unit_end"])
+        df = pd.DataFrame(columns=["name", "name_start", 'name_end', "amount", "amount_start", "amount_end", "unit", "unit_start", "unit_end"])
 
         return df
 
@@ -174,7 +174,7 @@ def get_result_from_deberta_api(text: str) -> pd.DataFrame:
             print(f"Failed {attempts} times")
 
     if response is None:
-        return pd.DataFrame(columns=["food", "food_start", 'food_end', "quantity", "quantity_start", "quantity_end", "unit", "unit_start", "unit_end"])
+        return pd.DataFrame(columns=["name", "name_start", 'name_end', "amount", "amount_start", "amount_end", "unit", "unit_start", "unit_end"])
 
     return pd.DataFrame(response)
 
@@ -266,10 +266,10 @@ def clean_text(result):
     # Iterate over the resulting entities and append the information
     for entity in result:
         if "FOOD" in entity["entity"]:
-            current_food = {"food": entity["word"], "food_start": entity["start"], "food_end": entity["end"]}
+            current_food = {"name": entity["word"], "name_start": entity["start"], "name_end": entity["end"]}
             foods.append(current_food)
         elif "QUANTITY" in entity["entity"]:
-            current_quantity = {"quantity": entity["word"], "quantity_start": entity["start"], "quantity_end": entity["end"]}
+            current_quantity = {"amount": entity["word"], "amount_start": entity["start"], "amount_end": entity["end"]}
             quantities.append(current_quantity)
         elif "UNIT" in entity["entity"]:
             current_unit = {"unit": entity["word"], "unit_start": entity["start"], "unit_end": entity["end"]}
@@ -282,10 +282,10 @@ def clean_text(result):
 
     # Check if DataFrames are empty, and create them if needed
     if df_food.empty:
-        df_food = pd.DataFrame(columns=["quantity", "quantity_start", "quantity_end"])
+        df_food = pd.DataFrame(columns=["amount", "amount_start", "amount_end"])
 
     if df_quantity.empty:
-        df_quantity = pd.DataFrame(columns=["quantity", "quantity_start", "quantity_end"])
+        df_quantity = pd.DataFrame(columns=["amount", "amount_start", "amount_end"])
 
     if df_unit.empty:
         df_unit = pd.DataFrame(columns=["unit", "unit_start", "unit_end"])
@@ -299,8 +299,8 @@ def clean_text(result):
 
     # Clean the text
     for i, rows in df_edited.iterrows():
-        df_edited['food'][i] = str(df_edited['food'][i]).replace("▁"," ").strip().lower().capitalize()
-        df_edited['quantity'][i] = str(df_edited['quantity'][i]).replace("▁"," ").strip().lower().capitalize()
+        df_edited['name'][i] = str(df_edited['name'][i]).replace("▁"," ").strip().lower().capitalize()
+        df_edited['amount'][i] = str(df_edited['amount'][i]).replace("▁"," ").strip().lower().capitalize()
         df_edited['unit'][i] = str(df_edited['unit'][i]).replace("▁"," ").strip()
 
 
@@ -309,12 +309,12 @@ def clean_text(result):
     df_edited = df_edited.fillna(-1)
 
     # Change type for each columns
-    df_edited['food'] = df_edited['food'].astype(str)
-    df_edited['food_start'] = df_edited['food_start'].astype(int)
-    df_edited['food_end'] = df_edited['food_end'].astype(int)
+    df_edited['name'] = df_edited['name'].astype(str)
+    df_edited['name_start'] = df_edited['name_start'].astype(int)
+    df_edited['name_end'] = df_edited['name_end'].astype(int)
 
-    df_edited['quantity_start'] = df_edited['quantity_start'].astype(int)
-    df_edited['quantity_end'] = df_edited['quantity_end'].astype(int)
+    df_edited['amount_start'] = df_edited['amount_start'].astype(int)
+    df_edited['amount_end'] = df_edited['amount_end'].astype(int)
 
     df_edited['unit'] = df_edited['unit'].astype(str)
     df_edited['unit_start'] = df_edited['unit_start'].astype(int)
