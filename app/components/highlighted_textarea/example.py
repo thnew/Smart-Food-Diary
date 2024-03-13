@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 from highlighted_textarea import highlighted_textarea
 
 # Add some test code to play with the component while it's in development.
@@ -8,15 +9,15 @@ from highlighted_textarea import highlighted_textarea
 st.subheader("Example with custom component")
 
 # Create an instance of our component with a constant `name` arg, and
-# print its output value.
+# print its output input_text.
 
-if "value" not in st.session_state:
-    st.session_state.value = "2 glasses Fanta, 2 Cesars \nSalad and 1 Schnitzel and some chocolate"
+if "input_text" not in st.session_state:
+    st.session_state.input_text = "2 glasses Fanta, 2 Cesars \nSalad and 1 Schnitzel and some chocolate"
 
-st.write(st.session_state.value)
+result = highlighted_textarea(initial_value=st.session_state.input_text, key="example")
+print("RESULT",result)
+st.write(result['value'])
+st.dataframe(pd.DataFrame(result['dataframe']))
 
-value = highlighted_textarea(st.session_state.value, labels=[(2, 20, '#f00'), (20, 45)])
-st.markdown(f"Value: {value}")
-
-if value:
-    st.session_state.value = value
+if result['value']:
+    st.session_state.input_text = result['value']

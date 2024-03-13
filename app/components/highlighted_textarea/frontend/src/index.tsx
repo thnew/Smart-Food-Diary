@@ -6,7 +6,8 @@ const textarea = document.querySelector(".edit-content") as HTMLTextAreaElement
 textarea.addEventListener("focus", () => container.classList.add("focused"))
 textarea.addEventListener("blur", () => container.classList.remove("focused"))
 
-let value: string = ""
+let key = ""
+let value = ""
 textarea.addEventListener("blur", async () => {
   value = value
     .split("\n")
@@ -26,7 +27,10 @@ textarea.addEventListener("blur", async () => {
   console.log(value)
   console.log(inputValue)
 
-  Streamlit.setComponentValue(result)
+  Streamlit.setComponentValue({
+    value: inputValue,
+    dataframe: result,
+  })
   Streamlit.setFrameHeight()
 })
 
@@ -49,7 +53,8 @@ Streamlit.events.addEventListener(
 
     // RenderData.args is the JSON dictionary of arguments sent from the
     // Python script.
-    value = data.args["value"]
+    key = data.args["key"]
+    value = value || data.args["initial_value"] || ""
     textarea.innerText = value
 
     // We tell Streamlit to update our frameHeight after each render event, in

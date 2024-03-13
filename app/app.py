@@ -37,13 +37,17 @@ for input in inputs:
     with st.container(border=True):
         st.subheader(input.title)
 
-        input.input_text = highlighted_textarea(
-            value=input.input_text,
+        result = highlighted_textarea(
+            initial_value=input.value,
             key=input.id)
+
         # We cache texts and results for next reload
+        input.value = result['value']
         input.store_in_cache()
 
-        input.input_text = str(input.input_text)
+        input.extracted_meals = result['dataframe']
+
+
 
         # input.input_text = st.text_area(
         #     input.id,
@@ -51,19 +55,15 @@ for input in inputs:
         #     value=input.input_text,
         #     placeholder="1 egg and a glass of milk")
 
-        input.extracted_meals = extract_meals_from_input(input.input_text, extraction_model)
+        #input.extracted_meals = extract_meals_from_input(input.input_text, extraction_model)
 
-        text_highights = get_text_highlight_colors(input.input_text, input.extracted_meals)
-        print(text_highights)
-        highlighted_textarea(value=input.input_text, labels=text_highights,
-            key=f"{input.id}_tmp")
-        # We cache texts )
-
+        #text_highights = get_text_highlight_colors(input.input_text, input.extracted_meals)
+        #print(text_highights)
 
         nutrition_values = get_nutrition_values(input.extracted_meals)
 
         if input.extracted_meals.shape[0] > 0:
-            # annotated = get_annotated_input_text(input.input_text, input.extracted_meals)
+            #annotated = get_annotated_input_text(input.input_text, input.extracted_meals)
 
             if show_details:
                 st.subheader("Found datasets")

@@ -1,4 +1,5 @@
 import os
+import pandas as pd
 import streamlit.components.v1 as components
 
 # Create a _RELEASE constant. We'll set this to False while we're developing
@@ -43,7 +44,7 @@ else:
 # `declare_component` and call it done. The wrapper allows us to customize
 # our component's API: we can pre-process its input args, post-process its
 # output value, and add a docstring for users.
-def highlighted_textarea(value='', labels=[], key=None):
+def highlighted_textarea(key=None, initial_value=None):
     """Create a new instance of "highlighted_textarea".
 
     Parameters
@@ -70,7 +71,9 @@ def highlighted_textarea(value='', labels=[], key=None):
     #
     # "default" is a special argument that specifies the initial return
     # value of the component before the user has interacted with it.
-    component_value = _component_func(value=value, labels=labels, key=key, default=value)
+    component_value = _component_func(key=key, initial_value=initial_value, default={"value": initial_value, "dataframe": {}})
+
+    component_value['dataframe'] = pd.DataFrame(component_value['dataframe'])
 
     # We could modify the value returned from the component if we wanted.
     # There's no need to do this in our simple example - but it's an option.

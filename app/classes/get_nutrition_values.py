@@ -5,7 +5,7 @@ from difflib import SequenceMatcher
 import time
 
 nutrition_dataset = pd.read_csv('data/nutrition_dataset.csv', delimiter=',')
-nutrition_dataset = nutrition_dataset.sample(10000)
+# nutrition_dataset = nutrition_dataset.sample(10000)
 
 food_names = nutrition_dataset['Meal'].dropna().tolist()
 
