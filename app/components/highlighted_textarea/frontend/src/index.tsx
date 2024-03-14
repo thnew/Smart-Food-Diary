@@ -2,6 +2,8 @@ import { Streamlit, RenderData } from "streamlit-component-lib"
 
 const container = document.querySelector(".textarea-container") as HTMLElement
 const textarea = document.querySelector(".edit-content") as HTMLTextAreaElement
+const spinner = document.querySelector(".edit-content-spinner") as HTMLElement
+const total = document.querySelector(".edit-content-total") as HTMLElement
 
 textarea.addEventListener("focus", () => container.classList.add("focused"))
 textarea.addEventListener("blur", () => container.classList.remove("focused"))
@@ -161,6 +163,7 @@ async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
 
     refreshLabels(resultParsed)
 
+    total.innerText = `Total: ${resultParsed.matched_calories.reduce((p, total) => p + total, 0)}ccal`
     hideSpinner()
 
     return resultParsed
@@ -175,13 +178,13 @@ async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
 }
 
 function showSpinner() {
-  const spinner = document.querySelector(".edit-content-spinner") as HTMLElement
   spinner.style.display = "block"
+  total.style.display = "none"
 }
 
 function hideSpinner() {
-  const spinner = document.querySelector(".edit-content-spinner") as HTMLElement
   spinner.style.display = "none"
+  total.style.display = "block"
 }
 
 // Some functions
