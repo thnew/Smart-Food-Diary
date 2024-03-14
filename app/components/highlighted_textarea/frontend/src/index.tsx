@@ -265,7 +265,7 @@ function getLabeledText(text: string, labels: LabelDefinition[]): Node[] {
 
     const caloryLabel = document.createElement("div")
     caloryLabel.classList.add("highlight-text-label")
-    caloryLabel.innerText = `${Math.round(calories)}ccal`
+    caloryLabel.innerText = `${Math.round(calories)}cal`
     label.appendChild(caloryLabel)
 
     if (color) label.style.background = color
