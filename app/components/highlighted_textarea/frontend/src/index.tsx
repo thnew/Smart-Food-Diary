@@ -33,8 +33,6 @@ textarea.addEventListener("keydown", async (e) => {
     value: value,
     dataframe: await analyzeMeals(value),
   })
-
-  textarea.blur()
 })
 
 textarea.addEventListener("input", () => {
@@ -84,7 +82,7 @@ Streamlit.setComponentReady()
 // `height` parameter here to have it default to our scrollHeight.
 Streamlit.setFrameHeight()
 
-type LabelDefinition = [start: number, end: number, color: string]
+type LabelDefinition = [start: number, end: number, color: string, calories: number]
 
 const colors = ["#50C9CE", "#72A1E5", "#9883E5", "#FCD3DE"]
 
@@ -199,7 +197,7 @@ function refreshLabels(results: ExtractResults) {
 function getLabeledText(text: string, labels: LabelDefinition[]): Node[] {
   const elements: Node[] = []
 
-  labels.forEach(([start, end, color]) => {
+  labels.forEach(([start, end, color, calories]) => {
     const labelContainer = document.createElement("div")
     labelContainer.classList.add("edit-content")
     labelContainer.classList.add("edit-content-back")
@@ -213,12 +211,18 @@ function getLabeledText(text: string, labels: LabelDefinition[]): Node[] {
     }
 
     // Then we add the label
-    const span = document.createElement("span")
-    span.classList.add("highlight-text")
-    if (color) span.style.background = color
+    const label = document.createElement("div")
+    label.classList.add("highlight-text")
 
-    span.appendChild(document.createTextNode(text.slice(start, end)))
-    labelContainer.appendChild(span)
+    const caloryLabel = document.createElement("div")
+    caloryLabel.classList.add("highlight-text-label")
+    caloryLabel.innerText = `${Math.round(calories)}ccal`
+    label.appendChild(caloryLabel)
+
+    if (color) label.style.background = color
+
+    label.appendChild(document.createTextNode(text.slice(start, end)))
+    labelContainer.appendChild(label)
 
     elements.push(labelContainer)
   })
@@ -245,7 +249,7 @@ function readLabelsFromResult(resultParsed: ExtractResults): LabelDefinition[] {
     )
 
     const color = colors[i % colors.length]
-    labels.push([start, end, color])
+    labels.push([start, end, color, resultParsed.matched_calories[i]])
   }
 
   return labels
