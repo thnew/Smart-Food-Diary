@@ -4,12 +4,6 @@ const container = document.querySelector(".textarea-container") as HTMLElement
 const textarea = document.querySelector(".edit-content") as HTMLTextAreaElement
 const spinner = document.querySelector(".edit-content-spinner") as HTMLElement
 
-const summary = document.querySelector(".summary-overlay") as HTMLElement
-const summaryButton = document.querySelector(".summary-button") as HTMLElement
-summaryButton.onclick = () => summary.classList.remove("summary-overlay-hidden")
-const closeSummaryButton = document.querySelector(".close-summary-button") as HTMLElement
-closeSummaryButton.onclick = () => summary.classList.add("summary-overlay-hidden")
-
 const totalCalories = document.querySelectorAll(
   ".total-calories"
 ) as NodeListOf<HTMLElement>
