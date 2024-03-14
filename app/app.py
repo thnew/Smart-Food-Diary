@@ -8,12 +8,16 @@ load_dotenv()
 api_url = os.environ.get('API_URL')
 
 st.markdown("""
-    <h1>What did you eat today?</h1>
+    <h1>
+        What did you eat today?
+    </h1>
     <div class="subtitle">Start typing to see your calories</div>
     <style>
         .block-container {
             padding-left: 0 !important;
             padding-right: 0 !important;
+            padding-bottom: 0 !important;
+            padding-top: 4rem !important;
         }
         h1 {
             text-align: center;
@@ -30,6 +34,20 @@ st.markdown("""
             font-style: normal;
             font-weight: 400;
             line-height: 150%;
+        }
+
+        @media only screen and (max-width: 600px) {
+            .block-container {
+                padding-top: 2rem !important;
+            }
+
+            h1 span {
+                font-size: 1.5rem !important;
+            }
+
+            .subtitle {
+                font-size: 1rem !important;
+            }
         }
     </style>
     """, unsafe_allow_html=True)

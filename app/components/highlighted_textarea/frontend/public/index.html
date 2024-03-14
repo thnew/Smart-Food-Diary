@@ -73,7 +73,7 @@
         border-radius: 0.5rem;
         padding: 0.25rem 0;
         transition: opacity 1s ease;
-        opacity: 0.5;
+        opacity: 0.25;
         transform: translateX(0);
       }
 
@@ -87,7 +87,7 @@
       }
 
       .textarea-container.focused .highlight-text {
-        opacity: 0.25;
+        opacity: 0.15;
       }
 
       .edit-content-spinner {
@@ -108,22 +108,22 @@
 
       .footer-calories-bottom {
         padding-right: 1rem;
-        color: #94A3B8;
+        color: #94a3b8;
       }
 
-      .value-container {
+      .summary {
         display: flex;
         justify-content: space-evenly;
         margin-top: 1rem;
       }
 
-      .value-item {
+      .summary-item {
         padding: 1rem;
         --background: #0001;
         border-radius: 1rem;
       }
 
-      .value-container .value-label {
+      .summary .summary-label {
         color: #94a3b8;
         text-align: center;
         font-size: 1.09531rem;
@@ -132,7 +132,7 @@
         line-height: normal;
       }
 
-      .value-container .value-text {
+      .summary .summary-text {
         color: #1e293b;
         text-align: center;
         font-size: 2.19063rem;
@@ -150,13 +150,22 @@
       }
 
       @media only screen and (max-width: 600px) {
-        .value-container {
-          flex-direction: column;
+        .summary {
           gap: 1rem;
         }
-        .value-item {
+        .summary-item {
           padding: 0.5rem;
         }
+        .summary-label {
+          font-size: 0.75rem !important;
+        }
+        .summary-text {
+          font-size: 1rem !important;
+        }
+      }
+
+      .hidden {
+        visibility: hidden;
       }
     </style>
   </head>
@@ -167,25 +176,25 @@
       <div class="edit-content" contenteditable="true"></div>
     </div>
 
-    <div class="value-container">
-      <div class="value-item">
-        <div class="value-label">Calories</div>
-        <div class="value-text total-calories"></div>
+    <div class="summary hidden">
+      <div class="summary-item">
+        <div class="summary-label">Calories</div>
+        <div class="summary-text total-calories"></div>
       </div>
 
-      <div class="value-item">
-        <div class="value-label">Fat</div>
-        <div class="value-text total-fats"></div>
+      <div class="summary-item">
+        <div class="summary-label">Fat</div>
+        <div class="summary-text total-fats"></div>
       </div>
 
-      <div class="value-item">
-        <div class="value-label">Carbs</div>
-        <div class="value-text total-carbs"></div>
+      <div class="summary-item">
+        <div class="summary-label">Carbs</div>
+        <div class="summary-text total-carbs"></div>
       </div>
 
-      <div class="value-item">
-        <div class="value-label">Proteins</div>
-        <div class="value-text total-proteins"></div>
+      <div class="summary-item">
+        <div class="summary-label">Proteins</div>
+        <div class="summary-text total-proteins"></div>
       </div>
     </div>
 

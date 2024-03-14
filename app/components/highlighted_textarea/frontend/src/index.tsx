@@ -3,6 +3,7 @@ import { Streamlit, RenderData } from "streamlit-component-lib"
 const container = document.querySelector(".textarea-container") as HTMLElement
 const textarea = document.querySelector(".edit-content") as HTMLTextAreaElement
 const spinner = document.querySelector(".edit-content-spinner") as HTMLElement
+const summary = document.querySelector(".summary") as HTMLElement
 
 const totalCalories = document.querySelectorAll(
   ".total-calories"
@@ -147,6 +148,7 @@ async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
   let resultParsed: ExtractResults
   try {
     showSpinner()
+    hideSummary()
     // await new Promise((resolve) => setTimeout(resolve, 1000))
     // resultParsed = {
     //   name: ["Fanta", "Steak"],
@@ -205,6 +207,7 @@ async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
         ).toString())
     )
     hideSpinner()
+    showSummary()
 
     return resultParsed
   } catch (e) {
@@ -219,12 +222,18 @@ async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
 
 function showSpinner() {
   spinner.style.display = "block"
-  totalCalories.forEach((el) => (el.style.display = "none"))
 }
 
 function hideSpinner() {
   spinner.style.display = "none"
-  totalCalories.forEach((el) => (el.style.display = "block"))
+}
+
+function showSummary() {
+  summary.classList.remove("hidden")
+}
+
+function hideSummary() {
+  summary.classList.add("hidden")
 }
 
 // Some functions
