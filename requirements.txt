@@ -1,22 +1,3 @@
 pandas
 streamlit
 python-dotenv
-st-annotated-text
-
-# For OpenAI version
-openai
-
-# For DBerta version
-transformers
-tensorflow
-tf-keras
-
-# Word2Vec
-# gensim
-# nltk
-# pyspellchecker
-
-# API
-fastapi
-uvicorn
-nltk

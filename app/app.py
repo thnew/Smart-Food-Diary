@@ -1,10 +1,8 @@
 import os
 import streamlit as st
-import pandas as pd
 from dotenv import load_dotenv
 from components.highlighted_textarea import highlighted_textarea
 from classes.meal_input import MealInput
-from annotated_text import annotated_text
 
 load_dotenv()
 api_url = os.environ.get('API_URL')

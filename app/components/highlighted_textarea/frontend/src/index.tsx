@@ -109,7 +109,7 @@ type LabelDefinition = [
   calories: number
 ]
 
-const colors = ["#50C9CE", "#72A1E5", "#9883E5", "#FCD3DE"]
+const colors = ["#fbb4ae", "#b3cee3", "#cceac4", "#decce4", "#fed9a5", "#ffffcb", "#e6d8bd", "#fddbec", "#f2f2f2"]
 
 class ExtractResults {
   name: string[] = []
