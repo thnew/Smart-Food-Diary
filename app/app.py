@@ -13,6 +13,10 @@ st.markdown("""
     <h1>What did you eat today?</h1>
     <div class="subtitle">Start typing to see your calories</div>
     <style>
+        .block-container {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
         h1 {
             text-align: center;
         }
@@ -43,9 +47,13 @@ result = highlighted_textarea(
 input.value = result['value']
 input.store_in_cache()
 
-st.stop()
 input.extracted_meals = result['dataframe']
 
+if input.extracted_meals is not None and 'matched_calories' in input.extracted_meals.columns:
+    total = input.extracted_meals['matched_calories'].sum()
+    st.write(f"Total: {total}ccal")
+
+st.stop()
 st.write(", ".join([f"{cal}ccal" for cal in input.extracted_meals['matched_calories']]))
 
 if input.extracted_meals.shape[0] > 0:

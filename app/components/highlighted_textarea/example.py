@@ -8,7 +8,7 @@ from highlighted_textarea import highlighted_textarea
 
 st.subheader("Example with custom component")
 
-result = highlighted_textarea(initial_value="2 glasses Fanta, 2 Cesars \nSalad and 1 Schnitzel and some chocolate", api_url="http://localhost:8000/", key="example")
+result = highlighted_textarea(initial_value="2 glasses Fanta, 2 Cesars Salad.\n    1 Schnitzel and some chocolate", api_url="http://localhost:8000/", key="example")
 
 st.write(result['value'])
 st.dataframe(pd.DataFrame(result['dataframe']))
