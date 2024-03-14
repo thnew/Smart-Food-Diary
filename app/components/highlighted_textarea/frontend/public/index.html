@@ -55,6 +55,8 @@
 
       .edit-content-total {
         z-index: 0;
+        display: flex;
+        gap: 0.25rem;
         position: absolute;
         right: 2rem;
         bottom: 5.75rem;
@@ -125,6 +127,70 @@
         margin-right: 0.25rem;
       }
 
+      .summary-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: #fff;
+        z-index: 1000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .summary-overlay-hidden {
+        display: none;
+      }
+
+      .value-container {
+        display: flex;
+        gap: 2rem;
+      }
+
+      .value-item {
+        padding: 1rem;
+        --background: #0001;
+        border-radius: 1rem;
+      }
+
+      .value-container .value-label {
+        color: #94a3b8;
+        text-align: center;
+        font-size: 1.09531rem;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+
+      .value-container .value-text {
+        color: #1e293b;
+        text-align: center;
+        font-size: 2.19063rem;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+
+      .summary-overlay .close-summary-button {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        height: 3rem;
+        justify-content: center;
+        align-items: center;
+        gap: 0.25rem;
+        flex: 1 0 0;
+        align-self: stretch;
+        border-radius: 1rem;
+        background: #3b82f6;
+        margin: 1.75rem;
+        border: 0;
+        color: #fff;
+      }
+
       @keyframes spin {
         0% {
           transform: rotate(0deg);
@@ -137,10 +203,38 @@
   </head>
   <body>
     <div class="textarea-container">
-      <div class="edit-content-total"></div>
+      <div class="edit-content-total">
+        <span class="total-calories">0</span> Calories
+      </div>
       <div class="edit-content-spinner"></div>
 
       <div class="edit-content" contenteditable="true"></div>
+
+      <div class="summary-overlay summary-overlay-hidden">
+        <div class="value-container">
+          <div class="value-item">
+            <div class="value-label">Calories</div>
+            <div class="value-text total-calories"></div>
+          </div>
+
+          <div class="value-item">
+            <div class="value-label">Fat</div>
+            <div class="value-text total-fats"></div>
+          </div>
+
+          <div class="value-item">
+            <div class="value-label">Carbs</div>
+            <div class="value-text total-carbs"></div>
+          </div>
+
+          <div class="value-item">
+            <div class="value-label">Proteins</div>
+            <div class="value-text total-proteins"></div>
+          </div>
+        </div>
+
+        <button class="close-summary-button">Back</button>
+      </div>
 
       <button class="summary-button">
         <svg

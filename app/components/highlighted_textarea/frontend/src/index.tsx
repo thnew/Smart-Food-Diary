@@ -3,7 +3,25 @@ import { Streamlit, RenderData } from "streamlit-component-lib"
 const container = document.querySelector(".textarea-container") as HTMLElement
 const textarea = document.querySelector(".edit-content") as HTMLTextAreaElement
 const spinner = document.querySelector(".edit-content-spinner") as HTMLElement
-const total = document.querySelector(".edit-content-total") as HTMLElement
+
+const summary = document.querySelector(".summary-overlay") as HTMLElement
+const summaryButton = document.querySelector(".summary-button") as HTMLElement
+summaryButton.onclick = () => summary.classList.remove("summary-overlay-hidden")
+const closeSummaryButton = document.querySelector(".close-summary-button") as HTMLElement
+closeSummaryButton.onclick = () => summary.classList.add("summary-overlay-hidden")
+
+const totalCalories = document.querySelectorAll(
+  ".total-calories"
+) as NodeListOf<HTMLElement>
+const totalFats = document.querySelectorAll(
+  ".total-fats"
+) as NodeListOf<HTMLElement>
+const totalCarbs = document.querySelectorAll(
+  ".total-carbs"
+) as NodeListOf<HTMLElement>
+const totalProteins = document.querySelectorAll(
+  ".total-proteins"
+) as NodeListOf<HTMLElement>
 
 textarea.addEventListener("focus", () => container.classList.add("focused"))
 textarea.addEventListener("blur", () => container.classList.remove("focused"))
@@ -84,7 +102,12 @@ Streamlit.setComponentReady()
 // `height` parameter here to have it default to our scrollHeight.
 Streamlit.setFrameHeight()
 
-type LabelDefinition = [start: number, end: number, color: string, calories: number]
+type LabelDefinition = [
+  start: number,
+  end: number,
+  color: string,
+  calories: number
+]
 
 const colors = ["#50C9CE", "#72A1E5", "#9883E5", "#FCD3DE"]
 
@@ -163,14 +186,37 @@ async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
 
     refreshLabels(resultParsed)
 
-    total.innerText = `Total: ${resultParsed.matched_calories.reduce((p, total) => p + total, 0)}ccal`
+    totalCalories.forEach(
+      (el) =>
+        (el.innerText = Math.round(
+          resultParsed.matched_calories.reduce((p, total) => p + total, 0)
+        ).toString())
+    )
+    totalFats.forEach(
+      (el) =>
+        (el.innerText = Math.round(
+          resultParsed.matched_fat.reduce((p, total) => p + total, 0)
+        ).toString())
+    )
+    totalCarbs.forEach(
+      (el) =>
+        (el.innerText = Math.round(
+          resultParsed.matched_carbs.reduce((p, total) => p + total, 0)
+        ).toString())
+    )
+    totalProteins.forEach(
+      (el) =>
+        (el.innerText = Math.round(
+          resultParsed.matched_protein.reduce((p, total) => p + total, 0)
+        ).toString())
+    )
     hideSpinner()
 
     return resultParsed
   } catch (e) {
     const abort = (e as DOMException).name === "AbortError"
 
-    console.error(e);
+    console.error(e)
 
     if (!abort) hideSpinner()
     return new ExtractResults()
@@ -179,12 +225,12 @@ async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
 
 function showSpinner() {
   spinner.style.display = "block"
-  total.style.display = "none"
+  totalCalories.forEach((el) => (el.style.display = "none"))
 }
 
 function hideSpinner() {
   spinner.style.display = "none"
-  total.style.display = "block"
+  totalCalories.forEach((el) => (el.style.display = "block"))
 }
 
 // Some functions
