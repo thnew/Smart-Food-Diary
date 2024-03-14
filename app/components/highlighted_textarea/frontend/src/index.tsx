@@ -29,18 +29,49 @@ textarea.addEventListener("blur", async () => {
 
   Streamlit.setFrameHeight()
 
-  console.log("Value changed")
-
   Streamlit.setComponentValue({
     value: textarea.value,
     dataframe: await analyzeMeals(),
   })
 })
 
+let timeout: NodeJS.Timeout | undefined = undefined
 textarea.addEventListener("keyup", async (e: any) => {
   if (!valueAndTextareaDiffer()) return
-  console.log(e.target.selectionStart)
+
+  const affectedLabels = getSelectedLabelAndAllOnwards(textarea.selectionStart)
+  if (affectedLabels) {
+    affectedLabels.forEach((label) => {
+      label.element.remove()
+      displayedLabels.splice(displayedLabels.indexOf(label), 1)
+    })
+  }
+
+  hideSummary()
+
+  if (timeout) clearTimeout(timeout)
+  timeout = setTimeout(async () => {
+    Streamlit.setComponentValue({
+      value: textarea.value,
+      dataframe: await analyzeMeals(),
+    })
+  }, 500)
 })
+
+function getSelectedLabelAndAllOnwards(pointerIndex: number) {
+  const selected = displayedLabels.find(
+    (label) =>
+      label.label.start <= pointerIndex && label.label.end >= pointerIndex
+  )
+
+  if (!selected) return undefined
+
+  // Add all following labels
+  const index = displayedLabels.indexOf(selected)
+
+  console.log(displayedLabels.slice(index))
+  return displayedLabels.slice(index)
+}
 
 textarea.addEventListener("keydown", async (e) => {
   if (!(e.metaKey || e.ctrlKey) || e.key !== "Enter") return
@@ -49,10 +80,6 @@ textarea.addEventListener("keydown", async (e) => {
     value: textarea.value,
     dataframe: await analyzeMeals(),
   })
-})
-
-textarea.addEventListener("input", () => {
-  container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
 })
 
 /**
@@ -99,12 +126,12 @@ Streamlit.setComponentReady()
 // `height` parameter here to have it default to our scrollHeight.
 Streamlit.setFrameHeight()
 
-type LabelDefinition = [
-  start: number,
-  end: number,
-  color: string,
+type LabelDefinition = {
+  start: number
+  end: number
+  color: string
   calories: number
-]
+}
 
 const colors = [
   "#fbb4ae44",
@@ -156,8 +183,6 @@ function valueAndTextareaDiffer() {
 
 let requestController: AbortController | undefined = undefined
 async function analyzeMeals(): Promise<ExtractResults | undefined> {
-  container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
-
   const text = textarea.value
   if (text.trim() === "") return new ExtractResults()
 
@@ -241,35 +266,47 @@ function refreshLabels(results: ExtractResults) {
   getLabeledText(textarea.value, labels).forEach((el) => container.prepend(el))
 }
 
+let displayedLabels: {
+  element: HTMLDivElement
+  label: LabelDefinition
+}[] = []
 function getLabeledText(text: string, labels: LabelDefinition[]): Node[] {
   const elements: Node[] = []
 
-  labels.forEach(([start, end, color, calories]) => {
+  displayedLabels = []
+  labels.forEach((label) => {
     const labelContainer = document.createElement("div")
     labelContainer.classList.add("edit-content")
     labelContainer.classList.add("edit-content-back")
 
+    displayedLabels.push({
+      element: labelContainer,
+      label: label,
+    })
+
     // We add the original text before the label as plain text to keep the distance properly
-    if (start > 0) {
+    if (label.start > 0) {
       const preprendText = document.createElement("span")
       preprendText.classList.add("hightlight-prepend-text")
-      preprendText.innerText = text.slice(0, start)
+      preprendText.innerText = text.slice(0, label.start)
       labelContainer.appendChild(preprendText)
     }
 
     // Then we add the label
-    const label = document.createElement("div")
-    label.classList.add("highlight-text")
+    const labelElement = document.createElement("div")
+    labelElement.classList.add("highlight-text")
 
     const caloryLabel = document.createElement("div")
     caloryLabel.classList.add("highlight-text-label")
-    caloryLabel.innerText = `${Math.round(calories)}cal`
-    label.appendChild(caloryLabel)
+    caloryLabel.innerText = `${Math.round(label.calories)}cal`
+    labelElement.appendChild(caloryLabel)
 
-    if (color) label.style.background = color
+    if (label.color) labelElement.style.background = label.color
 
-    label.appendChild(document.createTextNode(text.slice(start, end)))
-    labelContainer.appendChild(label)
+    labelElement.appendChild(
+      document.createTextNode(text.slice(label.start, label.end))
+    )
+    labelContainer.appendChild(labelElement)
 
     elements.push(labelContainer)
   })
@@ -296,7 +333,12 @@ function readLabelsFromResult(resultParsed: ExtractResults): LabelDefinition[] {
     )
 
     const color = colors[i % colors.length]
-    labels.push([start, end, color, resultParsed.matched_calories[i]])
+    labels.push({
+      start,
+      end,
+      color,
+      calories: resultParsed.matched_calories[i],
+    })
   }
 
   return labels
