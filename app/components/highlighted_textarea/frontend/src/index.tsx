@@ -21,32 +21,33 @@ const totalProteins = document.querySelectorAll(
 textarea.addEventListener("focus", () => container.classList.add("focused"))
 textarea.addEventListener("blur", () => container.classList.remove("focused"))
 
-let key = ""
-let value = ""
 let apiUrl = ""
 let initialized = false
 
 textarea.addEventListener("blur", async () => {
   if (!valueAndTextareaDiffer()) return
 
-  value = textarea.innerText
   Streamlit.setFrameHeight()
 
   console.log("Value changed")
 
   Streamlit.setComponentValue({
-    value: textarea.innerText,
-    dataframe: await analyzeMeals(textarea.innerText),
+    value: textarea.value,
+    dataframe: await analyzeMeals(),
   })
+})
+
+textarea.addEventListener("keyup", async (e: any) => {
+  if (!valueAndTextareaDiffer()) return
+  console.log(e.target.selectionStart)
 })
 
 textarea.addEventListener("keydown", async (e) => {
   if (!(e.metaKey || e.ctrlKey) || e.key !== "Enter") return
 
-  value = textarea.innerText
   Streamlit.setComponentValue({
-    value: value,
-    dataframe: await analyzeMeals(value),
+    value: textarea.value,
+    dataframe: await analyzeMeals(),
   })
 })
 
@@ -68,9 +69,7 @@ Streamlit.events.addEventListener(
     // RenderData.args is the JSON dictionary of arguments sent from the
     // Python script.
     apiUrl = data.args["api_url"]
-    key = data.args["key"]
-    value = value || data.args["initial_value"] || ""
-    textarea.innerText = value
+    const value = data.args["initial_value"] || ""
 
     // We tell Streamlit to update our frameHeight after each render event, in
     // case it has changed. (This isn't strictly necessary for the example
@@ -79,9 +78,12 @@ Streamlit.events.addEventListener(
     Streamlit.setFrameHeight()
 
     if (!initialized) {
+      console.log("INIT COMPONENT")
+      textarea.value = value
+      previousValue = value
       Streamlit.setComponentValue({
         value: value,
-        dataframe: await analyzeMeals(value),
+        dataframe: await analyzeMeals(),
       })
 
       initialized = true
@@ -104,7 +106,17 @@ type LabelDefinition = [
   calories: number
 ]
 
-const colors = ["#fbb4ae", "#b3cee3", "#cceac4", "#decce4", "#fed9a5", "#ffffcb", "#e6d8bd", "#fddbec", "#f2f2f2"]
+const colors = [
+  "#fbb4ae44",
+  "#b3cee344",
+  "#cceac444",
+  "#decce444",
+  "#fed9a544",
+  "#ffffcb44",
+  "#e6d8bd44",
+  "#fddbec44",
+  "#f2f2f244",
+]
 
 class ExtractResults {
   name: string[] = []
@@ -125,49 +137,34 @@ class ExtractResults {
   matched_fat: number[] = []
 }
 
+let previousValue = ""
 function valueAndTextareaDiffer() {
-  const current_value = value
+  const current_value = previousValue
     .split("\n")
     .map((x: string) => x.trim())
     .join("\n")
-  const input_value = textarea.innerText
+  const input_value = textarea.value
     .split("\n")
     .map((x: string) => x.trim())
     .join("\n")
 
   const valueChanged = current_value !== input_value
+  previousValue = textarea.value
+
   return valueChanged
 }
 
 let requestController: AbortController | undefined = undefined
-async function analyzeMeals(text: string): Promise<ExtractResults | undefined> {
+async function analyzeMeals(): Promise<ExtractResults | undefined> {
   container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
 
+  const text = textarea.value
   if (text.trim() === "") return new ExtractResults()
 
   let resultParsed: ExtractResults
   try {
     showSpinner()
     hideSummary()
-    // await new Promise((resolve) => setTimeout(resolve, 1000))
-    // resultParsed = {
-    //   name: ["Fanta", "Steak"],
-    //   name_start: [10, 22],
-    //   name_end: [15, 27],
-    //   unit: ["glasses", ""],
-    //   unit_start: [2, -1],
-    //   unit_end: [9, -1],
-    //   amount: ["2", "a"],
-    //   amount_start: [0, 20],
-    //   amount_end: [1, 21],
-    //   matched_name: ["Subway Fanta", "Blockhouse Steak"],
-    //   matched_amount: ["2", "a"],
-    //   matched_unit: ["glasses", ""],
-    //   matched_calories: [200, 300],
-    //   matched_carbs: [20, 30],
-    //   matched_protein: [10, 15],
-    //   matched_fat: [5, 10],
-    // }
 
     if (requestController) {
       requestController.abort()
@@ -241,9 +238,7 @@ function refreshLabels(results: ExtractResults) {
   const labels = readLabelsFromResult(results)
 
   container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
-  getLabeledText(textarea.innerText, labels).forEach((el) =>
-    container.prepend(el)
-  )
+  getLabeledText(textarea.value, labels).forEach((el) => container.prepend(el))
 }
 
 function getLabeledText(text: string, labels: LabelDefinition[]): Node[] {

@@ -37,6 +37,8 @@
         z-index: 100;
         min-height: 404px;
         color: #334155;
+        background: transparent;
+        border: 0;
         cursor: text;
         overflow: hidden;
         font-size: 1.125rem;
@@ -62,7 +64,7 @@
       }
 
       .hightlight-prepend-text {
-        white-space: pre;
+        white-space: break-spaces;
       }
 
       .highlight-text {
@@ -72,8 +74,6 @@
         background: #50c9ce;
         border-radius: 0.5rem;
         padding: 0.25rem 0;
-        transition: opacity 1s ease;
-        opacity: 0.25;
         transform: translateX(0);
       }
 
@@ -82,12 +82,13 @@
         position: absolute;
         top: calc(-100% - 5px);
         right: 4px;
-        color: #64748b;
+        color: #64748b77;
         font-size: 0.75rem;
+        transition: opacity 1s ease;
       }
 
-      .textarea-container.focused .highlight-text {
-        opacity: 0.15;
+      .textarea-container.focused .highlight-text-label {
+        opacity: 0.75;
       }
 
       .edit-content-spinner {
@@ -173,7 +174,7 @@
     <div class="textarea-container">
       <div class="edit-content-spinner"></div>
 
-      <div class="edit-content" contenteditable="true"></div>
+      <textarea class="edit-content" contenteditable="true"></textarea>
     </div>
 
     <div class="summary hidden">
