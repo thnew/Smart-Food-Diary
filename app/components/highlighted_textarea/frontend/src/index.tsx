@@ -24,20 +24,16 @@ textarea.addEventListener("blur", () => container.classList.remove("focused"))
 let apiUrl = ""
 let initialized = false
 
-textarea.addEventListener("blur", async () => {
-  if (!valueAndTextareaDiffer()) return
-
-  Streamlit.setFrameHeight()
-
-  Streamlit.setComponentValue({
-    value: textarea.value,
-    dataframe: await analyzeMeals(),
-  })
-})
-
 let timeout: NodeJS.Timeout | undefined = undefined
 textarea.addEventListener("keyup", async (e: any) => {
   if (!valueAndTextareaDiffer()) return
+
+  if (textarea.value.trim() === "") {
+    hideSummary()
+    removeAllHighlightings()
+
+    return new ExtractResults()
+  }
 
   const affectedLabels = getSelectedLabelAndAllOnwards(textarea.selectionStart)
   if (affectedLabels) {
@@ -183,8 +179,12 @@ function valueAndTextareaDiffer() {
 
 let requestController: AbortController | undefined = undefined
 async function analyzeMeals(): Promise<ExtractResults | undefined> {
-  const text = textarea.value
-  if (text.trim() === "") return new ExtractResults()
+  let text = textarea.value
+
+  /* We replace all new lines with a space and a dot. Cause AI can't deal with
+     them really well.
+  */
+  text = text.replaceAll("\n", " .")
 
   let resultParsed: ExtractResults
   try {
@@ -262,8 +262,12 @@ function hideSummary() {
 function refreshLabels(results: ExtractResults) {
   const labels = readLabelsFromResult(results)
 
-  container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
+  removeAllHighlightings()
   getLabeledText(textarea.value, labels).forEach((el) => container.prepend(el))
+}
+
+function removeAllHighlightings() {
+  container.querySelectorAll(".edit-content-back").forEach((el) => el.remove())
 }
 
 let displayedLabels: {
