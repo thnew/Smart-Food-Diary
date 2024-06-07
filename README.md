@@ -20,16 +20,16 @@ Writing food diaries is time consuming for the clients. Analysing the hand writt
 5. Integration of the final product into the Streamlit app
 
 # Limitations:
-It's a good proof of concept, but:/
-Accucarcy of the output can be improved/
+It's a good proof of concept, but:\
+Accucarcy of the output can be improved\
 A different language model might perform better
 
 
 ### Tech stack used (not exhaustive):
-Jupyter notebooks/
-Pandas/
-Numpy/
-Scikit-learn/
-Tensorflow/
-NLTK/
-Streamlit/
+Jupyter notebooks\
+Pandas\
+Numpy\
+Scikit-learn\
+Tensorflow\
+NLTK\
+Streamlit
